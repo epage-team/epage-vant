@@ -1,0 +1,38 @@
+const path = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const webpackBaseConfig = require('./webpack.base.js')
+
+const webpackConfig = merge(webpackBaseConfig, {
+  mode: 'production',
+  entry: {
+    'epage-vant': './src/style/render.less'
+  },
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name].css'
+  },
+  plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new ExtractTextPlugin({
+      filename: '[name].css'
+    }),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    })
+  ],
+  resolve: {
+    extensions: ['.less']
+  }
+})
+
+if (process.env.npm_config_report) {
+  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+}
+
+module.exports = webpackConfig

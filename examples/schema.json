@@ -1,0 +1,317 @@
+{
+  "key": "kuEXemrCZ",
+  "widget": "grid",
+  "hidden": false,
+  "option": {
+    "gutter": 0,
+    "align": "top",
+    "justify": "start"
+  },
+  "label": {
+    "width": 80,
+    "position": "right",
+    "colon": false
+  },
+  "container": true,
+  "children": [
+    {
+      "span": 24,
+      "list": [
+        {
+          "key": "kKfQAmsT4",
+          "widget": "select",
+          "hidden": false,
+          "option": {
+            "type": "static",
+            "url": "",
+            "adapter": "return data",
+            "dynamicData": [],
+            "data": [
+              {
+                "key": "A",
+                "value": "A"
+              },
+              {
+                "key": "B",
+                "value": "B"
+              }
+            ],
+            "multiple": false,
+            "clearable": true
+          },
+          "name": "kKfQAmsT4",
+          "type": "string",
+          "label": "下拉框",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "trigger": "change",
+              "type": "string"
+            }
+          ],
+          "placeholder": "请选择"
+        },
+        {
+          "key": "kZVbLEg9h",
+          "widget": "switch",
+          "hidden": false,
+          "option": {
+            "open": "是",
+            "close": "否"
+          },
+          "name": "kZVbLEg9h",
+          "type": "boolean",
+          "label": "开关",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "type": "boolean",
+              "message": "必填",
+              "trigger": "change",
+              "required": false
+            }
+          ]
+        },
+        {
+          "key": "kJUS0PbXu",
+          "widget": "rate",
+          "hidden": false,
+          "option": {
+            "count": 3,
+            "allowHalf": true,
+            "showText": false
+          },
+          "name": "kJUS0PbXu",
+          "type": "number",
+          "label": "评分",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "min": 0,
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "key": "kZDOFb0VT",
+          "widget": "upload",
+          "hidden": false,
+          "option": {
+            "action": "",
+            "adapter": "return { name: data.filename, url:data.url }",
+            "format": [],
+            "accept": "",
+            "type": "select",
+            "multiple": true,
+            "maxSize": 5000,
+            "showUploadList": true,
+            "headers": [],
+            "name": "file",
+            "withCredentials": false,
+            "data": {}
+          },
+          "name": "kZDOFb0VT",
+          "type": "array",
+          "label": "上传",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "trigger": "change",
+              "type": "array"
+            }
+          ],
+          "placeholder": "请选择文件"
+        },
+        {
+          "key": "kGZLjx5Vx",
+          "widget": "input",
+          "hidden": false,
+          "option": {
+            "password": false,
+            "prefix": "",
+            "suffix": ""
+          },
+          "name": "dept",
+          "type": "string",
+          "label": "输入框",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "type": "string",
+              "trigger": "blur"
+            }
+          ],
+          "placeholder": "请选择..."
+        },
+        {
+          "key": "kLHsBX6vF",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": true,
+            "ghost": false,
+            "shape": "square"
+          },
+          "disabled": false
+        },
+        {
+          "key": "k3O2pfRBk",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "circle"
+          },
+          "disabled": false
+        },
+        {
+          "key": "kwLVfjL0s",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "ghost",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "square"
+          },
+          "disabled": false
+        },
+        {
+          "key": "kqS9G7yPu",
+          "widget": "textarea",
+          "hidden": false,
+          "option": {
+            "rows": 3
+          },
+          "name": "kqS9G7yPu",
+          "type": "string",
+          "label": "多行文本",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "type": "string",
+              "trigger": "blur"
+            }
+          ],
+          "placeholder": "请输入"
+        },
+        {
+          "key": "kGCAt86dV",
+          "widget": "checkbox",
+          "hidden": false,
+          "option": {
+            "type": "static",
+            "direction": "horizontal",
+            "url": "",
+            "adapter": "return data",
+            "dynamicData": [],
+            "data": [
+              {
+                "key": "A",
+                "value": "A"
+              },
+              {
+                "key": "kzYcXk0d",
+                "value": "kzYcXk0d"
+              },
+              {
+                "key": "kQLJ9EDQ",
+                "value": "kQLJ9EDQ"
+              }
+            ]
+          },
+          "name": "kGCAt86dV",
+          "type": "array<string>",
+          "label": "多选框",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "type": "array",
+              "trigger": "change"
+            }
+          ]
+        },
+        {
+          "key": "kjabc0yhT",
+          "widget": "radio",
+          "hidden": false,
+          "option": {
+            "type": "static",
+            "direction": "horizontal",
+            "url": "",
+            "adapter": "return data",
+            "data": [
+              {
+                "key": "A",
+                "value": "A"
+              },
+              {
+                "key": "k3b1CRPh",
+                "value": "k3b1CRPh"
+              },
+              {
+                "key": "kpu6Yv8U",
+                "value": "kpu6Yv8U"
+              }
+            ],
+            "dynamicData": []
+          },
+          "name": "kjabc0yhT",
+          "type": "string",
+          "label": "单选框",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "type": "string",
+              "trigger": "change"
+            }
+          ],
+          "placeholder": "请选择"
+        }
+      ]
+    }
+  ],
+  "title": "",
+  "description": "",
+  "size": "default",
+  "logics": []
+}
