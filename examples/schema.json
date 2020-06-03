@@ -67,7 +67,7 @@
           "disabled": false,
           "rules": [
             {
-              "required": false,
+              "required": true,
               "message": "必填",
               "type": "string",
               "trigger": "blur"
@@ -92,10 +92,14 @@
           "disabled": false,
           "rules": [
             {
-              "required": false,
+              "required": true,
               "message": "必填",
               "type": "string",
               "trigger": "blur"
+            },
+            {
+              "message": "邮箱格式不正确",
+              "type": "email"
             }
           ],
           "placeholder": "请输入"
