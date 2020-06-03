@@ -7,6 +7,7 @@
       readonly
       clickable
       :label='schema.label'
+      :placeholder='schema.placeholder'
       :value='model[schema.key]'
       @click='showPicker = true'
     )

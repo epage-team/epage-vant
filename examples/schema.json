@@ -165,76 +165,100 @@
           "placeholder": "请选择"
         },
         {
-          "key": "kF0j4pNSR",
-          "widget": "autoComplete",
+          "key": "kSCaklFMC",
+          "widget": "grid",
           "hidden": false,
           "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "data": [
-              "A"
-            ],
-            "dynamicData": [],
-            "clearable": true
+            "gutter": 0,
+            "align": "top",
+            "justify": "start"
           },
-          "name": "kF0j4pNSR",
-          "type": "string",
-          "label": "自动完成",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
+          "label": "布局",
+          "container": true,
+          "children": [
             {
-              "required": false,
-              "message": "必填",
-              "type": "string",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "k1JVvRyID",
-          "widget": "cascader",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "dynamicData": [],
-            "delimiter": "/",
-            "clearable": true,
-            "notFoundText": "无匹配数据",
-            "filterable": false,
-            "data": [
-              {
-                "key": "A",
-                "value": "option A",
-                "children": [
-                  {
-                    "key": "B",
-                    "value": "option B"
-                  }
-                ]
-              }
-            ]
-          },
-          "name": "k1JVvRyID",
-          "type": "array<string>",
-          "label": "级联选择",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
+              "span": 12,
+              "list": [
+                {
+                  "key": "k1JVvRyID",
+                  "widget": "cascader",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "delimiter": "/",
+                    "clearable": true,
+                    "notFoundText": "无匹配数据",
+                    "filterable": false,
+                    "data": [
+                      {
+                        "key": "A",
+                        "value": "option A",
+                        "children": [
+                          {
+                            "key": "B",
+                            "value": "option B"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "name": "k1JVvRyID",
+                  "type": "array<string>",
+                  "label": "级联选择",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "type": "array",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请选择"
+                }
+              ]
+            },
             {
-              "required": false,
-              "message": "必填",
-              "type": "array",
-              "trigger": "change"
+              "span": 12,
+              "list": [
+                {
+                  "key": "kF0j4pNSR",
+                  "widget": "autoComplete",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "url": "",
+                    "adapter": "return data",
+                    "data": [
+                      "A"
+                    ],
+                    "dynamicData": [],
+                    "clearable": true
+                  },
+                  "name": "kF0j4pNSR",
+                  "type": "string",
+                  "label": "自动完成",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "type": "string",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请输入"
+                }
+              ]
             }
-          ],
-          "placeholder": "请选择"
+          ]
         },
         {
           "key": "k9ZBz1ZNO",
@@ -247,15 +271,35 @@
             "adapter": "return data",
             "data": [
               {
-                "key": "A",
-                "value": "A"
+                "key": "beijing",
+                "value": "北京"
+              },
+              {
+                "key": "shanghai",
+                "value": "上海"
+              },
+              {
+                "key": "nanjing",
+                "value": "南京"
+              },
+              {
+                "key": "wuxi",
+                "value": "无锡"
+              },
+              {
+                "key": "shenzhen",
+                "value": "深圳"
+              },
+              {
+                "key": "wulumuqi",
+                "value": "乌鲁木齐"
               }
             ],
             "dynamicData": []
           },
-          "name": "k9ZBz1ZNO",
+          "name": "city",
           "type": "string",
-          "label": "单选框",
+          "label": "城市",
           "description": "",
           "help": "",
           "disabled": false,
@@ -281,14 +325,30 @@
             "dynamicData": [],
             "data": [
               {
-                "key": "A",
-                "value": "A"
+                "key": "chuji",
+                "value": "初级"
+              },
+              {
+                "key": "zhongji",
+                "value": "中级"
+              },
+              {
+                "key": "gaoji",
+                "value": "高级"
+              },
+              {
+                "key": "zishen",
+                "value": "资深"
+              },
+              {
+                "key": "zhuanjia",
+                "value": "专家"
               }
             ]
           },
-          "name": "kuG39ifsW",
+          "name": "zhiji",
           "type": "array<string>",
-          "label": "多选框",
+          "label": "职级",
           "description": "",
           "help": "",
           "disabled": false,
@@ -443,20 +503,6 @@
           "placeholder": "请选择文件"
         },
         {
-          "key": "kFTkxHsSk",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "primary",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "square"
-          },
-          "disabled": false
-        },
-        {
           "key": "kGZLjx5Vx",
           "widget": "input",
           "hidden": false,
@@ -510,6 +556,20 @@
             }
           ],
           "placeholder": "请输入"
+        },
+        {
+          "key": "kFTkxHsSk",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": true,
+            "ghost": false,
+            "shape": "square"
+          },
+          "disabled": false
         }
       ]
     }
