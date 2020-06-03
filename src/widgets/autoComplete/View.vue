@@ -3,24 +3,23 @@
   template(v-if='mode === "display"')
     span {{model[schema.key]}}
   template(v-else)
-    AutoComplete(
-      v-if='schema.key'
-      :size='schema.size || rootSchema.size'
-      :placeholder='schema.placeholder'
-      :disabled='schema.disabled'
-      :clearable='schema.option.clearable'
-      v-model.trim='model[schema.key]'
-      @on-search="onSearch('on-search', ...arguments)"
-      @on-change="event('on-change', ...arguments)"
-      @on-select="event('on-select', ...arguments)"
-      @on-focus="event('on-focus', ...arguments)"
-      @on-blur="event('on-blur', ...arguments)"
-    )
-      Option(
-        v-for='(item, k) in list || []'
-        :key='k + "-"'
-        :value='item'
-      ) {{item}}
+    van-field.epvan-autocomplete-field(:label='schema.label' type='text')
+      template(#input)
+        input.van-field__control(
+          :placeholder='schema.placeholder'
+          v-model='model[schema.key]'
+          @focus="event('on-focus', ...arguments)"
+          @blur="event('on-blur', ...arguments)"
+          @input='onInput'
+        )
+        ul.epvan-autocomplete-options(v-show='list.length')
+          li(
+            v-for='(item, k) in list || []'
+            :key='k + "-"'
+            :value='item'
+            @click="onSelect(item)"
+          ) {{item}}
+
 </template>
 <script>
 import Epage from 'epage'
@@ -45,6 +44,15 @@ export default {
     this.worker.terminate()
   },
   methods: {
+    onInput (e) {
+      this.onSearch('search', e.target.value)
+      console.log(e)
+    },
+    onSelect (item) {
+      this.event('on-select', item)
+      this.store.updateModel({ [this.schema.key]: item })
+      this.list = []
+    },
     listenerMessage () {
       this.worker.onmessage = e => {
         const { message, success, data } = e.data
@@ -66,7 +74,7 @@ export default {
 
     onSearch (type, value) {
       this.searchValue = value
-      // this.event(type, value)
+      this.event(type, value)
       // spf 右侧设置输入项
       const { type: dataType, data, url, adapter } = this.schema.option
       let result = []

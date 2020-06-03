@@ -29,7 +29,7 @@ export default [{
     inputNumberWidget,
     selectWidget,
     // cascaderWidget,
-    // autoCompleteWidget,
+    autoCompleteWidget,
     radioWidget,
     checkboxWidget,
     // datePickerWidget,
