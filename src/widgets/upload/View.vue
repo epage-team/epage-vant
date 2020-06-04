@@ -10,7 +10,11 @@
   //-     ) {{file.name}}
 
   //- template(v-else)
-  van-field(:name='schema.name' :label='schema.label')
+  van-field(
+    :name='schema.name'
+    :label='schema.label'
+    :rules='rules[schema.key]'
+  )
     template(#input)
       van-uploader(
         v-if='schema.key'

@@ -12,7 +12,11 @@
     )
 
   template(v-else)
-    van-field(:name='schema.name' :label='schema.label')
+    van-field(
+      :name='schema.name'
+      :label='schema.label'
+      :rules='rules[schema.key]'
+    )
       template(#input)
         van-rate(
           v-if='schema.key'

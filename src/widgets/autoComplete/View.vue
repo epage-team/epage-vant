@@ -3,7 +3,11 @@
   template(v-if='mode === "display"')
     span {{model[schema.key]}}
   template(v-else)
-    van-field.epvan-autocomplete-field(:label='schema.label' type='text')
+    van-field.epvan-autocomplete-field(
+      :label='schema.label'
+      type='text'
+      :rules='rules[schema.key]'
+    )
       template(#input)
         input.van-field__control(
           :placeholder='schema.placeholder'
