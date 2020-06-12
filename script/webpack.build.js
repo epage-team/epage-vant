@@ -32,7 +32,7 @@ const webpackConfig = merge(webpackBaseConfig, {
       commonjs2: 'epage',
       amd: 'epage'
     },
-    vant: 'Vant',
+    vant: 'vant',
     vuedraggable: 'vuedraggable',
     vue: {
       root: 'Vue',

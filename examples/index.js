@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Vant from 'vant'
+import vant from 'vant'
 import Demo from './demo'
 import './style.less'
 
 Vue.use(Vuex)
-Vue.use(Vant)
+Vue.use(vant)
 const el = document.getElementById('epage')
 
 /* eslint-disable no-new */
