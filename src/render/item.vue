@@ -30,17 +30,14 @@
             @on-dynamic-add='onDynamicAdd'
             @on-dynamic-remove='onDynamicRemove'
           )
-    .ep-widget-description(v-if='schema.description') {{schema.description}}
 
   //- not container
   template(v-else)
-    span(v-if='schema.help' slot='label') {{schema.label}}
     component(
       :is='flatWidgets[schema.widget].View'
       :schema='schema'
       @on-event='onEvent'
     )
-    .ep-widget-description(v-if='schema.description') {{schema.description}}
 </template>
 <script>
 

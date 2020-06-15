@@ -1,0 +1,104 @@
+{
+  "key": "kuLlthRrI",
+  "widget": "grid",
+  "hidden": false,
+  "option": {
+    "gutter": 0,
+    "align": "top",
+    "justify": "start"
+  },
+  "label": {
+    "width": 80,
+    "position": "right",
+    "colon": false
+  },
+  "container": true,
+  "children": [
+    {
+      "span": 24,
+      "list": [
+        {
+          "key": "ki4znXXkt",
+          "widget": "input",
+          "hidden": false,
+          "option": {
+            "password": false,
+            "prefix": "",
+            "suffix": ""
+          },
+          "name": "username",
+          "type": "string",
+          "label": "标题测试",
+          "description": "desc",
+          "help": "help",
+          "disabled": false,
+          "rules": [
+            {
+              "required": true,
+              "message": "必填111",
+              "type": "string",
+              "trigger": "blur"
+            },
+            {
+              "message": "邮箱格式不正确",
+              "type": "email"
+            },
+            {
+              "message": "手机号不正确",
+              "type": "phone"
+            },
+            {
+              "message": "zhengze",
+              "type": "pattern",
+              "pattern": "^\\d+",
+              "ignoreCase": true,
+              "global": true,
+              "multiline": true
+            },
+            {
+              "message": "字符串不符合规则",
+              "type": "string",
+              "min": "5",
+              "max": "10"
+            }
+          ],
+          "placeholder": "请输入内容"
+        },
+        {
+          "key": "kQuTdf6Y7",
+          "widget": "textarea",
+          "hidden": false,
+          "option": {
+            "rows": 3
+          },
+          "name": "kQuTdf6Y7",
+          "type": "string",
+          "label": "多行文本",
+          "description": "11",
+          "help": "2222",
+          "disabled": true,
+          "rules": [
+            {
+              "required": true,
+              "message": "必填",
+              "type": "string",
+              "trigger": "blur"
+            },
+            {
+              "type": "",
+              "message": ""
+            }
+          ],
+          "placeholder": "请输入"
+        }
+      ]
+    }
+  ],
+  "title": "测试",
+  "description": "",
+  "size": "default",
+  "logics": [],
+  "style": {
+    "maxWidth": 1600
+  }
+}

@@ -16,11 +16,14 @@
       :size='rootSchema.size'
       :rules='rules[schema.key]'
       :required='required'
+      :left-icon='schema.help ? "info-o" : undefined'
       @input="event('on-input', ...arguments)"
       @focus="event('on-focus', ...arguments)"
       @blur="event('on-blur', ...arguments)"
       @click="event('on-click', ...arguments)"
+      @click-left-icon='onHelpClick'
     )
+    .epvan-desc {{schema.description}}
 
 </template>
 <script>

@@ -1,4 +1,6 @@
 import Epage from 'epage'
+import { Dialog } from 'vant'
+import * as regexp from '../util/regexp'
 
 const { defaultSchema } = Epage.constant
 const { isArray } = Epage.helper
@@ -51,10 +53,14 @@ export default {
           if (trigger && triggerMap[trigger]) {
             newRule[trigger] = triggerMap[trigger]
           }
+          if (type in regexp) {
+            newRule.pattern = regexp[type](rule)
+          }
           Object.assign(newRule, others)
 
           return newRule
         })
+        console.log(1, result)
       }
       return result
     }
@@ -62,6 +68,9 @@ export default {
   methods: {
     event (type, ...options) {
       this.$emit('on-event', this.schema.key, type, ...options)
+    },
+    onHelpClick () {
+      Dialog({ message: this.schema.help })
     }
   }
 }

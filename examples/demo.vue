@@ -3,13 +3,13 @@
   div(ref='form')
   //- Button(type='default' @click='validateForm') 校验
   //- Button(type='default' @click='resetForm') 重置
-  //- Button(type='default' @click='getFormData') getFormData
+  van-button(type='primary' block @click='getFormData') getFormData
   //- Button(type='default' @click='getSchema') getSchema
 
 </template>
 <script>
 import widgets, { Render } from 'epage-vant'
-import rootSchema from './schema.json'
+import rootSchema from './schema-test.json'
 
 export default {
   data () {
@@ -21,10 +21,10 @@ export default {
     this.getRootSchema().then(schema => {
       const form = this.formRender(schema)
       this.form = form
-      this.getModel().then(model => {
-        form.store.updateModel(model)
-      })
-      this.listenerForm(form)
+      // this.getModel().then(model => {
+      //   form.store.updateModel(model)
+      // })
+      // this.listenerForm(form)
     })
   },
   methods: {
@@ -49,8 +49,7 @@ export default {
       console.log(1, schema)
     },
     getFormData (formData) {
-      console.log(2, formData)
-      // console.log(this.form.store.getFormData())
+      console.log(this.form.store.getFormData())
     },
     getModel () {
       return new Promise((resolve, reject) => {
