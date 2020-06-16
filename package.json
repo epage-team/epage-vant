@@ -46,7 +46,7 @@
     "not ie <= 8"
   ],
   "dependencies": {
-    "epage": "^0.2.5"
+    "epage": "^0.2.7"
   },
   "peerDependencies": {
     "vant": ">=2.8",

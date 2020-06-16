@@ -6,4 +6,11 @@ export const url = () => new RegExp(
   'i'
 )
 
-export const string = (rule) => new RegExp(`^.{${rule.min},${rule.max}}$`)
+export const string = (rule) => {
+  if (!rule) {
+    return /.*/
+  }
+  const { min = 0, max = 10000 * 20 } = rule
+
+  return new RegExp(`^.{${min},${max}}$`)
+}

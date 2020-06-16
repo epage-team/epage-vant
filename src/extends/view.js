@@ -1,9 +1,8 @@
 import Epage from 'epage'
 import { Dialog } from 'vant'
-import * as regexp from '../util/regexp'
+import convertRule from '../util/rule'
 
 const { defaultSchema } = Epage.constant
-const { isArray } = Epage.helper
 
 export default {
   props: {
@@ -37,32 +36,7 @@ export default {
     },
     rules () {
       const formRules = this.store.getFormRules()
-      const result = {}
-      const triggerMap = {
-        blur: 'onBlur',
-        change: 'onChange'
-      }
-
-      for (const key in formRules) {
-        const rules = formRules[key]
-        if (!isArray(rules)) continue
-
-        result[key] = rules.map(rule => {
-          const newRule = {}
-          const { trigger, type, ...others } = rule
-          if (trigger && triggerMap[trigger]) {
-            newRule[trigger] = triggerMap[trigger]
-          }
-          if (type in regexp) {
-            newRule.pattern = regexp[type](rule)
-          }
-          Object.assign(newRule, others)
-
-          return newRule
-        })
-        console.log(1, result)
-      }
-      return result
+      return convertRule(formRules, this.schema)
     }
   },
   methods: {

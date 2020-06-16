@@ -18,78 +18,116 @@
       "span": 24,
       "list": [
         {
-          "key": "ki4znXXkt",
-          "widget": "input",
+          "key": "kyVYStXHN",
+          "widget": "button",
           "hidden": false,
           "option": {
-            "password": false,
-            "prefix": "",
-            "suffix": ""
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": true,
+            "ghost": false,
+            "shape": "square"
           },
-          "name": "username",
-          "type": "string",
-          "label": "标题测试",
-          "description": "desc",
-          "help": "help",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填111",
-              "type": "string",
-              "trigger": "blur"
-            },
-            {
-              "message": "邮箱格式不正确",
-              "type": "email"
-            },
-            {
-              "message": "手机号不正确",
-              "type": "phone"
-            },
-            {
-              "message": "zhengze",
-              "type": "pattern",
-              "pattern": "^\\d+",
-              "ignoreCase": true,
-              "global": true,
-              "multiline": true
-            },
-            {
-              "message": "字符串不符合规则",
-              "type": "string",
-              "min": "5",
-              "max": "10"
-            }
-          ],
-          "placeholder": "请输入内容"
+          "disabled": false
         },
         {
-          "key": "kQuTdf6Y7",
-          "widget": "textarea",
+          "key": "kx2PzRyMv",
+          "widget": "button",
           "hidden": false,
           "option": {
-            "rows": 3
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": true,
+            "ghost": false,
+            "shape": "square"
           },
-          "name": "kQuTdf6Y7",
-          "type": "string",
-          "label": "多行文本",
-          "description": "11",
-          "help": "2222",
-          "disabled": true,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "string",
-              "trigger": "blur"
-            },
-            {
-              "type": "",
-              "message": ""
-            }
-          ],
-          "placeholder": "请输入"
+          "disabled": true
+        },
+        {
+          "key": "kpFteyuRQ",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "square"
+          },
+          "disabled": false
+        },
+        {
+          "key": "kC82b4FdN",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "circle"
+          },
+          "disabled": false
+        },
+        {
+          "key": "k37mgWqbY",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "ghost",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "circle"
+          },
+          "disabled": false
+        },
+        {
+          "key": "kvpEeEY3C",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "dashed",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "circle"
+          },
+          "disabled": false
+        },
+        {
+          "key": "koNdzXJU8",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "default",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "circle"
+          },
+          "disabled": false
+        },
+        {
+          "key": "kVtDW5yJg",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "text",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "circle"
+          },
+          "disabled": false
         }
       ]
     }

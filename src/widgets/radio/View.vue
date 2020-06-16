@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget
+.ep-widget.epvan-radio
   template(v-if='mode === "display"')
     span {{displayValue}}
 

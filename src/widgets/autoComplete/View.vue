@@ -88,23 +88,23 @@ export default {
           item = item + ''
           return item && item.indexOf(value) > -1
         })
+        this.list = result
       } else if (dataType === 'dynamic' && url && value.trim()) {
         this.getDynamicData(url, value, adapter, this)
       }
-      this.list = result
     },
 
     getDynamicData: debounce((url, value, adapter, self) => {
-      ajax(`${url}${value}`).then(res => {
-        this.worker.postMessage({
-          action: 'fetch',
+      ajax(`${url}?${value}`).then(res => {
+        self.worker.postMessage({
+          action: 'custom',
           data: res,
           fn: adapter
         })
       }).catch(err => {
         self.$emit('error', { success: false, message: err })
       })
-    }, 1000 * 1)
+    }, 500 * 1)
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget
+.ep-widget.epvan-rate
   template(v-if='mode === "display"')
      van-rate(
       v-if='schema.key'
@@ -16,6 +16,7 @@
       :name='schema.name'
       :label='schema.label'
       :rules='rules[schema.key]'
+      :required='required'
     )
       template(#input)
         van-rate(
@@ -27,11 +28,23 @@
           v-model='model[schema.key]'
           @change="event('on-change', ...arguments)"
         )
+        span.epvan-rate-text(v-if='schema.option.showText && model[schema.key] > 0' style='padding-left: 10px;') {{model[schema.key]}} 星
 </template>
 <script>
 import viewExtend from '../../extends/view'
 
 export default {
-  extends: viewExtend
+  extends: viewExtend,
+  computed: {
+    required () {
+      let required = false
+      const rules = this.schema.rules
+
+      if (rules[0]) {
+        required = rules[0].required
+      }
+      return required
+    }
+  }
 }
 </script>
