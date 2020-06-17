@@ -32,7 +32,7 @@ export default [{
     autoCompleteWidget,
     radioWidget,
     checkboxWidget,
-    // datePickerWidget,
+    datePickerWidget,
     // timePickerWidget,
     switchWidget,
     rateWidget,

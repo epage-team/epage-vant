@@ -18,56 +18,16 @@
       "span": 24,
       "list": [
         {
-          "key": "kYU6VW9jv",
-          "widget": "cascader",
+          "key": "kMNXgxVXP",
+          "widget": "datePicker",
           "hidden": false,
           "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "",
-            "dynamicData": [],
-            "delimiter": "/",
-            "clearable": true,
-            "notFoundText": "无匹配数据",
-            "filterable": false,
-            "data": [
-              {
-                "key": "1",
-                "value": "Option-1",
-                "children": [
-                  {
-                    "value": "Option-11",
-                    "key": "11"
-                  },
-                  {
-                    "value": "Option-12",
-                    "key": "12"
-                  },
-                  {
-                    "value": "Option-13",
-                    "key": "13"
-                  }
-                ]
-              },
-              {
-                "value": "Option-2",
-                "key": "2",
-                "children": [
-                  {
-                    "value": "Option-22",
-                    "key": "22"
-                  },
-                  {
-                    "value": "Option-23",
-                    "key": "23"
-                  }
-                ]
-              }
-            ]
+            "range": false,
+            "format": "MM-dd-yyyy HH:mm:ss"
           },
-          "name": "kYU6VW9jv",
-          "type": "array<string>",
-          "label": "级联选择",
+          "name": "kMNXgxVXP",
+          "type": "string",
+          "label": "日期",
           "description": "",
           "help": "",
           "disabled": false,
@@ -75,7 +35,6 @@
             {
               "required": false,
               "message": "必填",
-              "type": "array",
               "trigger": "change"
             }
           ],
