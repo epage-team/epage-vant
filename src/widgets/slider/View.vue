@@ -1,7 +1,7 @@
 <template lang="pug">
 .ep-widget
   template(v-if='mode === "display"')
-    Slider(
+    van-slider(
       v-if='schema.key'
       :min='schema.option.min'
       :max='schema.option.max'

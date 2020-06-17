@@ -19,8 +19,8 @@ export default {
   },
   mounted () {
     this.getRootSchema().then(schema => {
-      const form = this.formRender(schema)
-      this.form = form
+      this.form = this.formRender(schema)
+      this.form.store.updateModel({ kYU6VW9jv: ['A', 'C'] })
       // this.getModel().then(model => {
       //   form.store.updateModel(model)
       // })

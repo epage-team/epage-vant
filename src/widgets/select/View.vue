@@ -8,9 +8,10 @@
       clickable
       :label='schema.label'
       :placeholder='schema.placeholder'
-      :value='model[schema.key]'
+      :value='formModel'
       @click='showPicker = true'
     )
+      template(#input) 11
     van-popup(
       v-model='showPicker'
       round
@@ -18,27 +19,12 @@
     )
       van-picker(
         show-toolbar
-        :columns='columns'
+        :columns='options'
+        value-key='value'
         @cancel='showPicker = false'
         @confirm='onConfirm'
       )
-    //- van-picker(
-    //-   v-if='schema.key'
-    //-   :placeholder='schema.placeholder'
-    //-   :disabled='schema.disabled'
-    //-   :size='schema.size || rootSchema.size'
-    //-   transfer
-    //-   filterable
-    //-   :clearable="schema.option.clearable"
-    //-   :multiple='schema.option.multiple'
-    //-   v-model='model[schema.key]'
-    //-   @on-change="event('on-change', ...arguments)"
-    //- )
-    //-   Option(
-    //-     v-for='(item, k) in options'
-    //-     :key='k'
-    //-     :value='item.key'
-    //-   ) {{item.value}}
+
 </template>
 <script>
 import viewExtend from '../../extends/view'
@@ -49,8 +35,8 @@ export default {
   mixins: [dynamicMixins],
   data () {
     return {
-      showPicker: false,
-      columns: ['北京', '天津', '南京', '上海', '深圳', '成都', '重庆', '西双版纳']
+      formModel: '',
+      showPicker: false
     }
   },
   computed: {
@@ -73,9 +59,22 @@ export default {
       return result + ''
     }
   },
+  watch: {
+    model: {
+      handler (mod) {
+        const { key } = this.schema
+        const value = mod[key]
+        const opt = this.options.filter(o => o.key === value)[0]
+        if (opt) {
+          this.formModel = opt.value
+        }
+      },
+      deep: true
+    }
+  },
   methods: {
     onConfirm (value) {
-      this.model[this.schema.key] = value
+      this.model[this.schema.key] = value.key
       this.showPicker = false
     }
   }

@@ -28,7 +28,7 @@ export default [{
     textareaWidget,
     inputNumberWidget,
     selectWidget,
-    // cascaderWidget,
+    cascaderWidget,
     autoCompleteWidget,
     radioWidget,
     checkboxWidget,

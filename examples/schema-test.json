@@ -18,116 +18,68 @@
       "span": 24,
       "list": [
         {
-          "key": "kyVYStXHN",
-          "widget": "button",
+          "key": "kYU6VW9jv",
+          "widget": "cascader",
           "hidden": false,
           "option": {
-            "text": "提交",
-            "type": "primary",
-            "icon": "",
-            "long": true,
-            "ghost": false,
-            "shape": "square"
+            "type": "static",
+            "url": "",
+            "adapter": "",
+            "dynamicData": [],
+            "delimiter": "/",
+            "clearable": true,
+            "notFoundText": "无匹配数据",
+            "filterable": false,
+            "data": [
+              {
+                "key": "1",
+                "value": "Option-1",
+                "children": [
+                  {
+                    "value": "Option-11",
+                    "key": "11"
+                  },
+                  {
+                    "value": "Option-12",
+                    "key": "12"
+                  },
+                  {
+                    "value": "Option-13",
+                    "key": "13"
+                  }
+                ]
+              },
+              {
+                "value": "Option-2",
+                "key": "2",
+                "children": [
+                  {
+                    "value": "Option-22",
+                    "key": "22"
+                  },
+                  {
+                    "value": "Option-23",
+                    "key": "23"
+                  }
+                ]
+              }
+            ]
           },
-          "disabled": false
-        },
-        {
-          "key": "kx2PzRyMv",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "primary",
-            "icon": "",
-            "long": true,
-            "ghost": false,
-            "shape": "square"
-          },
-          "disabled": true
-        },
-        {
-          "key": "kpFteyuRQ",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "primary",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "square"
-          },
-          "disabled": false
-        },
-        {
-          "key": "kC82b4FdN",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "primary",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "circle"
-          },
-          "disabled": false
-        },
-        {
-          "key": "k37mgWqbY",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "ghost",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "circle"
-          },
-          "disabled": false
-        },
-        {
-          "key": "kvpEeEY3C",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "dashed",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "circle"
-          },
-          "disabled": false
-        },
-        {
-          "key": "koNdzXJU8",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "default",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "circle"
-          },
-          "disabled": false
-        },
-        {
-          "key": "kVtDW5yJg",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "text",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "circle"
-          },
-          "disabled": false
+          "name": "kYU6VW9jv",
+          "type": "array<string>",
+          "label": "级联选择",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "type": "array",
+              "trigger": "change"
+            }
+          ],
+          "placeholder": "请选择"
         }
       ]
     }
