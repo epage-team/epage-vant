@@ -6,21 +6,34 @@
   template(v-else)
     van-field(
       :label='schema.label'
-      :class='cls'
       v-if='schema.key'
       :disable='schema.disabled'
-      @click='showPicker = true'
     )
       template(#input)
-        div(v-if='model[schema.key]') {{model[schema.key]}}
-        div.epvan-placeholder(v-else) {{schema.placeholder}}
+        div(v-if='schema.option.range')
+          template(v-if='model[schema.key]')
+            div(@click='onShowPicker(0)')
+              div(v-if='model[schema.key][0]') {{model[schema.key][0]}}
+              .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
+            span 至
+            div(@click='onShowPicker(1)')
+              div(v-if='model[schema.key][1]') {{model[schema.key][1]}}
+              .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
+        div(v-else  @click='onShowPicker')
+          div(v-if='model[schema.key]') {{model[schema.key]}}
+          div.epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
     van-popup(
       v-model='showPicker'
       round
       position='bottom'
     )
       van-datetime-picker(
+        v-model='currentDate'
+        :min-date='minDate'
+        :max-date='maxDate'
         :type='getType()'
+        :formatter='formatter'
+        :filter='filter'
         @cancel='showPicker = false'
         @confirm='onConfirm'
       )
@@ -32,30 +45,36 @@ import Epage from 'epage'
 const { include, formatDate } = Epage.helper
 const timeOptions = ['HH:mm:ss', 'HH:mm', 'mm:ss']
 const monthOptions = ['yyyy-MM', 'yyyy/MM']
+const dateMap = {
+  year: '年',
+  month: '月',
+  day: '日',
+  hour: '时',
+  minute: '分'
+}
 
 export default {
   extends: viewExtend,
   data () {
     return {
-      showPicker: false
-    }
-  },
-  computed: {
-    cls () {
-      let result = {}
-      const { option } = this.schema
-
-      if (option && option.type === 'datetimerange') {
-        const size = this.schema.size || this.rootSchema.size || 'default'
-
-        result = `ep-widget-datePicker-${size}`
-      }
-
-      return result
+      valueIndex: -1,
+      showPicker: false,
+      currentDate: new Date(),
+      minDate: new Date(1949, 9, 1),
+      maxDate: new Date(2035, 10, 1)
     }
   },
   methods: {
+    onShowPicker (valueIndex) {
+      const { range } = this.schema.option
 
+      if (range) {
+        this.valueIndex = valueIndex
+      } else {
+        this.valueIndex = -1
+      }
+      this.showPicker = true
+    },
     hasTime (format) {
       return !!timeOptions.filter(t => include(format, t)).length
     },
@@ -64,23 +83,35 @@ export default {
       return !!monthOptions.filter(t => include(format, t)).length && !include(format, 'dd')
     },
 
+    formatter (type, val) {
+      if (type in dateMap) {
+        return val + dateMap[type]
+      }
+      return val
+    },
+    filter (type, options) {
+      const { format } = this.schema.option
+
+      if (format === 'yyyy') {
+        if (type === 'month') {
+          return []
+        }
+      }
+      return options
+    },
+
     getType () {
-      const { option } = this.schema
-      const { range, format } = option
+      const { format } = this.schema.option
       let type = 'date'
 
-      if (range) {
-        type = this.hasTime(format) ? 'datetimerange' : 'daterange'
+      if (format === 'yyyy') {
+        type = 'year-month'
+      } else if (this.isMonth(format)) {
+        type = 'year-month'
+      } else if (this.hasTime(format)) {
+        type = 'datetime'
       } else {
-        if (format === 'yyyy') {
-          type = 'year'
-        } else if (this.isMonth(format)) {
-          type = 'month'
-        } else if (this.hasTime(format)) {
-          type = 'datetime'
-        } else {
-          type = 'date'
-        }
+        type = 'date'
       }
       return type
     },
@@ -88,10 +119,20 @@ export default {
       const oldValue = this.model[this.schema.key]
       const newValue = formatDate(value, this.schema.option.format)
 
-      if (value !== oldValue) {
-        this.store.updateModel({ [this.schema.key]: newValue })
-        this.event('on-change', ...arguments)
+      if (this.valueIndex === -1) {
+        if (newValue !== oldValue) {
+          this.store.updateModel({ [this.schema.key]: newValue })
+          this.event('on-change', ...arguments)
+        }
+      } else {
+        const newValueArr = [...oldValue]
+        if (newValue !== oldValue[this.valueIndex]) {
+          newValueArr[this.valueIndex] = newValue
+          this.store.updateModel({ [this.schema.key]: newValueArr })
+          this.event('on-change', ...arguments)
+        }
       }
+
       this.showPicker = false
     }
   }

@@ -18,15 +18,15 @@
       "span": 24,
       "list": [
         {
-          "key": "kMNXgxVXP",
+          "key": "k1UFm5jTQ",
           "widget": "datePicker",
           "hidden": false,
           "option": {
-            "range": false,
-            "format": "MM-dd-yyyy HH:mm:ss"
+            "range": true,
+            "format": "yyyy/MM/dd HH:mm"
           },
-          "name": "kMNXgxVXP",
-          "type": "string",
+          "name": "k1UFm5jTQ",
+          "type": "array<string>",
           "label": "日期",
           "description": "",
           "help": "",
@@ -35,7 +35,8 @@
             {
               "required": false,
               "message": "必填",
-              "trigger": "change"
+              "trigger": "change",
+              "type": "array"
             }
           ],
           "placeholder": "请选择"
