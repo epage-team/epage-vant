@@ -33,7 +33,7 @@ export default [{
     radioWidget,
     checkboxWidget,
     datePickerWidget,
-    // timePickerWidget,
+    timePickerWidget,
     switchWidget,
     rateWidget,
     uploadWidget,

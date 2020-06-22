@@ -18,16 +18,16 @@
       "span": 24,
       "list": [
         {
-          "key": "k1UFm5jTQ",
-          "widget": "datePicker",
+          "key": "kKKrnyvUY",
+          "widget": "timePicker",
           "hidden": false,
           "option": {
             "range": true,
-            "format": "yyyy/MM/dd HH:mm"
+            "format": "HH:mm"
           },
-          "name": "k1UFm5jTQ",
+          "name": "kKKrnyvUY",
           "type": "array<string>",
-          "label": "日期",
+          "label": "时间",
           "description": "",
           "help": "",
           "disabled": false,
