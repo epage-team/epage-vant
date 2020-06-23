@@ -23,10 +23,11 @@ export const accept = {
   },
   image: {
     gif: 'gif',
-    png: 'javascript',
+    png: 'png',
     jpeg: ['jpg', 'jpeg'],
     webp: 'webp',
-    icon: ['x-icon', 'vnd.microsoft.icon']
+    icon: ['x-icon', 'vnd.microsoft.icon'],
+    'svg+xml': 'svg'
   },
   audio: {
     midi: 'midi',
@@ -42,6 +43,8 @@ export const accept = {
   application: {
     'octet-stream': 'octet-stream',
     pkcs12: 'pkcs12',
+    msword: ['doc', 'docx'],
+    'vnd.openxmlformats-officedocument.wordprocessingml.document': ['doc', 'docx'],
     'vnd.mspowerpoint': ['vnd.mspowerpoint', 'ppt', 'pptx'],
     'xhtml+xml': ['xhtml+xml', 'xml'],
     xml: 'xml',
@@ -49,8 +52,18 @@ export const accept = {
   }
 }
 
-export function getAccept (format) {
+export function getAccept (format, mainType) {
   const list = []
+
+  if (mainType) {
+    if (Array.isArray(mainType)) {
+      const main = mainType.filter(t => t in accept).map(t => `${t}/*`)
+      list.push(...main)
+    } else if (typeof mainType === 'string') {
+      list.push(`${mainType}/*`)
+    }
+  }
+
   for (const i in accept) {
     const type = accept[i]
     for (const subtype in type) {

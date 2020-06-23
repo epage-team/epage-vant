@@ -27,7 +27,9 @@
             "format": [
               "jpg",
               "png",
-              "js"
+              "js",
+              "doc",
+              "txt"
             ],
             "accept": "",
             "type": "select",

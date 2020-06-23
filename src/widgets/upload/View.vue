@@ -31,6 +31,7 @@
 import Epage from 'epage'
 import { Toast } from 'vant'
 import viewExtend from '../../extends/view'
+import { getAccept } from './constant'
 
 const { isNotEmptyString, isArray, include } = Epage.helper
 // const testImg = () => ({})
@@ -45,7 +46,10 @@ export default {
   computed: {
     accept () {
       const { format } = this.schema.option
-      return format.map(f => ('.' + f)).join(',')
+      const ac = format.map(f => getAccept(f))
+      const ext = format.map(f => ('.' + f))
+      const list = ac.concat(ext)
+      return list.length ? list.join(',') : getAccept(null, 'application').join(',')
     },
     headers () {
       const result = {}
@@ -90,16 +94,13 @@ export default {
       const { format } = this.schema.option
       const rightFiles = files.filter(file => {
         const type = file.type.match(/.+\/([a-zA-Z\d]+)/)
-        console.log(33, file)
         if (!isArray(type)) return false
+        const mainTypes = this.accept.split(/\s*,\s*/)
+          .filter(acc => acc.indexOf('/*') > -1)
+          .map(s => s.split('*')[0])
+        const hasMainType = mainTypes.filter(main => type[0].indexOf(main) > -1).length > 0
 
-        // 特例处理 jpg => jpg, jpeg; jpeg => jpg, jpeg
-        const fileType = type[1]
-        const includeJPGType = include(format, 'jpg') || include(format, 'jpeg')
-        const isJPG = fileType === 'jpg' || fileType === 'jpeg'
-        const includeJPG = isJPG && includeJPGType
-
-        return type && (include(format, fileType) || includeJPG)
+        return include(this.accept, type[0]) || hasMainType
       })
 
       if (rightFiles.length !== files.length) {
