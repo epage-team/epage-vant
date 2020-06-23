@@ -1,75 +1,52 @@
 <template lang="pug">
-.ep-widget.ep-widget-upload
-  //- template(v-if='mode === "display"')
-  //-   .ep-widget-upload-files(
-  //-     v-for='(file, index) in model[schema.key]'
-  //-     :key='"_"+index'
-  //-   )
-  //-     a.ep-widget-upload-filename(
-  //-       @click='getDownload(file.url, file.name)'
-  //-     ) {{file.name}}
-
-  //- template(v-else)
-  van-field(
-    :name='schema.name'
-    :label='schema.label'
-    :rules='rules[schema.key]'
-  )
-    template(#input)
-      van-uploader(
-        v-if='schema.key'
-        :accept='schema.option.accept'
-        :format='schema.option.format | string2Array'
-        :action='schema.option.action'
-        :multiple='schema.option.multiple'
-        :with-credentials='schema.option.withCredentials'
-        :show-upload-list='false'
-        :max-size='schema.option.maxSize'
-        :headers='headers'
-        :data='schema.option.data'
-        :type='schema.option.type'
-        :name='schema.name'
-        :before-upload='onBeforeUpload'
-        :on-success='handleSuccessUpload'
-        :on-error='handleUploadError'
-        :on-format-error='handleUploadFormatError'
-        :on-exceeded-size='handleSizeError'
-      )
-        van-button(icon='photo') {{schema.placeholder}}
-
-      template(v-if="schema.option.showUploadList")
-        .ep-widget-upload-files(
-          v-for='(file, index) in model[schema.key]'
-          :key='"_"+index'
+.ep-widget.epvan-upload
+  template(v-if='mode === "display"')
+    van-field.epvan-upload-display(:name='schema.name' :label='schema.label')
+      template(#input)
+        van-uploader(
+          v-model='model[schema.key]'
+          :disabled='true'
+          :deletable='false'
         )
-          a.ep-widget-upload-filename(
-            title='点击下载'
-            @click='getDownload(file.url, file.name)'
-          ) {{file.name}}
-          Icon.ep-widget-upload-file-remove(
-            type='ios-trash-outline'
-            title='删除当前文件'
-            @click.native.stop='handleRemoveFile(index)'
-          )
+  template(v-else)
+    van-field(
+      :name='schema.name'
+      :label='schema.label'
+      :rules='rules[schema.key]'
+    )
+      template(#input)
+        van-uploader(
+          v-if='schema.key'
+          v-model='model[schema.key]'
+          :disabled='schema.disabled'
+          :accept='accept'
+          :multiple='schema.option.multiple'
+          :max-size='schema.option.maxSize'
+          :before-read="beforeRead"
+          @delete='onDelete'
+          @oversize='onOversize'
+        )
 </template>
 <script>
-import viewExtend from '../../extends/view'
 import Epage from 'epage'
+import { Toast } from 'vant'
+import viewExtend from '../../extends/view'
 
-const { isNotEmptyString, isArray } = Epage.helper
+const { isNotEmptyString, isArray, include } = Epage.helper
+// const testImg = () => ({})
 
 export default {
-  filters: {
-    string2Array (val) {
-      if (typeof val === 'string') {
-        return val.split(',')
-      } else {
-        return val
-      }
+  extends: viewExtend,
+  data () {
+    return {
+      worker: null
     }
   },
-  extends: viewExtend,
   computed: {
+    accept () {
+      const { format } = this.schema.option
+      return format.map(f => ('.' + f)).join(',')
+    },
     headers () {
       const result = {}
       const { headers } = this.schema.option
@@ -87,105 +64,142 @@ export default {
       return result
     }
   },
+  mounted () {
+    this.worker = new Epage.Worker()
+    this.listenerMessage()
+  },
   methods: {
-    onBeforeUpload (file) {
-      const model = this.store.getModel()
-      const fileLen = model[this.schema.key].length
-      const multiple = this.schema.option.multiple
-
-      if (fileLen && !multiple) {
-        this.$Message.error('不支持多文件上传')
-        return false
-      }
-
-      const extra = model[this.schema.key].find(v => file.name === v.name)
-
-      if (fileLen && extra) {
-        this.$Message.error('不能重复上传')
-        return false
-      }
-
-      this.$emit('on-before-upload', ...arguments)
-    },
-
-    handleSuccessUpload (res, file, fileList) {
-      const { adapter } = this.schema.option
-
-      try {
-        /* eslint no-new-func: 0 */
-        const getFile = new Function('data', adapter)
-        var finallfile = getFile(res)
-
-        if (!finallfile.name || !finallfile.url) {
-          return
+    listenerMessage () {
+      const { key } = this.schema
+      this.worker.onmessage = e => {
+        const { message, success, data } = e.data
+        if (success) {
+          let files = this.store.getModel(key)
+          // data => Array<Object{url, name}>
+          files = files.concat(data)
+          this.store.updateModel({ [key]: files })
+        } else {
+          this.$emit('error', message)
         }
-      } catch (e) {
-        console.log(`返回数据不对 需要做适配：${e}`)
       }
-      const curFile = { name: finallfile.name, url: finallfile.url }
-      const value = this.model[this.schema.key] || []
-
-      value.push(curFile)
-      this.store.updateModel({ [this.schema.key]: [...value] })
-
-      this.$emit('on-upload-success', ...arguments)
     },
+    // check format
+    beforeRead (file) {
+      // 单选或多选
+      const files = isArray(file) ? file : [file]
+      const { format } = this.schema.option
+      const rightFiles = files.filter(file => {
+        const type = file.type.match(/.+\/([a-zA-Z\d]+)/)
+        console.log(33, file)
+        if (!isArray(type)) return false
 
-    handleUploadError (error, file, fileList) {
-      if (error) this.$emit('on-upload-error', ...arguments)
-    },
+        // 特例处理 jpg => jpg, jpeg; jpeg => jpg, jpeg
+        const fileType = type[1]
+        const includeJPGType = include(format, 'jpg') || include(format, 'jpeg')
+        const isJPG = fileType === 'jpg' || fileType === 'jpeg'
+        const includeJPG = isJPG && includeJPGType
 
-    handleUploadFormatError (file, fileList) {
-      this.$Message.warning({
-        content: `仅支持 ${this.schema.option.format} 格式文件的上传`,
-        duration: 4
+        return type && (include(format, fileType) || includeJPG)
       })
 
-      this.$emit('on-upload-format-error', ...arguments)
+      if (rightFiles.length !== files.length) {
+        Toast({
+          message: `格式不符合，请选择以下格式文件：\n${format.join(', ')}`,
+          duration: 2000
+        })
+        this.$emit('on-upload-format-error', files)
+        return false
+      }
+      this.$emit('on-before-upload', files)
+      const all = files.map(file => this.uploadFile(file))
+      return Promise.all(all)
     },
-
-    handleRemoveFile (index) {
-      const files = this.model[this.schema.key]
-
-      files.splice(index, 1)
-      this.store.updateModel({ [this.schema.key]: files })
-
+    uploadFile (file) {
+      // const { option, name } = this.schema
+      // const { action, maxSize, data = {}, withCredentials, adapter } = option
+      // const formData = new FormData()
+      // for (const k in data) {
+      //   formData.append(k, data[k])
+      // }
+      // formData.append(name, file)
+      // return new Promise((resolve, reject) => {
+      //   ajax(action, {
+      //     method: 'POST',
+      //     credentials: withCredentials ? 'include' : 'same-origin',
+      //     headers: new Headers(this.headers || {}),
+      //     body: formData
+      //   }).then(res => {
+      //     if (file.size > maxSize) {
+      //       this.onOversize(file)
+      //       reject(file)
+      //     } else {
+      //       this.$emit('on-upload-success', res, file)
+      //       this.worker.postMessage({
+      //         action: 'custom',
+      //         data: res,
+      //         fn: adapter
+      //       })
+      //       resolve(file)
+      //     }
+      //   }).catch(err => {
+      //     this.$emit('on-upload-error', err, file)
+      //     reject(err)
+      //   })
+      // })
+      // demo
+      const { option } = this.schema
+      const { adapter, maxSize } = option
+      return new Promise((resolve, reject) => {
+        const res = []
+        if (file.size > maxSize) {
+          this.onOversize(file)
+          reject(file)
+        } else {
+          this.worker.postMessage({
+            action: 'custom',
+            data: res,
+            fn: adapter
+          })
+          resolve(file)
+        }
+      })
+    },
+    onDelete () {
       this.$emit('on-remove-file', ...arguments)
     },
-
-    handleSizeError (file, fileList) {
-      this.$Message.warning({
-        content: `上传文件大小不能超过 ${this.schema.option.maxSize} kb`,
-        duration: 5
+    onOversize (file) {
+      const { maxSize } = this.schema.option
+      const size = Math.round(maxSize / 1024)
+      const str = size >= 1024 ? Math.round(size / 1024) + 'M' : size + 'k'
+      Toast({
+        message: `文件不能超过 ${str}`,
+        duration: 2000
       })
-
       this.$emit('on-size-error', ...arguments)
     },
 
-    getDownload (url, name) {
-      this.$Message.info('文件已开始下载，请勿重复点击操作！')
-
-      fetch(url).then(res => {
-        return res.blob().then(blob => {
-          this.funDownload(blob, name)
-        })
+    downloadFile (url, name) {
+      Toast({
+        message: '文件已开始下载，请勿重复点击操作！',
+        duration: 2000
       })
+
+      fetch(url)
+        .then(res => res.blob())
+        .then(blob => this.downloadBlob(blob, name))
     },
 
     // 下载文件方法
-    funDownload (content, filename) {
-      const eleLink = document.createElement('a')
-      // 字符内容转变成blob地址
-      const blob = new Blob([content])
+    downloadBlob (blob, name) {
+      const link = document.createElement('a')
+      const objectURL = new Blob([blob])
 
-      eleLink.download = filename
-      eleLink.style.display = 'none'
-      eleLink.href = URL.createObjectURL(blob)
-      // 触发点击
-      document.body.appendChild(eleLink)
-      eleLink.click()
-      // 然后移除元素
-      document.body.removeChild(eleLink)
+      link.download = name
+      link.style.display = 'none'
+      link.href = URL.createObjectURL(objectURL)
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
     }
   }
 }

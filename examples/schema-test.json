@@ -18,16 +18,30 @@
       "span": 24,
       "list": [
         {
-          "key": "kKKrnyvUY",
-          "widget": "timePicker",
+          "key": "k1fUOI9IQ",
+          "widget": "upload",
           "hidden": false,
           "option": {
-            "range": true,
-            "format": "HH:mm"
+            "action": "",
+            "adapter": "return  data.map(function(file){\nreturn { name: file.name, url:file.url }\n})",
+            "format": [
+              "jpg",
+              "png",
+              "js"
+            ],
+            "accept": "",
+            "type": "select",
+            "multiple": true,
+            "maxSize": 1084000,
+            "showUploadList": true,
+            "headers": [],
+            "name": "file",
+            "withCredentials": false,
+            "data": {}
           },
-          "name": "kKKrnyvUY",
-          "type": "array<string>",
-          "label": "时间",
+          "name": "k1fUOI9IQ",
+          "type": "array",
+          "label": "上传",
           "description": "",
           "help": "",
           "disabled": false,
@@ -39,7 +53,7 @@
               "type": "array"
             }
           ],
-          "placeholder": "请选择"
+          "placeholder": "请选择文件"
         }
       ]
     }
