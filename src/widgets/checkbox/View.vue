@@ -8,6 +8,7 @@
       :name='schema.name'
       :label='schema.label'
       :rules='rules[schema.key]'
+      :required='required'
     )
       template(#input)
         van-checkbox-group(

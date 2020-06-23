@@ -9,6 +9,7 @@
       :label='schema.label'
       :placeholder='schema.placeholder'
       :value='formModel'
+      :required='required'
       @click='showPicker = true'
     )
       template(#input) 11

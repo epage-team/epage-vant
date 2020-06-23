@@ -37,7 +37,7 @@ export default [{
     switchWidget,
     rateWidget,
     uploadWidget,
-    // lineWidget,
+    lineWidget,
     // // subTableWidget,
     gridWidget,
     buttonWidget

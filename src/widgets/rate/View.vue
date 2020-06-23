@@ -15,8 +15,8 @@
     van-field(
       :name='schema.name'
       :label='schema.label'
-      :rules='rules[schema.key]'
       :required='required'
+      :rules='rules[schema.key]'
     )
       template(#input)
         van-rate(
@@ -34,17 +34,6 @@
 import viewExtend from '../../extends/view'
 
 export default {
-  extends: viewExtend,
-  computed: {
-    required () {
-      let required = false
-      const rules = this.schema.rules
-
-      if (rules[0]) {
-        required = rules[0].required
-      }
-      return required
-    }
-  }
+  extends: viewExtend
 }
 </script>

@@ -9,7 +9,7 @@
     van-col(span='6' offset='1')
       van-button(type='primary' block @click='resetForm') 重置
   p Form Data
-  pre {{formData}}
+  pre() {{formData}}
   //- Button(type='default' @click='getSchema') getSchema
 
 </template>

@@ -7,6 +7,7 @@
     van-field(
       :name='schema.name'
       :label='schema.label'
+      :required='required'
       :rules='rules[schema.key]'
     )
       template(#input)

@@ -8,6 +8,7 @@
       clickable
       :label='schema.label'
       :placeholder='schema.placeholder'
+      :required='required'
       @click='showPicker = true'
     )
       template(#input)

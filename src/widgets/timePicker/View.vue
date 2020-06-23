@@ -5,8 +5,9 @@
 
   template(v-else)
     van-field(
-      :label='schema.label'
       v-if='schema.key'
+      :label='schema.label'
+      :required='required'
       :disable='schema.disabled'
     )
       template(#input)

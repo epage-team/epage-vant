@@ -6,6 +6,7 @@
     van-field.epvan-autocomplete-field(
       :label='schema.label'
       type='text'
+      :required='required'
       :rules='rules[schema.key]'
     )
       template(#input)
@@ -50,7 +51,6 @@ export default {
   methods: {
     onInput (e) {
       this.onSearch('search', e.target.value)
-      console.log(e)
     },
     onSelect (item) {
       this.event('on-select', item)

@@ -19,6 +19,7 @@
       :step='schema.option.step'
       :disabled='schema.disabled'
       v-model='model[schema.key]'
+      :required='required'
       :rules='rules[schema.key]'
       @change="event('on-change', ...arguments)"
     )
