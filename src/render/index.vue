@@ -97,14 +97,16 @@ export default {
   methods: {
     validateFields () {
       return new Promise((resolve, reject) => {
-        this.$refs.epForm.validate(valid => {
-          if (valid) {
-            resolve(valid)
-          } else {
-            reject(new Error('check error'))
-          }
+        this.$refs.epForm.validate().then(res => {
+          resolve(res)
+        }).catch(err => {
+          reject(new Error(JSON.stringify(err)))
         })
       })
+    },
+
+    resetFields () {
+      this.$refs.epForm.resetValidation()
     },
 
     shouldChangeModel (newDiffs, oldDiffs) {

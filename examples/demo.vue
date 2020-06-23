@@ -1,9 +1,15 @@
 <template lang="pug">
 .form-demo
   div(ref='form')
-  //- Button(type='default' @click='validateForm') 校验
-  //- Button(type='default' @click='resetForm') 重置
-  van-button(type='primary' block @click='getFormData') getFormData
+  van-row
+    van-col(span='6' offset='1')
+      van-button(type='primary' block @click='getFormData') 打印Form
+    van-col(span='6' offset='1')
+      van-button(type='default' block @click='validateForm') 校验
+    van-col(span='6' offset='1')
+      van-button(type='primary' block @click='resetForm') 重置
+  p Form Data
+  pre {{formData}}
   //- Button(type='default' @click='getSchema') getSchema
 
 </template>
@@ -14,6 +20,7 @@ import rootSchema from './schema-test.json'
 export default {
   data () {
     return {
+      formData: '{}',
       form: null
     }
   },
@@ -52,8 +59,9 @@ export default {
     getSchema (schema) {
       console.log(1, schema)
     },
-    getFormData (formData) {
-      console.log(this.form.store.getFormData())
+    getFormData () {
+      this.formData = this.form.store.getFormData()
+      console.log(this.formData)
     },
     getModel () {
       return new Promise((resolve, reject) => {

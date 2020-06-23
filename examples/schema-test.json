@@ -18,6 +18,54 @@
       "span": 24,
       "list": [
         {
+          "key": "kWL860PRl",
+          "widget": "input",
+          "hidden": false,
+          "option": {
+            "password": false,
+            "prefix": "",
+            "suffix": ""
+          },
+          "name": "kWL860PRl",
+          "type": "string",
+          "label": "输入框",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "type": "string",
+              "trigger": "blur"
+            }
+          ],
+          "placeholder": "请输入"
+        },
+        {
+          "key": "kG5sciPYI",
+          "widget": "textarea",
+          "hidden": false,
+          "option": {
+            "rows": 3
+          },
+          "name": "kG5sciPYI",
+          "type": "string",
+          "label": "多行文本",
+          "description": "",
+          "help": "",
+          "disabled": false,
+          "rules": [
+            {
+              "required": false,
+              "message": "必填",
+              "type": "string",
+              "trigger": "blur"
+            }
+          ],
+          "placeholder": "请输入"
+        },
+        {
           "key": "k1fUOI9IQ",
           "widget": "upload",
           "hidden": false,
@@ -25,16 +73,38 @@
             "action": "",
             "adapter": "return  data.map(function(file){\nreturn { name: file.name, url:file.url }\n})",
             "format": [
-              "jpg",
               "png",
-              "js",
+              "jpg",
+              "jpeg",
+              "bmp",
+              "mpg",
+              "mpeg",
+              "mp4",
+              "3gp",
+              "rm",
+              "rmvb",
+              "mov",
+              "avi",
+              "wma",
+              "mp3",
+              "wmv",
+              "asf",
+              "rar",
+              "zip",
               "doc",
-              "txt"
+              "docx",
+              "ppt",
+              "pptx",
+              "xls",
+              "xlsx",
+              "txt",
+              "dat",
+              "pdf"
             ],
             "accept": "",
             "type": "select",
             "multiple": true,
-            "maxSize": 1084000,
+            "maxSize": 5000,
             "showUploadList": true,
             "headers": [],
             "name": "file",

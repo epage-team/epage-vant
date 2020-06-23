@@ -37,6 +37,15 @@ export default {
     rules () {
       const formRules = this.store.getFormRules()
       return convertRule(formRules, this.schema)
+    },
+    required () {
+      let required = false
+      const rules = this.schema.rules
+
+      if (rules[0]) {
+        required = rules[0].required
+      }
+      return required
     }
   },
   methods: {
