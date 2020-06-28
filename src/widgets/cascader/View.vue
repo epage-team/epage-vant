@@ -44,7 +44,6 @@ export default {
       const { delimiter = '/' } = this.schema.option
       const rawValue = this.model[this.schema.key]
       const labels = this.getListByKeys(rawValue, this.options, 'key', 'value')
-      console.log(labels, 99)
       return labels.join(delimiter)
     }
   },

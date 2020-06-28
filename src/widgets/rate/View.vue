@@ -28,7 +28,10 @@
           v-model='model[schema.key]'
           @change="event('on-change', ...arguments)"
         )
-        span.epvan-rate-text(v-if='schema.option.showText && model[schema.key] > 0' style='padding-left: 10px;') {{model[schema.key]}} 星
+        span.epvan-rate-text(
+          v-if='schema.option.showText && model[schema.key] > 0'
+          style='padding-left: 10px;'
+        ) {{model[schema.key]}} 星
 </template>
 <script>
 import viewExtend from '../../extends/view'

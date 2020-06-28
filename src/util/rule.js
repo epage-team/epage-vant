@@ -1,7 +1,7 @@
 import Epage from 'epage'
 import * as regexp from './regexp'
 
-const { isArray } = Epage.helper
+const { isArray, isFunction, isNumber } = Epage.helper
 
 export default (formRules, schema = {}) => {
   const result = {}
@@ -17,10 +17,18 @@ export default (formRules, schema = {}) => {
 
     result[key] = rules.map(rule => {
       const newRule = {}
-      const { trigger, type, ...others } = rule
+      const { trigger, validator, type, ...others } = rule
 
+      // reset trigger
       if (trigger && triggerMap[trigger]) {
-        newRule[trigger] = triggerMap[trigger]
+        newRule.trigger = triggerMap[trigger]
+      }
+
+      // reset validator
+      if (isFunction(validator)) {
+        newRule.validator = function (rule, value, callback) {
+          return validator(value, rule, e => e)
+        }
       }
 
       switch (type) {
@@ -32,7 +40,10 @@ export default (formRules, schema = {}) => {
         case 'number': {
           newRule.validator = (value, rule) => {
             if (!rule.required) return true
-            return (value >= min) && (value <= max)
+
+            const minTrueFalse = !isNumber(min) || (isNumber(min) && value >= min)
+            const maxTrueFalse = !isNumber(max) || (isNumber(max) && value <= max)
+            return minTrueFalse && maxTrueFalse
           }
           break
         }

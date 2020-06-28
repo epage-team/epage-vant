@@ -26,7 +26,7 @@
             "prefix": "",
             "suffix": ""
           },
-          "name": "kWL860PRl",
+          "name": "input",
           "type": "string",
           "label": "输入框",
           "description": "",
@@ -49,7 +49,7 @@
           "option": {
             "rows": 3
           },
-          "name": "kG5sciPYI",
+          "name": "textarea",
           "type": "string",
           "label": "多行文本",
           "description": "",
@@ -75,7 +75,7 @@
             "step": 1,
             "precision": 1
           },
-          "name": "kWM5A7nCL",
+          "name": "inputNumber",
           "type": "number",
           "label": "数字",
           "description": "",
@@ -103,17 +103,17 @@
             "data": [
               {
                 "key": "A",
-                "value": "A"
+                "value": "Aaaa"
               },
               {
                 "key": "B",
-                "value": "B"
+                "value": "Bbbgb"
               }
             ],
             "multiple": false,
             "clearable": true
           },
-          "name": "kbxSx8rpa",
+          "name": "select",
           "type": "string",
           "label": "下拉框",
           "description": "",
@@ -155,7 +155,7 @@
               }
             ]
           },
-          "name": "kOXBEr1nj",
+          "name": "cascader",
           "type": "array<string>",
           "label": "级联选择",
           "description": "",
@@ -185,7 +185,7 @@
             "dynamicData": [],
             "clearable": true
           },
-          "name": "kmkcRLn93",
+          "name": "autoComplete",
           "type": "string",
           "label": "自动完成",
           "description": "",
@@ -218,7 +218,7 @@
             ],
             "dynamicData": []
           },
-          "name": "kKqmmygpt",
+          "name": "radio",
           "type": "string",
           "label": "单选框",
           "description": "",
@@ -251,7 +251,7 @@
               }
             ]
           },
-          "name": "kVS2nd9nb",
+          "name": "checkbox",
           "type": "array<string>",
           "label": "多选框",
           "description": "",
@@ -274,7 +274,7 @@
             "range": false,
             "format": "yyyy-MM-dd"
           },
-          "name": "kjKcTXK99",
+          "name": "datePicker",
           "type": "string",
           "label": "日期",
           "description": "",
@@ -297,7 +297,7 @@
             "range": false,
             "format": "HH:mm:ss"
           },
-          "name": "kFKa99wZM",
+          "name": "timePicker",
           "type": "string",
           "label": "时间",
           "description": "",
@@ -320,7 +320,7 @@
             "open": "是",
             "close": "否"
           },
-          "name": "kDcge8gM6",
+          "name": "switch",
           "type": "boolean",
           "label": "开关",
           "description": "",
@@ -344,7 +344,7 @@
             "allowHalf": false,
             "showText": false
           },
-          "name": "kaqozPx9E",
+          "name": "rate",
           "type": "number",
           "label": "评分",
           "description": "",
@@ -366,18 +366,18 @@
           "option": {
             "action": "",
             "adapter": "return { name: data.filename, url:data.url }",
-            "format": [],
+            "format": ["jpg"],
             "accept": "",
             "type": "select",
             "multiple": true,
-            "maxSize": 5000,
+            "maxSize": 50000,
             "showUploadList": true,
             "headers": [],
             "name": "file",
             "withCredentials": false,
             "data": {}
           },
-          "name": "ktEDwy07Y",
+          "name": "upload",
           "type": "array",
           "label": "上传",
           "description": "",
@@ -467,7 +467,7 @@
             "withCredentials": false,
             "data": {}
           },
-          "name": "k1fUOI9IQ",
+          "name": "upload2",
           "type": "array",
           "label": "上传",
           "description": "",

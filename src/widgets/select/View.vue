@@ -10,9 +10,12 @@
       :placeholder='schema.placeholder'
       :value='formModel'
       :required='required'
-      @click='showPicker = true'
+      :rules='rules[schema.key]'
     )
-      template(#input) 11
+      template(#input)
+        div(@click='showPicker = true')
+          span(v-if='formModel') {{displayValue}}
+          .epvan-placeholder(v-else) {{schema.placeholder}}
     van-popup(
       v-model='showPicker'
       round
@@ -47,15 +50,17 @@ export default {
       let result = []
 
       if (multiple) {
-        result = !value ? value.map(item => {
-          const option = this.options.find(option => option.key === item)
+        if (Array.isArray(value)) {
+          result = value.map(item => {
+            const option = this.options.find(o => o.key === item)
 
-          return !!option && option.value
-        }) : []
+            return option ? option.value : ''
+          })
+        }
       } else {
-        const option = this.options.find(option => option.key === value)
+        const option = this.options.find(o => o.key === value)
 
-        result = option !== undefined ? option.value : []
+        result = option ? [option.value] : []
       }
       return result + ''
     }

@@ -100,7 +100,7 @@ export default {
         this.$refs.epForm.validate().then(res => {
           resolve(res)
         }).catch(err => {
-          reject(new Error(JSON.stringify(err)))
+          reject(new Error('Check Error: ' + JSON.stringify(err)))
         })
       })
     },
