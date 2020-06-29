@@ -35,7 +35,6 @@ import viewExtend from '../../extends/view'
 import { getAccept } from './constant'
 
 const { isNotEmptyString, isArray, include } = Epage.helper
-// const testImg = () => ({})
 
 export default {
   extends: viewExtend,
@@ -80,6 +79,7 @@ export default {
         const { message, success, data } = e.data
         if (success) {
           let files = this.store.getModel(key)
+          console.log(99, data, JSON.stringify(files, null, 2), files)
           // data => Array<Object{url, name}>
           files = files.concat(data)
           this.store.updateModel({ [key]: files })
@@ -133,7 +133,7 @@ export default {
       //   }).then(res => {
       //     if (file.size > maxSize) {
       //       this.onOversize(file)
-      //       reject(file)
+      //       reject(new Error(file))
       //     } else {
       //       this.$emit('on-upload-success', res, file)
       //       this.worker.postMessage({
@@ -141,7 +141,7 @@ export default {
       //         data: res,
       //         fn: adapter
       //       })
-      //       resolve(file)
+      //       resolve()
       //     }
       //   }).catch(err => {
       //     this.$emit('on-upload-error', err, file)
@@ -155,14 +155,14 @@ export default {
         const res = []
         if (file.size > maxSize) {
           this.onOversize(file)
-          reject(file)
+          reject(new Error(file))
         } else {
           this.worker.postMessage({
             action: 'custom',
             data: res,
             fn: adapter
           })
-          resolve(file)
+          resolve()
         }
       })
     },
@@ -171,8 +171,8 @@ export default {
     },
     onOversize (file) {
       const { maxSize } = this.schema.option
-      const size = Math.round(maxSize / 1024)
-      const str = size >= 1024 ? Math.round(size / 1024) + 'M' : size + 'k'
+      const size = Math.round(maxSize / 1000)
+      const str = size >= 1000 ? Math.round(size / 1000) + 'M' : size + 'k'
       Toast({
         message: `文件不能超过 ${str}`,
         duration: 2000

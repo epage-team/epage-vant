@@ -162,7 +162,7 @@
           "hidden": false,
           "option": {
             "action": "",
-            "adapter": "return { name: data.filename, url:data.url }",
+            "adapter": "return data.map(function(d){return { name: d.filename, url:d.url }})",
             "format": ["jpg"],
             "accept": "",
             "type": "select",

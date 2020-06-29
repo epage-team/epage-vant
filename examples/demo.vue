@@ -29,7 +29,7 @@ export default {
       this.form = this.formRender(schema)
       // setTimeout(() => {
       //   this.form.store.updateModel({
-      //     k1fUOI9IQ: []
+      //     ktEDwy07Y: []
       //   })
       // }, 100)
       // this.getModel().then(model => {
