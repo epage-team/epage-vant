@@ -10,6 +10,8 @@
       :label='schema.label'
       :placeholder='schema.placeholder'
       :required='required'
+      :rules='cascaderRules'
+      :value='displayValue'
       @click='showPicker = true'
     )
       template(#input)
@@ -46,6 +48,18 @@ export default {
       const rawValue = this.model[this.schema.key]
       const labels = this.getListByKeys(rawValue, this.options, 'key', 'value')
       return labels.join(delimiter)
+    },
+    cascaderRules () {
+      const rules = this.rules[this.schema.key]
+      const result = rules.map(rule => {
+        const { pattern, validator, ...others } = rule
+        others.validator = function (value, rule) {
+          if (!this.required) return true
+          return !!value
+        }
+        return others
+      })
+      return result
     }
   },
   watch: {

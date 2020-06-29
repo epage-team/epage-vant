@@ -155,40 +155,6 @@
               "type": "number"
             }
           ]
-        },
-        {
-          "key": "ktEDwy07Y",
-          "widget": "upload",
-          "hidden": false,
-          "option": {
-            "action": "",
-            "adapter": "return data.map(function(d){return { name: d.filename, url:d.url }})",
-            "format": ["jpg"],
-            "accept": "",
-            "type": "select",
-            "multiple": true,
-            "maxSize": 50000,
-            "showUploadList": true,
-            "headers": [],
-            "name": "file",
-            "withCredentials": false,
-            "data": {}
-          },
-          "name": "upload",
-          "type": "array",
-          "label": "上传",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "trigger": "change",
-              "type": "array"
-            }
-          ],
-          "placeholder": "请选择文件"
         }
       ]
     }

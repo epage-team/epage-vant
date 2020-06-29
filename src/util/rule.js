@@ -31,8 +31,7 @@ export default (formRules, schema = {}) => {
         newRule.validator = function (value, rule) {
           return validator(rule, value, (errors, fields) => {
             return new Promise((resolve, reject) => {
-              errors = (errors || []).filter(_ => _)
-              if (errors.length) {
+              if (errors && errors.length) {
                 reject(errors)
               } else {
                 resolve()
