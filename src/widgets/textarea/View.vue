@@ -10,6 +10,7 @@
       v-if='schema.key'
       v-model.trim='model[schema.key]'
       type='textarea'
+      :name='schema.name'
       :rows='schema.option.rows'
       :label='schema.label'
       :placeholder='schema.placeholder'

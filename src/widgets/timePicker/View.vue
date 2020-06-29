@@ -1,14 +1,18 @@
 <template lang="pug">
 .ep-widget.epvan-timePicker
+
   template(v-if='mode === "display"')
     span {{model[schema.key]}}
 
   template(v-else)
     van-field(
       v-if='schema.key'
+      :name='schema.name'
+      :value='pickerTime'
       :label='schema.label'
       :required='required'
       :disable='schema.disabled'
+      :rules='rules[schema.key]'
     )
       template(#input)
         .epvan-timePicker-range(v-if='schema.option.range')
@@ -29,7 +33,7 @@
       position='bottom'
     )
       van-datetime-picker(
-        v-model='currentTime'
+        v-model='pickerTime'
         type='time'
         :formatter='formatter'
         :filter='filter'
@@ -55,7 +59,7 @@ export default {
     return {
       valueIndex: -1,
       showPicker: false,
-      currentTime: '00:00'
+      pickerTime: ''
     }
   },
   methods: {

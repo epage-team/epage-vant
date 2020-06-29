@@ -17,54 +17,7 @@
     {
       "span": 24,
       "list": [
-        {
-          "key": "kWL860PRl",
-          "widget": "input",
-          "hidden": false,
-          "option": {
-            "password": false,
-            "prefix": "",
-            "suffix": ""
-          },
-          "name": "input",
-          "type": "string",
-          "label": "输入框",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "string",
-              "trigger": "blur"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "kG5sciPYI",
-          "widget": "textarea",
-          "hidden": false,
-          "option": {
-            "rows": 3
-          },
-          "name": "textarea",
-          "type": "string",
-          "label": "多行文本",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "string",
-              "trigger": "blur"
-            }
-          ],
-          "placeholder": "请输入"
-        },
+        
         {
           "key": "kWM5A7nCL",
           "widget": "inputNumber",
@@ -90,44 +43,6 @@
             }
           ],
           "placeholder": "请输入"
-        },
-        {
-          "key": "kbxSx8rpa",
-          "widget": "select",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "dynamicData": [],
-            "data": [
-              {
-                "key": "A",
-                "value": "Aaaa"
-              },
-              {
-                "key": "B",
-                "value": "Bbbgb"
-              }
-            ],
-            "multiple": false,
-            "clearable": true
-          },
-          "name": "select",
-          "type": "string",
-          "label": "下拉框",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "trigger": "change",
-              "type": "string"
-            }
-          ],
-          "placeholder": "请选择"
         },
         {
           "key": "kOXBEr1nj",
@@ -170,101 +85,6 @@
             }
           ],
           "placeholder": "请选择"
-        },
-        {
-          "key": "kmkcRLn93",
-          "widget": "autoComplete",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "data": [
-              "A"
-            ],
-            "dynamicData": [],
-            "clearable": true
-          },
-          "name": "autoComplete",
-          "type": "string",
-          "label": "自动完成",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "string",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "kKqmmygpt",
-          "widget": "radio",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "direction": "horizontal",
-            "url": "",
-            "adapter": "return data",
-            "data": [
-              {
-                "key": "A",
-                "value": "A"
-              }
-            ],
-            "dynamicData": []
-          },
-          "name": "radio",
-          "type": "string",
-          "label": "单选框",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "string",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
-          "key": "kVS2nd9nb",
-          "widget": "checkbox",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "direction": "horizontal",
-            "url": "",
-            "adapter": "return data",
-            "dynamicData": [],
-            "data": [
-              {
-                "key": "A",
-                "value": "A"
-              }
-            ]
-          },
-          "name": "checkbox",
-          "type": "array<string>",
-          "label": "多选框",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "array",
-              "trigger": "change"
-            }
-          ]
         },
         {
           "key": "kjKcTXK99",
@@ -311,29 +131,6 @@
             }
           ],
           "placeholder": "请选择"
-        },
-        {
-          "key": "kDcge8gM6",
-          "widget": "switch",
-          "hidden": false,
-          "option": {
-            "open": "是",
-            "close": "否"
-          },
-          "name": "switch",
-          "type": "boolean",
-          "label": "开关",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "type": "boolean",
-              "message": "必填",
-              "trigger": "change",
-              "required": false
-            }
-          ]
         },
         {
           "key": "kaqozPx9E",
@@ -386,96 +183,6 @@
           "rules": [
             {
               "required": true,
-              "message": "必填",
-              "trigger": "change",
-              "type": "array"
-            }
-          ],
-          "placeholder": "请选择文件"
-        },
-        {
-          "key": "kwDdFb6vL",
-          "widget": "line",
-          "hidden": false,
-          "option": {
-            "direction": "horizontal",
-            "hposition": "middle",
-            "vposition": "center",
-            "length": 100,
-            "thickness": 1,
-            "type": "dashed",
-            "color": "#aaa"
-          }
-        },
-        {
-          "key": "k2urU2s41",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "primary",
-            "icon": "",
-            "long": false,
-            "ghost": false,
-            "shape": "square"
-          },
-          "disabled": false
-        },
-        {
-          "key": "k1fUOI9IQ",
-          "widget": "upload",
-          "hidden": false,
-          "option": {
-            "action": "",
-            "adapter": "return  data.map(function(file){\nreturn { name: file.name, url:file.url }\n})",
-            "format": [
-              "png",
-              "jpg",
-              "jpeg",
-              "bmp",
-              "mpg",
-              "mpeg",
-              "mp4",
-              "3gp",
-              "rm",
-              "rmvb",
-              "mov",
-              "avi",
-              "wma",
-              "mp3",
-              "wmv",
-              "asf",
-              "rar",
-              "zip",
-              "doc",
-              "docx",
-              "ppt",
-              "pptx",
-              "xls",
-              "xlsx",
-              "txt",
-              "dat",
-              "pdf"
-            ],
-            "accept": "",
-            "type": "select",
-            "multiple": true,
-            "maxSize": 5000,
-            "showUploadList": true,
-            "headers": [],
-            "name": "file",
-            "withCredentials": false,
-            "data": {}
-          },
-          "name": "upload2",
-          "type": "array",
-          "label": "上传",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
               "message": "必填",
               "trigger": "change",
               "type": "array"

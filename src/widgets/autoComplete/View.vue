@@ -1,13 +1,17 @@
 <template lang="pug">
 .ep-widget
+  pre {{rules[schema.key][0]}}
+  pre {{model[schema.key]}}
   template(v-if='mode === "display"')
     span {{model[schema.key]}}
   template(v-else)
     van-field.epvan-autocomplete-field(
-      :label='schema.label'
       type='text'
+      :name='schema.name'
+      :label='schema.label'
+      v-model='model[schema.key]'
       :required='required'
-      :rules='rules[schema.key]'
+      :rules='widgetRules'
     )
       template(#input)
         input.van-field__control(
@@ -41,6 +45,13 @@ export default {
       worker: null
     }
   },
+  computed: {
+    widgetRules () {
+      const rules = this.rules[this.schema.key]
+      const { validator, pattern, ...props } = rules[0]
+      return [props]
+    }
+  },
   mounted () {
     this.worker = new Epage.Worker()
     this.listenerMessage()
@@ -66,10 +77,7 @@ export default {
           const { key } = this.schema
           this.store.updateWidgetOption(key, { dynamicData: data })
           this.$emit('success', data)
-          this.list = (data || []).filter(item => {
-            item = item + ''
-            return item && item.indexOf(this.searchValue) > -1
-          })
+          this.list = (data || []).filter(item => this.diffIgnoreCase(item, this.searchValue))
         } else {
           this.$emit('error', message)
         }
@@ -84,10 +92,7 @@ export default {
       let result = []
 
       if (dataType === 'static') {
-        result = data.filter(item => {
-          item = item + ''
-          return item && item.indexOf(value) > -1
-        })
+        result = data.filter(item => this.diffIgnoreCase(item, value))
         this.list = result
       } else if (dataType === 'dynamic' && url && value.trim()) {
         this.getDynamicData(url, value, adapter, this)
@@ -104,7 +109,11 @@ export default {
       }).catch(err => {
         self.$emit('error', { success: false, message: err })
       })
-    }, 500 * 1)
+    }, 500 * 1),
+    diffIgnoreCase (str1, str2) {
+      str1 = (str1 + '').toLowerCase()
+      return str1 && str2 && str1.indexOf(str2.toLowerCase()) > -1
+    }
   }
 }
 </script>

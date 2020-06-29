@@ -8,6 +8,7 @@
   template(v-else)
     van-field(
       v-if='schema.key'
+      :name='schema.name'
       v-model.trim='model[schema.key]'
       :type='schema.option.password ? "password" : "text"'
       :label='schema.label'

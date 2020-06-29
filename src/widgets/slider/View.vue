@@ -14,6 +14,7 @@
   template(v-else)
     van-slider(
       v-if='schema.key'
+      :name='schema.name'
       :min='schema.option.min'
       :max='schema.option.max'
       :step='schema.option.step'

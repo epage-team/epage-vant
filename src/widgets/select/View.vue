@@ -6,6 +6,7 @@
     van-field(
       readonly
       clickable
+      :name='schema.name'
       :label='schema.label'
       :placeholder='schema.placeholder'
       :value='formModel'

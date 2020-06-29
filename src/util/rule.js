@@ -14,6 +14,8 @@ export default (formRules, schema = {}) => {
   for (const key in formRules) {
     const rules = formRules[key]
     if (!isArray(rules)) continue
+    // const requiredRule = rules[0]
+    // const isRequired = requiredRule ? !!requiredRule.required : false
 
     result[key] = rules.map(rule => {
       const newRule = {}
@@ -26,8 +28,17 @@ export default (formRules, schema = {}) => {
 
       // reset validator
       if (isFunction(validator)) {
-        newRule.validator = function (rule, value, callback) {
-          return validator(value, rule, e => e)
+        newRule.validator = function (value, rule) {
+          return validator(rule, value, (errors, fields) => {
+            return new Promise((resolve, reject) => {
+              errors = (errors || []).filter(_ => _)
+              if (errors.length) {
+                reject(errors)
+              } else {
+                resolve()
+              }
+            })
+          })
         }
       }
 
