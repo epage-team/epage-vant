@@ -45,57 +45,15 @@
           "placeholder": "请输入"
         },
         {
-          "key": "kOXBEr1nj",
-          "widget": "cascader",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "dynamicData": [],
-            "delimiter": "/",
-            "clearable": true,
-            "notFoundText": "无匹配数据",
-            "filterable": false,
-            "data": [
-              {
-                "key": "A",
-                "value": "option A",
-                "children": [
-                  {
-                    "key": "B",
-                    "value": "option B"
-                  }
-                ]
-              }
-            ]
-          },
-          "name": "cascader",
-          "type": "array<string>",
-          "label": "级联选择",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "array",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
           "key": "kjKcTXK99",
           "widget": "datePicker",
           "hidden": false,
           "option": {
-            "range": false,
+            "range": true,
             "format": "yyyy-MM-dd"
           },
           "name": "datePicker",
-          "type": "string",
+          "type": "array<string>",
           "label": "日期",
           "description": "",
           "help": "",
@@ -104,7 +62,8 @@
             {
               "required": true,
               "message": "必填",
-              "trigger": "change"
+              "trigger": "change",
+              "type": "array"
             }
           ],
           "placeholder": "请选择"
@@ -114,11 +73,11 @@
           "widget": "timePicker",
           "hidden": false,
           "option": {
-            "range": false,
+            "range": true,
             "format": "HH:mm:ss"
           },
           "name": "timePicker",
-          "type": "string",
+          "type": "array<string>",
           "label": "时间",
           "description": "",
           "help": "",
@@ -127,7 +86,8 @@
             {
               "required": true,
               "message": "必填",
-              "trigger": "change"
+              "trigger": "change",
+              "type": "array"
             }
           ],
           "placeholder": "请选择"

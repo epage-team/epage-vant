@@ -1,6 +1,5 @@
 <template lang="pug">
 .ep-widget.epvan-timePicker
-
   template(v-if='mode === "display"')
     span {{model[schema.key]}}
 
@@ -8,11 +7,11 @@
     van-field(
       v-if='schema.key'
       :name='schema.name'
-      :value='pickerTime'
       :label='schema.label'
       :required='required'
       :disable='schema.disabled'
-      :rules='rules[schema.key]'
+      :rules='widgetRules'
+      :value='model[schema.key].toString()'
     )
       template(#input)
         .epvan-timePicker-range(v-if='schema.option.range')
@@ -46,7 +45,7 @@ import { Toast } from 'vant'
 import Epage from 'epage'
 import viewExtend from '../../extends/view'
 
-const { isNumber } = Epage.helper
+const { isNumber, isArray } = Epage.helper
 
 const dateMap = {
   hour: '时',
@@ -60,6 +59,24 @@ export default {
       valueIndex: -1,
       showPicker: false,
       pickerTime: ''
+    }
+  },
+  computed: {
+    widgetRules () {
+      const { key, option } = this.schema
+      const rules = this.rules[key]
+      const { range } = option
+      const value = this.model[key]
+      if (!this.required) return true
+
+      const newRules = rules.map(rule => {
+        rule.validator = function () {
+          if (!range) return !!value
+          return isArray(value) ? value.filter(_ => _).length === 2 : false
+        }
+        return rule
+      })
+      return newRules
     }
   },
   methods: {

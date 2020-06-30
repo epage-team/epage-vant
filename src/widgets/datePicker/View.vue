@@ -10,6 +10,8 @@
       :label='schema.label'
       :required='required'
       :disable='schema.disabled'
+      :value='model[schema.key].toString()'
+      :rules='widgetRules'
     )
       template(#input)
         div(v-if='schema.option.range')
@@ -44,6 +46,8 @@
 import viewExtend from '../../extends/view'
 import Epage from 'epage'
 
+const { isArray } = Epage.helper
+
 const { include, formatDate } = Epage.helper
 const timeOptions = ['HH:mm:ss', 'HH:mm', 'mm:ss']
 const monthOptions = ['yyyy-MM', 'yyyy/MM']
@@ -64,6 +68,24 @@ export default {
       currentDate: new Date(),
       minDate: new Date(1949, 9, 1),
       maxDate: new Date(2035, 10, 1)
+    }
+  },
+  computed: {
+    widgetRules () {
+      const { key, option } = this.schema
+      const rules = this.rules[key]
+      const { range } = option
+      const value = this.model[key]
+      if (!this.required) return true
+
+      const newRules = rules.map(rule => {
+        rule.validator = function () {
+          if (!range) return !!value
+          return isArray(value) ? value.filter(_ => _).length === 2 : false
+        }
+        return rule
+      })
+      return newRules
     }
   },
   methods: {
