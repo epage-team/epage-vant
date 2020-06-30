@@ -53,7 +53,7 @@ export default {
     formRender (schema) {
       const el = this.$refs.form
       // return new Render({ el, schema, widgets: myWidgets})
-      return new Render({ el, schema, widgets })
+      return new Render({ el, schema, widgets, mode: 'display' })
       // return this.render(el, { mode: 'edit' })
     },
     getSchema (schema) {

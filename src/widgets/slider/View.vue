@@ -2,7 +2,6 @@
 .ep-widget
   template(v-if='mode === "display"')
     van-slider(
-      v-if='schema.key'
       :min='schema.option.min'
       :max='schema.option.max'
       :step='schema.option.step'
@@ -13,7 +12,6 @@
 
   template(v-else)
     van-slider(
-      v-if='schema.key'
       :name='schema.name'
       :min='schema.option.min'
       :max='schema.option.max'

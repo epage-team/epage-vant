@@ -17,7 +17,6 @@
     )
       template(#input)
         van-uploader(
-          v-if='schema.key'
           v-model='model[schema.key]'
           :disabled='schema.disabled'
           :accept='accept'

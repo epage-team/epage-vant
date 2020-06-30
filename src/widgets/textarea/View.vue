@@ -7,7 +7,6 @@
 
   template(v-else)
     van-field(
-      v-if='schema.key'
       v-model.trim='model[schema.key]'
       type='textarea'
       :name='schema.name'

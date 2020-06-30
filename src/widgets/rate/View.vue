@@ -2,7 +2,6 @@
 .ep-widget.epvan-rate
   template(v-if='mode === "display"')
      van-rate(
-      v-if='schema.key'
       :count='schema.option.count'
       :allow-half='schema.option.allowHalf'
       :disabled='true'
@@ -20,7 +19,6 @@
     )
       template(#input)
         van-rate(
-          v-if='schema.key'
           :count='schema.option.count'
           :allow-half='schema.option.allowHalf'
           :disabled='schema.disabled'

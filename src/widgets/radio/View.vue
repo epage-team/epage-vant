@@ -12,7 +12,6 @@
     )
       template(#input)
         van-radio-group(
-          v-if='schema.key'
           :disabled='schema.disabled'
           :size='schema.size || rootSchema.size'
           :direction='schema.option.direction'

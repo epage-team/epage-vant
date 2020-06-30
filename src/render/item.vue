@@ -34,6 +34,7 @@
   //- not container
   template(v-else)
     component(
+      v-if='schema.key'
       :is='flatWidgets[schema.widget].View'
       :schema='schema'
       @on-event='onEvent'

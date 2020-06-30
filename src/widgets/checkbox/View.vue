@@ -12,7 +12,6 @@
     )
       template(#input)
         van-checkbox-group(
-          v-if='schema.key'
           v-model='model[schema.key]'
           :direction='schema.option.direction'
           @change="event('on-change', ...arguments)"

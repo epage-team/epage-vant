@@ -1,7 +1,6 @@
 <template lang="pug">
 .ep-widget
   van-button(
-    v-if='schema.key'
     :icon='schema.option.icon'
     :type='getType()'
     :disabled='schema.disabled'

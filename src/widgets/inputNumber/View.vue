@@ -5,7 +5,6 @@
 
   template(v-else)
     van-field(
-      v-if='schema.key'
       type='text'
       v-model='model[schema.key]'
       :name='schema.name'

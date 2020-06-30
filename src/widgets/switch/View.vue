@@ -11,7 +11,6 @@
     )
       template(#input)
         van-switch(
-          v-if='schema.key'
           :disabled='schema.disabled'
           :size='schema.size || rootSchema.size'
           v-model='model[schema.key]'
