@@ -30,7 +30,7 @@ export default {
       setTimeout(() => {
         this.form.store.updateModel({
           ktEDwy07Y: [],
-          kFKa99wZM: ['2012-12-12', '2020-01-12']
+          kFKa99wZM: ['02:12', '23:12']
         })
       }, 100)
       // this.getModel().then(model => {
@@ -54,7 +54,7 @@ export default {
     formRender (schema) {
       const el = this.$refs.form
       // return new Render({ el, schema, widgets: myWidgets})
-      return new Render({ el, schema, widgets, mode: 'display' })
+      return new Render({ el, schema, widgets, mode: 'edit' })
       // return this.render(el, { mode: 'edit' })
     },
     getSchema (schema) {
