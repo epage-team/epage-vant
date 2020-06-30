@@ -1,49 +1,58 @@
 <template lang="pug">
 .ep-widget.epvan-datePicker
-  template(v-if='mode === "display"')
-    span {{model[schema.key]}}
-
-  template(v-else)
-    van-field(
-      :name='schema.name'
-      :label='schema.label'
-      :required='required'
-      :disable='schema.disabled'
-      :value='model[schema.key].toString()'
-      :rules='widgetRules'
-    )
-      template(#input)
-        div(v-if='schema.option.range')
-          template(v-if='model[schema.key]')
-            .epvan-timePicker-handle(@click='onShowPicker(0)')
-              div(v-if='model[schema.key][0]') {{model[schema.key][0]}}
-              .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
-            .epvan-datePicker-mid 至
-            .epvan-timePicker-handle(@click='onShowPicker(1)')
-              div(v-if='model[schema.key][1]') {{model[schema.key][1]}}
-              .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
-        div(v-else  @click='onShowPicker')
-          div(v-if='model[schema.key]') {{model[schema.key]}}
-          div.epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
-    van-popup(
-      v-model='showPicker'
-      round
-      position='bottom'
-    )
-      van-datetime-picker(
-        v-model='currentDate'
-        :min-date='minDate'
-        :max-date='maxDate'
-        :type='getType()'
-        :formatter='formatter'
-        :filter='filter'
-        @cancel='showPicker = false'
-        @confirm='onConfirm'
+  //- display mode
+  van-field(
+    v-if='isDisplay'
+    :disable='schema.disabled'
+    :name='schema.name'
+    :label='schema.label'
+    :required='required'
+    :size='rootSchema.size'
+    :left-icon='schema.help ? "info-o" : undefined'
+    @click-left-icon='onHelpClick'
+  )
+    template(#input)
+      date-time-display(
+        :schema='schema'
+        :value='model[schema.key]'
+        @on-show='onShowPicker'
       )
+  //- edit mode
+  van-field(
+    v-else
+    :name='schema.name'
+    :label='schema.label'
+    :required='required'
+    :disable='schema.disabled'
+    :value='model[schema.key].toString()'
+    :rules='widgetRules'
+  )
+    template(#input)
+      date-time-display(
+        :schema='schema'
+        :value='model[schema.key]'
+        @on-show='onShowPicker'
+      )
+  van-popup(
+    v-model='showPicker'
+    round
+    position='bottom'
+  )
+    van-datetime-picker(
+      v-model='currentDate'
+      :min-date='minDate'
+      :max-date='maxDate'
+      :type='getType()'
+      :formatter='formatter'
+      :filter='filter'
+      @cancel='showPicker = false'
+      @confirm='onConfirm'
+    )
 </template>
 <script>
-import viewExtend from '../../extends/view'
 import Epage from 'epage'
+import viewExtend from '../../extends/view'
+import DateTimeDisplay from '../../components/DateTimeDisplay'
 
 const { isArray } = Epage.helper
 
@@ -59,6 +68,9 @@ const dateMap = {
 }
 
 export default {
+  components: {
+    DateTimeDisplay
+  },
   extends: viewExtend,
   data () {
     return {
@@ -75,10 +87,10 @@ export default {
       const rules = this.rules[key]
       const { range } = option
       const value = this.model[key]
-      if (!this.required) return true
 
       const newRules = rules.map(rule => {
         rule.validator = function () {
+          if (!this.required) return true
           if (!range) return !!value
           return isArray(value) ? value.filter(_ => _).length === 2 : false
         }
@@ -89,6 +101,7 @@ export default {
   },
   methods: {
     onShowPicker (valueIndex) {
+      if (this.isDisplay) return
       const { range } = this.schema.option
 
       if (range) {

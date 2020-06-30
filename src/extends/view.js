@@ -24,7 +24,10 @@ export default {
       }
     },
     mode () {
-      return this.store.getState().mode
+      return this.schema.mode || this.store.getState().mode
+    },
+    isDisplay () {
+      return this.mode === 'display'
     },
     model: {
       get () {
@@ -41,7 +44,8 @@ export default {
     required () {
       let required = false
       const rules = this.schema.rules
-
+      // 显示模式下不展示红色星号
+      if (this.isDisplay) return false
       if (rules[0]) {
         required = rules[0].required
       }

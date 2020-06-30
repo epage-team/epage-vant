@@ -1,6 +1,6 @@
 <template lang="pug">
 .ep-widget
-  template(v-if='mode === "display"')
+  template(v-if='isDisplay')
     span {{model[schema.key]}}
 
   template(v-else)

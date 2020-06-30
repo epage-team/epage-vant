@@ -1,7 +1,13 @@
 <template lang="pug">
 .ep-widget.epvan-upload
-  template(v-if='mode === "display"')
-    van-field.epvan-upload-display(:name='schema.name' :label='schema.label')
+  template(v-if='isDisplay')
+    van-field.epvan-upload-display(
+      :name='schema.name'
+      :label='schema.label'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click-left-icon='onHelpClick'
+    )
       template(#input)
         van-uploader(
           v-model='model[schema.key]'
@@ -10,10 +16,13 @@
         )
   template(v-else)
     van-field(
+      :rules='rules[schema.key]'
       :name='schema.name'
       :label='schema.label'
       :required='required'
-      :rules='rules[schema.key]'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click-left-icon='onHelpClick'
     )
       template(#input)
         van-uploader(

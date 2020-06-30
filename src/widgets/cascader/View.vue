@@ -1,18 +1,21 @@
 <template lang="pug">
 .ep-widget
-  template(v-if="mode === 'display'")
+  template(v-if="isDisplay")
     span {{displayValue}}
   template(v-else)
     van-field(
       readonly
       clickable
-      :name='schema.name'
-      :label='schema.label'
       :placeholder='schema.placeholder'
-      :required='required'
       :rules='cascaderRules'
       :value='displayValue'
       @click='showPicker = true'
+      :name='schema.name'
+      :label='schema.label'
+      :required='required'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click-left-icon='onHelpClick'
     )
       template(#input)
         span(v-if='displayValue') {{displayValue}}

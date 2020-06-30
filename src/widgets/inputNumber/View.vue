@@ -1,25 +1,43 @@
 <template lang="pug">
 .ep-widget
-  template(v-if='mode === "display"')
-    span {{model[schema.key]}}
-
-  template(v-else)
-    van-field(
-      type='text'
-      v-model='model[schema.key]'
-      :name='schema.name'
-      :placeholder='schema.placeholder'
-      :disabled='schema.disabled'
-      :size='rootSchema.size'
-      :rules='numberRules'
-      :label='schema.label'
-      :required='required'
-      :formatter='formatter'
-      @change="event('on-change', ...arguments)"
-      @focus="event('on-focus', ...arguments)"
-      @blur="event('on-blur', ...arguments)"
-      @click="event('on-click', ...arguments)"
-    )
+  //- display mode
+  van-field(
+    v-if='isDisplay'
+    type='text'
+    v-model='model[schema.key]'
+    :name='schema.name'
+    :placeholder='schema.placeholder'
+    :disabled='schema.disabled'
+    :size='rootSchema.size'
+    :label='schema.label'
+    :formatter='formatter'
+    readonly
+    @change="event('on-change', ...arguments)"
+    @focus="event('on-focus', ...arguments)"
+    @blur="event('on-blur', ...arguments)"
+    @click="event('on-click', ...arguments)"
+    :left-icon='schema.help ? "info-o" : undefined'
+    @click-left-icon='onHelpClick'
+  )
+  //- edit mode
+  van-field(
+    v-else
+    type='text'
+    v-model='model[schema.key]'
+    :name='schema.name'
+    :placeholder='schema.placeholder'
+    :disabled='schema.disabled'
+    :size='rootSchema.size'
+    :rules='numberRules'
+    :label='schema.label'
+    :required='required'
+    :formatter='formatter'
+    :readonly='isDisplay'
+    @change="event('on-change', ...arguments)"
+    @focus="event('on-focus', ...arguments)"
+    @blur="event('on-blur', ...arguments)"
+    @click="event('on-click', ...arguments)"
+  )
 </template>
 <script>
 import viewExtend from '../../extends/view'

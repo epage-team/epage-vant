@@ -1,17 +1,18 @@
 <template lang="pug">
 .ep-widget
-  pre {{rules[schema.key][0]}}
-  pre {{model[schema.key]}}
-  template(v-if='mode === "display"')
+  template(v-if='isDisplay')
     span {{model[schema.key]}}
   template(v-else)
-    van-field.epvan-autocomplete-field(
+    van-field.epvan-autoComplete-field(
       type='text'
+      v-model='model[schema.key]'
+      :rules='widgetRules'
       :name='schema.name'
       :label='schema.label'
-      v-model='model[schema.key]'
       :required='required'
-      :rules='widgetRules'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click-left-icon='onHelpClick'
     )
       template(#input)
         input.van-field__control(
@@ -21,7 +22,7 @@
           @blur="event('on-blur', ...arguments)"
           @input='onInput'
         )
-        ul.epvan-autocomplete-options(v-show='list.length')
+        ul.epvan-autoComplete-options(v-show='list.length')
           li(
             v-for='(item, k) in list || []'
             :key='k + "-"'

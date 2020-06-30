@@ -1,14 +1,17 @@
 <template lang="pug">
 .ep-widget.epvan-radio
-  template(v-if='mode === "display"')
+  template(v-if='isDisplay')
     span {{displayValue}}
 
   template(v-else)
     van-field(
+      :rules='rules[schema.key]'
       :name='schema.name'
       :label='schema.label'
       :required='required'
-      :rules='rules[schema.key]'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click-left-icon='onHelpClick'
     )
       template(#input)
         van-radio-group(

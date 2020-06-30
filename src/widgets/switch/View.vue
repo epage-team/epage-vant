@@ -1,13 +1,17 @@
 <template lang="pug">
 .ep-widget
-  template(v-if='mode === "display"')
+  template(v-if='isDisplay')
     span {{model[schema.key]}}
 
   template(v-else)
     van-field(
+      :rules='rules[schema.key]'
       :name='schema.name'
       :label='schema.label'
-      :rules='rules[schema.key]'
+      :required='required'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click-left-icon='onHelpClick'
     )
       template(#input)
         van-switch(

@@ -104,8 +104,8 @@
           "name": "rate",
           "type": "number",
           "label": "评分",
-          "description": "",
-          "help": "",
+          "description": "这是一个描述",
+          "help": "help",
           "disabled": false,
           "rules": [
             {

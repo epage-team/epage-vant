@@ -1,6 +1,6 @@
 <template lang="pug">
 .ep-widget
-  template(v-if='mode === "display"')
+  template(v-if='isDisplay')
     van-slider(
       :min='schema.option.min'
       :max='schema.option.max'
@@ -8,6 +8,12 @@
       :disabled='true'
       v-model='model[schema.key]'
       @change="event('on-change', ...arguments)"
+      :name='schema.name'
+      :label='schema.label'
+      :required='required'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click-left-icon='onHelpClick'
     )
 
   template(v-else)

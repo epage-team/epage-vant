@@ -27,11 +27,12 @@ export default {
   mounted () {
     this.getRootSchema().then(schema => {
       this.form = this.formRender(schema)
-      // setTimeout(() => {
-      //   this.form.store.updateModel({
-      //     ktEDwy07Y: []
-      //   })
-      // }, 100)
+      setTimeout(() => {
+        this.form.store.updateModel({
+          ktEDwy07Y: [],
+          kFKa99wZM: ['2012-12-12', '2020-01-12']
+        })
+      }, 100)
       // this.getModel().then(model => {
       //   form.store.updateModel(model)
       // })
