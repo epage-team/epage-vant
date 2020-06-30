@@ -8,7 +8,7 @@
     "justify": "start"
   },
   "label": {
-    "width": 80,
+    "width": 60,
     "position": "right",
     "colon": false
   },
@@ -50,7 +50,7 @@
           "hidden": false,
           "option": {
             "range": true,
-            "format": "yyyy-MM-dd"
+            "format": "yyyy-MM-dd HH:mm"
           },
           "name": "datePicker",
           "type": "array<string>",

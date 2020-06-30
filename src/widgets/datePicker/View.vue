@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget
+.ep-widget.epvan-datePicker
   template(v-if='mode === "display"')
     span {{model[schema.key]}}
 
@@ -16,11 +16,11 @@
       template(#input)
         div(v-if='schema.option.range')
           template(v-if='model[schema.key]')
-            div(@click='onShowPicker(0)')
+            .epvan-timePicker-handle(@click='onShowPicker(0)')
               div(v-if='model[schema.key][0]') {{model[schema.key][0]}}
               .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
-            span 至
-            div(@click='onShowPicker(1)')
+            .epvan-datePicker-mid 至
+            .epvan-timePicker-handle(@click='onShowPicker(1)')
               div(v-if='model[schema.key][1]') {{model[schema.key][1]}}
               .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
         div(v-else  @click='onShowPicker')

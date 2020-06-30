@@ -19,7 +19,7 @@
             .epvan-timePicker-handle(@click='onShowPicker(0)')
               div(v-if='model[schema.key][0]') {{model[schema.key][0]}}
               .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
-            span.epvan-timePicker-mid 至
+            .epvan-timePicker-mid 至
             .epvan-timePicker-handle(@click='onShowPicker(1)')
               div(v-if='model[schema.key][1]') {{model[schema.key][1]}}
               .epvan-placeholder(v-else) {{schema.placeholder || 'please select'}}
