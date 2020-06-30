@@ -1,5 +1,13 @@
 # Change Log
 
+### 0.2.0（2020/06/30）
+
+- [feat] : 增加所有基础widget的显示模式
+- [feat] : 增加所有基础表单校验，`timePicker`及`datePicker`区间时由2个vant的`Picker`组合
+- [feat] : 支持`upload`组件的上传及显示，由`schema.option.format`适配原生`input`的accept
+- [fix] : 修复所有widget的help字段未显示问题
+- [fix] : 修复所有widget的help字段未显示问题
+
 
 ### 0.1.2（2020/06/20）
 

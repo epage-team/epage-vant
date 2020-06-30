@@ -42,7 +42,7 @@ import { Toast } from 'vant'
 import viewExtend from '../../extends/view'
 import { getAccept } from './constant'
 
-const { isNotEmptyString, isArray, include } = Epage.helper
+const { isNotEmptyString, isArray, include, ajax } = Epage.helper
 
 export default {
   extends: viewExtend,
@@ -125,54 +125,54 @@ export default {
       return Promise.all(all)
     },
     uploadFile (file) {
-      // const { option, name } = this.schema
-      // const { action, maxSize, data = {}, withCredentials, adapter } = option
-      // const formData = new FormData()
-      // for (const k in data) {
-      //   formData.append(k, data[k])
-      // }
-      // formData.append(name, file)
-      // return new Promise((resolve, reject) => {
-      //   ajax(action, {
-      //     method: 'POST',
-      //     credentials: withCredentials ? 'include' : 'same-origin',
-      //     headers: new Headers(this.headers || {}),
-      //     body: formData
-      //   }).then(res => {
-      //     if (file.size > maxSize) {
-      //       this.onOversize(file)
-      //       reject(new Error(file))
-      //     } else {
-      //       this.$emit('on-upload-success', res, file)
-      //       this.worker.postMessage({
-      //         action: 'custom',
-      //         data: res,
-      //         fn: adapter
-      //       })
-      //       resolve()
-      //     }
-      //   }).catch(err => {
-      //     this.$emit('on-upload-error', err, file)
-      //     reject(err)
-      //   })
-      // })
-      // demo
-      const { option } = this.schema
-      const { adapter, maxSize } = option
+      const { option, name } = this.schema
+      const { action, maxSize, data = {}, withCredentials, adapter } = option
+      const formData = new FormData()
+      for (const k in data) {
+        formData.append(k, data[k])
+      }
+      formData.append(name, file)
       return new Promise((resolve, reject) => {
-        const res = []
-        if (file.size > maxSize) {
-          this.onOversize(file)
-          reject(new Error(file))
-        } else {
-          this.worker.postMessage({
-            action: 'custom',
-            data: res,
-            fn: adapter
-          })
-          resolve()
-        }
+        ajax(action, {
+          method: 'POST',
+          credentials: withCredentials ? 'include' : 'same-origin',
+          headers: new Headers(this.headers || {}),
+          body: formData
+        }).then(res => {
+          if (file.size > maxSize) {
+            this.onOversize(file)
+            reject(new Error(file))
+          } else {
+            this.$emit('on-upload-success', res, file)
+            this.worker.postMessage({
+              action: 'custom',
+              data: res,
+              fn: adapter
+            })
+            resolve()
+          }
+        }).catch(err => {
+          this.$emit('on-upload-error', err, file)
+          reject(err)
+        })
       })
+      // demo
+      // const { option } = this.schema
+      // const { adapter, maxSize } = option
+      // return new Promise((resolve, reject) => {
+      //   const res = []
+      //   if (file.size > maxSize) {
+      //     this.onOversize(file)
+      //     reject(new Error(file))
+      //   } else {
+      //     this.worker.postMessage({
+      //       action: 'custom',
+      //       data: res,
+      //       fn: adapter
+      //     })
+      //     resolve()
+      //   }
+      // })
     },
     onDelete () {
       this.$emit('on-remove-file', ...arguments)
