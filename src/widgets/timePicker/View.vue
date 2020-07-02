@@ -99,15 +99,10 @@ export default {
       const { range } = this.schema.option
       const value = this.model[this.schema.key]
 
-      if (range) {
-        this.valueIndex = valueIndex
-        if (valueIndex !== 0 && !value[0]) {
-          Toast('请先选择开始时间')
-          return
-        }
-      } else {
-        this.valueIndex = -1
+      if (range && valueIndex !== 0 && !value[0]) {
+        return Toast('请先选择开始时间')
       }
+      this.valueIndex = range ? valueIndex : -1
       this.showPicker = true
     },
 
@@ -117,6 +112,7 @@ export default {
       }
       return val
     },
+
     filter (type, options) {
       const { range } = this.schema.option
       const value = this.model[this.schema.key]
@@ -130,17 +126,20 @@ export default {
 
       return options
     },
+
     getTime (timeStr = '') {
       const list = timeStr.match(/\d+[^:]/g) || []
       return list.map(v => parseInt(v))
     },
+
     onConfirm (value) {
-      const oldValue = this.model[this.schema.key]
+      const { key } = this.schema
+      const oldValue = this.model[key]
 
       // 时间点
       if (this.valueIndex === -1) {
         if (value !== oldValue) {
-          this.store.updateModel({ [this.schema.key]: value })
+          this.store.updateModel({ [key]: value })
           this.event('on-change', ...arguments)
         }
       // 时间区间，选择开始时间时
@@ -157,7 +156,7 @@ export default {
         if (value !== oldValue[this.valueIndex]) {
           newValueArr[this.valueIndex] = value
 
-          this.store.updateModel({ [this.schema.key]: newValueArr })
+          this.store.updateModel({ [key]: newValueArr })
           this.event('on-change', ...arguments)
         }
 
@@ -173,7 +172,7 @@ export default {
         if (value !== oldValue[this.valueIndex]) {
           newValueArr[this.valueIndex] = value
 
-          this.store.updateModel({ [this.schema.key]: newValueArr })
+          this.store.updateModel({ [key]: newValueArr })
           this.event('on-change', ...arguments)
         }
       }

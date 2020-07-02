@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import Epage from 'epage'
+import Vuex from 'vuex'
+import vant from 'vant'
 import FormRender from './index.vue'
 
 const { Store, Rule, helper } = Epage
-const { isArray, isFunction, isPlainObject } = helper
+const { isArray, isFunction, isPlainObject, usePlugins } = helper
 
 export default class Render {
   constructor (option) {
     const { el, store, widgets = [], mode, schema, Rule: CustomRule } = option
-
+    usePlugins(Vue, [Vuex, vant])
     this.el = el
     this.mode = mode || 'edit'
     this.$$origin = null

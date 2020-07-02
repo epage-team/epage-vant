@@ -51,6 +51,7 @@
 </template>
 <script>
 import Epage from 'epage'
+import { Toast } from 'vant'
 import viewExtend from '../../extends/view'
 import DateTimeDisplay from '../../components/DateTimeDisplay'
 
@@ -77,8 +78,8 @@ export default {
       valueIndex: -1,
       showPicker: false,
       currentDate: new Date(),
-      minDate: new Date(1949, 9, 1),
-      maxDate: new Date(2035, 10, 1)
+      minDate: new Date(1919, 9, 1),
+      maxDate: new Date(2055, 10, 1)
     }
   },
   computed: {
@@ -103,14 +104,15 @@ export default {
     onShowPicker (valueIndex) {
       if (this.isDisplay) return
       const { range } = this.schema.option
+      const value = this.model[this.schema.key]
 
-      if (range) {
-        this.valueIndex = valueIndex
-      } else {
-        this.valueIndex = -1
+      if (range && valueIndex !== 0 && !value[0]) {
+        return Toast('请先选择开始日期')
       }
+      this.valueIndex = range ? valueIndex : -1
       this.showPicker = true
     },
+
     hasTime (format) {
       return !!timeOptions.filter(t => include(format, t)).length
     },
@@ -125,6 +127,7 @@ export default {
       }
       return val
     },
+
     filter (type, options) {
       const { format } = this.schema.option
 
@@ -151,25 +154,49 @@ export default {
       }
       return type
     },
+
     onConfirm (value) {
-      const oldValue = this.model[this.schema.key]
-      const newValue = formatDate(value, this.schema.option.format)
+      const { key, option } = this.schema
+      const oldFormatedDateList = this.model[key]
+      const newFormatedDate = formatDate(value, option.format)
+      const newValue = this.getDateValue(value)
+      const startValue = this.getDateValue(oldFormatedDateList[0])
+      const endValue = this.getDateValue(oldFormatedDateList[1])
 
+      // 非区间值
       if (this.valueIndex === -1) {
-        if (newValue !== oldValue) {
-          this.store.updateModel({ [this.schema.key]: newValue })
+        if (newFormatedDate !== oldFormatedDateList) {
+          this.store.updateModel({ [key]: newFormatedDate })
           this.event('on-change', ...arguments)
         }
+      // 区间值
       } else {
-        const newValueArr = [...oldValue]
-        if (newValue !== oldValue[this.valueIndex]) {
-          newValueArr[this.valueIndex] = newValue
-          this.store.updateModel({ [this.schema.key]: newValueArr })
-          this.event('on-change', ...arguments)
+        let newModel = []
+        // 区间开始值
+        if (this.valueIndex === 0) {
+          if (newValue === startValue) return
+          if (oldFormatedDateList[1]) {
+            newModel = newValue > endValue
+              ? [newFormatedDate]
+              : [newFormatedDate, oldFormatedDateList[1]]
+          } else {
+            newModel = [newFormatedDate]
+          }
+        // 区间结束值
+        } else if (this.valueIndex === 1) {
+          if (newValue < startValue) return Toast('结束日期不能小于开始日期')
+          if (oldFormatedDateList[1] && newValue === endValue) return
+          newModel = [oldFormatedDateList[0], newFormatedDate]
         }
+        this.store.updateModel({ [key]: newModel })
+        this.event('on-change', ...arguments)
       }
-
       this.showPicker = false
+    },
+    getDateValue (date = '') {
+      if (!date) return
+      const d = (date instanceof Date) ? date : new Date(date.replace(/-/g, '-'))
+      return d.valueOf()
     }
   }
 }

@@ -1,6 +1,6 @@
 <template lang="pug">
 .form-demo
-  div(ref='form')
+  div.demo-container(ref='form')
   van-row
     van-col(span='6' offset='1')
       van-button(type='primary' block @click='getFormData') 打印Form
@@ -9,7 +9,7 @@
     van-col(span='6' offset='1')
       van-button(type='primary' block @click='resetForm') 重置
   p Form Data
-  pre() {{formData}}
+  pre {{formData}}
   //- Button(type='default' @click='getSchema') getSchema
 
 </template>
@@ -30,7 +30,7 @@ export default {
       setTimeout(() => {
         this.form.store.updateModel({
           ktEDwy07Y: [],
-          kFKa99wZM: ['02:12', '23:12']
+          kFKa99wZM: []
         })
       }, 100)
       // this.getModel().then(model => {
