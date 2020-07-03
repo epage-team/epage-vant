@@ -1,5 +1,10 @@
 # Change Log
 
+### 0.2.1（2020/07/03）
+
+- [fix] : 修复inputNumber数字类型校验
+- [fix] : 修复未通过updateModel方法更新model的方式
+
 ### 0.2.0（2020/06/30）
 
 - [feat] : 增加所有基础widget的显示模式
