@@ -8,7 +8,7 @@
     "justify": "start"
   },
   "label": {
-    "width": 60,
+    "width": 80,
     "position": "right",
     "colon": false
   },
@@ -17,104 +17,78 @@
     {
       "span": 24,
       "list": [
-        
         {
-          "key": "kWM5A7nCL",
-          "widget": "inputNumber",
+          "key": "k1xrt34qe",
+          "widget": "textarea",
           "hidden": false,
           "option": {
-            "min": 0,
-            "max": 100,
-            "step": 1,
-            "precision": 1
+            "rows": 3
           },
-          "name": "inputNumber",
-          "type": "number",
-          "label": "数字",
+          "name": "k1xrt34qe",
+          "type": "string",
+          "label": "多行文本",
           "description": "",
           "help": "",
           "disabled": false,
           "rules": [
             {
-              "required": true,
+              "required": false,
               "message": "必填",
-              "trigger": "change",
-              "type": "number"
+              "type": "string",
+              "trigger": "blur"
             }
           ],
           "placeholder": "请输入"
         },
         {
-          "key": "kjKcTXK99",
-          "widget": "datePicker",
+          "key": "kPOwezNoE",
+          "widget": "checkbox",
           "hidden": false,
           "option": {
-            "range": true,
-            "format": "yyyy-MM-dd HH:mm"
+            "type": "static",
+            "direction": "horizontal",
+            "url": "",
+            "adapter": "return data",
+            "dynamicData": [],
+            "data": [
+              {
+                "key": "A",
+                "value": "A"
+              },
+              {
+                "key": "B",
+                "value": "bbb"
+              }
+            ]
           },
-          "name": "datePicker",
+          "name": "checkbox",
           "type": "array<string>",
-          "label": "日期",
+          "label": "多选框",
           "description": "",
           "help": "",
           "disabled": false,
           "rules": [
             {
-              "required": true,
+              "required": false,
               "message": "必填",
-              "trigger": "change",
-              "type": "array"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
-          "key": "kFKa99wZM",
-          "widget": "timePicker",
-          "hidden": false,
-          "option": {
-            "range": true,
-            "format": "HH:mm:ss"
-          },
-          "name": "timePicker",
-          "type": "array<string>",
-          "label": "时间",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "trigger": "change",
-              "type": "array"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
-          "key": "kaqozPx9E",
-          "widget": "rate",
-          "hidden": false,
-          "option": {
-            "count": 5,
-            "allowHalf": false,
-            "showText": false
-          },
-          "name": "rate",
-          "type": "number",
-          "label": "评分",
-          "description": "这是一个描述",
-          "help": "help",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "min": 0.5,
-              "type": "number"
+              "type": "array",
+              "trigger": "change"
             }
           ]
+        },
+        {
+          "key": "k1J9G7I3s",
+          "widget": "button",
+          "hidden": false,
+          "option": {
+            "text": "提交",
+            "type": "primary",
+            "icon": "",
+            "long": false,
+            "ghost": false,
+            "shape": "square"
+          },
+          "disabled": false
         }
       ]
     }
@@ -122,7 +96,50 @@
   "title": "测试",
   "description": "",
   "size": "default",
-  "logics": [],
+  "logics": [
+    {
+      "type": "value",
+      "key": "kPOwezNoE",
+      "action": "<>",
+      "value": "A",
+      "effects": [
+        {
+          "key": "k1J9G7I3s",
+          "properties": [
+            {
+              "key": "hidden",
+              "value": false
+            },
+            {
+              "key": "disabled",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "value",
+      "key": "kPOwezNoE",
+      "action": "><",
+      "value": "A",
+      "effects": [
+        {
+          "key": "k1J9G7I3s",
+          "properties": [
+            {
+              "key": "hidden",
+              "value": false
+            },
+            {
+              "key": "disabled",
+              "value": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "style": {
     "maxWidth": 1600
   }

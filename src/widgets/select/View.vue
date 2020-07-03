@@ -84,7 +84,8 @@ export default {
   },
   methods: {
     onConfirm (value) {
-      this.model[this.schema.key] = value.key
+      this.store.updateModel({ [this.schema.key]: value.key })
+      this.event('on-change', ...arguments)
       this.showPicker = false
     }
   }

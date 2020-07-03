@@ -91,7 +91,8 @@ export default {
     },
     onConfirm (value) {
       const keys = this.getListByKeys(value, this.options, 'value', 'key')
-      this.model[this.schema.key] = keys
+      this.store.updateModel({ [this.schema.key]: keys })
+      this.event('on-change', ...arguments)
       this.showPicker = false
     }
   }

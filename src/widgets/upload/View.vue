@@ -87,7 +87,6 @@ export default {
         const { message, success, data } = e.data
         if (success) {
           let files = this.store.getModel(key)
-          console.log(99, data, JSON.stringify(files, null, 2), files)
           // data => Array<Object{url, name}>
           files = files.concat(data)
           this.store.updateModel({ [key]: files })
