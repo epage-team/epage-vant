@@ -1,7 +1,7 @@
-import Epage from 'epage'
+import { helper } from 'epage-core'
 import * as regexp from './regexp'
 
-const { isArray, isFunction, isNumber } = Epage.helper
+const { isArray, isFunction, isNumber } = helper
 
 export default (formRules, schema = {}) => {
   const result = {}

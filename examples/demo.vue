@@ -10,12 +10,11 @@
       van-button(type='primary' block @click='resetForm') 重置
   p Form Data
   pre {{formData}}
-  //- Button(type='default' @click='getSchema') getSchema
 
 </template>
 <script>
 import widgets, { Render } from 'epage-vant'
-import rootSchema from './schema-test.json'
+import rootSchema from './schema.json'
 
 export default {
   data () {

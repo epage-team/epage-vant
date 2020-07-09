@@ -52,11 +52,11 @@
 </template>
 <script>
 import { Toast } from 'vant'
-import Epage from 'epage'
+import { helper } from 'epage-core'
 import viewExtend from '../../extends/view'
 import DateTimeDisplay from '../../components/DateTimeDisplay'
 
-const { isNumber, isArray } = Epage.helper
+const { isNumber, isArray } = helper
 
 const dateMap = {
   hour: '时',

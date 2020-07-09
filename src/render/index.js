@@ -1,10 +1,9 @@
 import Vue from 'vue'
-import Epage from 'epage'
+import { Store, Rule, helper } from 'epage-core'
 import Vuex from 'vuex'
 import vant from 'vant'
 import FormRender from './index.vue'
 
-const { Store, Rule, helper } = Epage
 const { isArray, isFunction, isPlainObject, usePlugins } = helper
 
 export default class Render {

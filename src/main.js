@@ -1,6 +1,5 @@
 export { default as viewExtend } from './extends/view'
 export { default as Render } from './render'
-export { default as Epage } from 'epage'
 
 export const inputWidget = require('./widgets/input')
 export const textareaWidget = require('./widgets/textarea')

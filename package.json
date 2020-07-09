@@ -1,6 +1,6 @@
 {
   "name": "epage-vant",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "epage render package based on vant component library",
   "author": "Chengzi <ttghost@126.com>",
   "main": "./dist/epage-vant.min.js",
@@ -46,15 +46,13 @@
     "not ie <= 8"
   ],
   "dependencies": {
-    "epage": "^0.2.9"
+    "epage-core": "^0.1.2",
+    "vant": "^2.8.4",
+    "vue": "^2.5.16",
+    "vuex": "^3.1.2"
   },
-  "peerDependencies": {
-    "vant": ">=2.8",
-    "vue": ">=2.5",
-    "vuex": ">=3.1"
-  },
+  "peerDependencies": {},
   "devDependencies": {
-    "iview": "^3.5.4",
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
@@ -87,11 +85,8 @@
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^1.0.0-rc.0",
     "url-loader": "^1.1.2",
-    "vant": "^2.8.4",
-    "vue": "^2.5.16",
     "vue-loader": "15.7.0",
     "vue-template-compiler": "^2.5.16",
-    "vuex": "^3.1.2",
     "webpack": "^4.35.2",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.5",

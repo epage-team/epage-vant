@@ -1,5 +1,11 @@
 # Change Log
 
+### 0.3.0（2020/07/09）
+
+- [feat] : 修改核心依赖，由原`epage`替换为`epage-core`
+- [feat] : 去除基础widget `Setting`(原因移动端不需要设计，仅渲染)
+
+
 ### 0.2.1（2020/07/03）
 
 - [fix] : 修复inputNumber数字类型校验

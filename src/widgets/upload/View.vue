@@ -37,12 +37,12 @@
         )
 </template>
 <script>
-import Epage from 'epage'
+import { helper, Worker as EpageWorker } from 'epage-core'
 import { Toast } from 'vant'
 import viewExtend from '../../extends/view'
 import { getAccept } from './constant'
 
-const { isNotEmptyString, isArray, include, ajax } = Epage.helper
+const { isNotEmptyString, isArray, include, ajax } = helper
 
 export default {
   extends: viewExtend,
@@ -77,7 +77,7 @@ export default {
     }
   },
   mounted () {
-    this.worker = new Epage.Worker()
+    this.worker = new EpageWorker()
     this.listenerMessage()
   },
   methods: {

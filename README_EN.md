@@ -1,6 +1,6 @@
 # EpageVant
 
-vant based [epage](https://github.com/didichuxing/epage) rendering package
+vant based [epage-core](https://github.com/epage-team/epage-core) rendering package
 
 English Introduction | [中文介绍](./README.md)
 
@@ -30,21 +30,11 @@ npm install epage-vant -S
 -  `npm` (recommend)
 
 ```js
-import Vue from 'vue'
-import Vuex from 'vuex'
-import vant from 'vant'
-import widgets, { Render, Epage } from 'epage-vant'
+import widgets, { Render } from 'epage-vant'
 import schema from './schema.json'
 import 'epage-vant/src/style/main.less'
 
-// if already used in the project, don't use it here
-Vue.use(Vuex)
-Vue.use(vant)
-
-const el = document.getElementById('root')
-// Instantiate Designer
-new Epage({ el, widgets, schema, Render })
-// or create Render
+// create Render
 new Render({ el, widgets, schema })
 ```
 
@@ -53,7 +43,6 @@ new Render({ el, widgets, schema })
 ```html
 <!-- third-party style -->
 <link href='https://cdn.jsdelivr.net/npm/vant@2.8/lib/index.css' rel='stylesheet'></link>
-<link href='./epage.css' rel='stylesheet'></link>
 <link href='./epage-vant.css' rel='stylesheet'></link>
 
 <!-- third lib -->
@@ -61,19 +50,15 @@ new Render({ el, widgets, schema })
 <script src='https://cdn.bootcss.com/vuex/3.1.1/vuex.min.js' ></script>
 <script src='https://cdn.jsdelivr.net/npm/vant@2.8/lib/vant.min.js' ></script>
 
-<script src="./epage.min.js"></script>
+<script src="./epage-core.min.js"></script>
 <script src="./epage-vant.min.js"></script>
 
 <script>
-Vue.use(Vuex)
-Vue.use(Vant)
 
 const el = document.getElementById('root')
 const { default: widgets, Render } = EpageVant
 
-// Instantiate Designer
-new Epage({ el, widgets, Render })
-// or create Render
+// create Render
 new Render({ el, widgets, schema })
 </script>
 
@@ -83,7 +68,7 @@ new Render({ el, widgets, schema })
 
 Wechat group
 
-![](http://img-hxy021.didistatic.com/static/star/epage-qrcode.jpg)
+![](https://github.com/didi/epage/raw/master/public/imgs/epage-qrcode.png)
 
 ## License
 

@@ -1,8 +1,8 @@
-import Epage from 'epage'
+import { constant } from 'epage-core'
 import { Dialog } from 'vant'
 import convertRule from '../util/rule'
 
-const { defaultSchema } = Epage.constant
+const { defaultSchema } = constant
 
 export default {
   props: {

@@ -20,10 +20,9 @@ van-form.ep-widget-form(
 </template>
 <script>
 import EpWidgetItem from './item'
-import Epage from 'epage'
+import { Event as EpageEvent, helper } from 'epage-core'
 
-const { helper } = Epage
-const evt = new Epage.Event()
+const evt = new EpageEvent()
 
 export default {
   on: evt.on.bind(evt),

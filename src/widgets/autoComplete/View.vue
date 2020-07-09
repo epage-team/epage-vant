@@ -32,10 +32,10 @@
 
 </template>
 <script>
-import Epage from 'epage'
+import { helper, Worker as EpageWorker } from 'epage-core'
 import viewExtend from '../../extends/view'
 
-const { ajax, debounce } = Epage.helper
+const { ajax, debounce } = helper
 
 export default {
   extends: viewExtend,
@@ -54,7 +54,7 @@ export default {
     }
   },
   mounted () {
-    this.worker = new Epage.Worker()
+    this.worker = new EpageWorker()
     this.listenerMessage()
   },
   destroyed () {

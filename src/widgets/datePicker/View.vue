@@ -50,14 +50,12 @@
     )
 </template>
 <script>
-import Epage from 'epage'
+import { helper } from 'epage-core'
 import { Toast } from 'vant'
 import viewExtend from '../../extends/view'
 import DateTimeDisplay from '../../components/DateTimeDisplay'
 
-const { isArray } = Epage.helper
-
-const { include, formatDate } = Epage.helper
+const { isArray, include, formatDate } = helper
 const timeOptions = ['HH:mm:ss', 'HH:mm', 'mm:ss']
 const monthOptions = ['yyyy-MM', 'yyyy/MM']
 const dateMap = {
