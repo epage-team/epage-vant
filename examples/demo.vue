@@ -1,15 +1,15 @@
 <template lang="pug">
 .form-demo
   div.demo-container(ref='form')
-  van-row
-    van-col(span='6' offset='1')
-      van-button(type='primary' block @click='getFormData') 打印Form
-    van-col(span='6' offset='1')
-      van-button(type='default' block @click='validateForm') 校验
-    van-col(span='6' offset='1')
-      van-button(type='primary' block @click='resetForm') 重置
-  p Form Data
-  pre {{formData}}
+  //- van-row
+  //-   van-col(span='6' offset='1')
+  //-     van-button(type='primary' block @click='getFormData') 打印Form
+  //-   van-col(span='6' offset='1')
+  //-     van-button(type='default' block @click='validateForm') 校验
+  //-   van-col(span='6' offset='1')
+  //-     van-button(type='primary' block @click='resetForm') 重置
+  //- p Form Data
+  //- pre {{formData}}
 
 </template>
 <script>

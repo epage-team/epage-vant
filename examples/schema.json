@@ -1,5 +1,5 @@
 {
-  "key": "kuEXemrCZ",
+  "key": "kuLlthRrI",
   "widget": "grid",
   "hidden": false,
   "option": {
@@ -18,158 +18,7 @@
       "span": 24,
       "list": [
         {
-          "key": "k2kBOzDIg",
-          "widget": "autoComplete",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "data": [
-              "A",
-              "abc",
-              "a443",
-              "ia0sa",
-              "01aab",
-              "cca"
-            ],
-            "dynamicData": [],
-            "clearable": true
-          },
-          "name": "k2kBOzDIg",
-          "type": "string",
-          "label": "自动完成",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "type": "string",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "k6Fn2PGfY",
-          "widget": "textarea",
-          "hidden": false,
-          "option": {
-            "rows": 3
-          },
-          "name": "k6Fn2PGfY",
-          "type": "string",
-          "label": "多行文本",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "string",
-              "trigger": "blur"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "kAuOzbTwp",
-          "widget": "input",
-          "hidden": false,
-          "option": {
-            "password": false,
-            "prefix": "",
-            "suffix": ""
-          },
-          "name": "kAuOzbTwp",
-          "type": "string",
-          "label": "输入框",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": true,
-              "message": "必填",
-              "type": "string",
-              "trigger": "blur"
-            },
-            {
-              "message": "邮箱格式不正确",
-              "type": "email"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "kxnr4Ymqx",
-          "widget": "inputNumber",
-          "hidden": false,
-          "option": {
-            "min": 0,
-            "max": 100,
-            "step": 1,
-            "precision": 1
-          },
-          "name": "kxnr4Ymqx",
-          "type": "number",
-          "label": "数字",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "trigger": "change",
-              "type": "number"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "kXzu0bcZp",
-          "widget": "select",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "dynamicData": [],
-            "data": [
-              {
-                "key": "A",
-                "value": "A"
-              },
-              {
-                "key": "B",
-                "value": "B"
-              }
-            ],
-            "multiple": false,
-            "clearable": true
-          },
-          "name": "kXzu0bcZp",
-          "type": "string",
-          "label": "下拉框",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "trigger": "change",
-              "type": "string"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
-          "key": "kSCaklFMC",
+          "key": "kXBW0FZRw",
           "widget": "grid",
           "hidden": false,
           "option": {
@@ -184,7 +33,99 @@
               "span": 12,
               "list": [
                 {
-                  "key": "k1JVvRyID",
+                  "key": "kAenMN1DX",
+                  "widget": "input",
+                  "hidden": false,
+                  "option": {
+                    "password": false,
+                    "prefix": "",
+                    "suffix": ""
+                  },
+                  "name": "name",
+                  "type": "string",
+                  "label": "姓名",
+                  "description": "",
+                  "help": "注意不能重名奥",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "type": "string",
+                      "trigger": "blur"
+                    }
+                  ],
+                  "placeholder": "请输入姓名"
+                },
+                {
+                  "key": "k7Ffr5Xta",
+                  "widget": "input",
+                  "hidden": false,
+                  "option": {
+                    "password": false,
+                    "prefix": "",
+                    "suffix": ""
+                  },
+                  "name": "k7Ffr5Xta",
+                  "type": "string",
+                  "label": "邮箱",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "type": "string",
+                      "trigger": "blur"
+                    },
+                    {
+                      "message": "邮箱格式不正确",
+                      "type": "email"
+                    }
+                  ],
+                  "placeholder": "请输入邮箱"
+                },
+                {
+                  "key": "kzXkU4UhF",
+                  "widget": "select",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "data": [
+                      {
+                        "key": "A",
+                        "value": "A"
+                      },
+                      {
+                        "key": "B",
+                        "value": "B"
+                      }
+                    ],
+                    "multiple": false,
+                    "clearable": true
+                  },
+                  "name": "kzXkU4UhF",
+                  "type": "string",
+                  "label": "学校",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "string"
+                    }
+                  ],
+                  "placeholder": "请选择学校"
+                },
+                {
+                  "key": "kjxOO4wU3",
                   "widget": "cascader",
                   "hidden": false,
                   "option": {
@@ -209,9 +150,56 @@
                       }
                     ]
                   },
-                  "name": "k1JVvRyID",
+                  "name": "kjxOO4wU3",
                   "type": "array<string>",
-                  "label": "级联选择",
+                  "label": "城市",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "type": "array",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请选择城市"
+                },
+                {
+                  "key": "kvRg8f0Vq",
+                  "widget": "datePicker",
+                  "hidden": false,
+                  "option": {
+                    "range": false,
+                    "format": "yyyy-MM-dd"
+                  },
+                  "name": "kvRg8f0Vq",
+                  "type": "string",
+                  "label": "出生日期",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请选择出生日期"
+                },
+                {
+                  "key": "khVha4Uyv",
+                  "widget": "timePicker",
+                  "hidden": false,
+                  "option": {
+                    "range": false,
+                    "format": "HH:mm:ss"
+                  },
+                  "name": "khVha4Uyv",
+                  "type": "string",
+                  "label": "时间",
                   "description": "",
                   "help": "",
                   "disabled": false,
@@ -219,7 +207,6 @@
                     {
                       "required": false,
                       "message": "必填",
-                      "type": "array",
                       "trigger": "change"
                     }
                   ],
@@ -231,22 +218,59 @@
               "span": 12,
               "list": [
                 {
-                  "key": "kF0j4pNSR",
-                  "widget": "autoComplete",
+                  "key": "kSZ8ragN3",
+                  "widget": "inputNumber",
+                  "hidden": false,
+                  "option": {
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "precision": 1
+                  },
+                  "name": "kSZ8ragN3",
+                  "type": "number",
+                  "label": "年龄",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "number"
+                    }
+                  ],
+                  "placeholder": "请输入"
+                },
+                {
+                  "key": "kvHZoohKd",
+                  "widget": "radio",
                   "hidden": false,
                   "option": {
                     "type": "static",
+                    "direction": "horizontal",
                     "url": "",
                     "adapter": "return data",
                     "data": [
-                      "A"
+                      {
+                        "key": "nan",
+                        "value": "男"
+                      },
+                      {
+                        "key": "nv",
+                        "value": "女"
+                      },
+                      {
+                        "key": "un",
+                        "value": "未知"
+                      }
                     ],
-                    "dynamicData": [],
-                    "clearable": true
+                    "dynamicData": []
                   },
-                  "name": "kF0j4pNSR",
+                  "name": "kvHZoohKd",
                   "type": "string",
-                  "label": "自动完成",
+                  "label": "性别",
                   "description": "",
                   "help": "",
                   "disabled": false,
@@ -258,328 +282,237 @@
                       "trigger": "change"
                     }
                   ],
-                  "placeholder": "请输入"
+                  "placeholder": "请选择"
+                },
+                {
+                  "key": "kjrcdNgCC",
+                  "widget": "switch",
+                  "hidden": false,
+                  "option": {
+                    "open": "是",
+                    "close": "否"
+                  },
+                  "name": "kjrcdNgCC",
+                  "type": "boolean",
+                  "label": "公开",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "type": "boolean",
+                      "message": "必填",
+                      "trigger": "change",
+                      "required": false
+                    }
+                  ]
+                },
+                {
+                  "key": "kTcD9nUhc",
+                  "widget": "rate",
+                  "hidden": false,
+                  "option": {
+                    "count": 5,
+                    "allowHalf": false,
+                    "showText": false
+                  },
+                  "name": "kTcD9nUhc",
+                  "type": "number",
+                  "label": "评分",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "min": 0,
+                      "type": "number",
+                      "trigger": "change"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "span": 24,
+              "list": [
+                {
+                  "key": "kxCZ7SrhD",
+                  "widget": "checkbox",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "direction": "horizontal",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "data": [
+                      {
+                        "key": "z",
+                        "value": "旅游"
+                      },
+                      {
+                        "key": "krv4NQJh",
+                        "value": "看书"
+                      },
+                      {
+                        "key": "k3LTpzWx",
+                        "value": "电影"
+                      },
+                      {
+                        "key": "kFlXjPsJ",
+                        "value": "烹饪"
+                      },
+                      {
+                        "key": "kG7f2imy",
+                        "value": "画画"
+                      },
+                      {
+                        "key": "kjKR8rqI",
+                        "value": "交友"
+                      },
+                      {
+                        "key": "kyYQ43ch",
+                        "value": "唱歌跳舞"
+                      },
+                      {
+                        "key": "kT8CEkuG",
+                        "value": "炒股"
+                      }
+                    ]
+                  },
+                  "name": "kxCZ7SrhD",
+                  "type": "array<string>",
+                  "label": "兴趣爱好",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "type": "array",
+                      "trigger": "change"
+                    }
+                  ]
+                },
+                {
+                  "key": "kgDHkTYe8",
+                  "widget": "upload",
+                  "hidden": false,
+                  "option": {
+                    "action": "",
+                    "adapter": "return { name: data.filename, url:data.url }",
+                    "format": [],
+                    "accept": "",
+                    "type": "select",
+                    "multiple": true,
+                    "maxSize": 5000,
+                    "showUploadList": true,
+                    "headers": [],
+                    "name": "file",
+                    "withCredentials": false,
+                    "data": {}
+                  },
+                  "name": "kgDHkTYe8",
+                  "type": "array",
+                  "label": "头像",
+                  "description": "请上传.jpg .png .gif格式图片",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "array"
+                    }
+                  ],
+                  "placeholder": "请选择文件"
+                },
+                {
+                  "key": "kHuuHGRJS",
+                  "widget": "line",
+                  "hidden": false,
+                  "option": {
+                    "direction": "horizontal",
+                    "hposition": "middle",
+                    "vposition": "center",
+                    "length": 100,
+                    "thickness": 1,
+                    "type": "dashed",
+                    "color": "rgba(207,207,207,1)"
+                  }
                 }
               ]
             }
           ]
         },
         {
-          "key": "k9ZBz1ZNO",
-          "widget": "radio",
+          "key": "kCjjazqG8",
+          "widget": "grid",
           "hidden": false,
           "option": {
-            "type": "static",
-            "direction": "horizontal",
-            "url": "",
-            "adapter": "return data",
-            "data": [
-              {
-                "key": "beijing",
-                "value": "北京"
-              },
-              {
-                "key": "shanghai",
-                "value": "上海"
-              },
-              {
-                "key": "nanjing",
-                "value": "南京"
-              },
-              {
-                "key": "wuxi",
-                "value": "无锡"
-              },
-              {
-                "key": "shenzhen",
-                "value": "深圳"
-              },
-              {
-                "key": "wulumuqi",
-                "value": "乌鲁木齐"
-              }
-            ],
-            "dynamicData": []
+            "gutter": 0,
+            "align": "top",
+            "justify": "center"
           },
-          "name": "city",
-          "type": "string",
-          "label": "城市",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
+          "label": "布局",
+          "container": true,
+          "children": [
             {
-              "required": false,
-              "message": "必填",
-              "type": "string",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
-          "key": "kuG39ifsW",
-          "widget": "checkbox",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "direction": "horizontal",
-            "url": "",
-            "adapter": "return data",
-            "dynamicData": [],
-            "data": [
-              {
-                "key": "chuji",
-                "value": "初级"
-              },
-              {
-                "key": "zhongji",
-                "value": "中级"
-              },
-              {
-                "key": "gaoji",
-                "value": "高级"
-              },
-              {
-                "key": "zishen",
-                "value": "资深"
-              },
-              {
-                "key": "zhuanjia",
-                "value": "专家"
-              }
-            ]
-          },
-          "name": "zhiji",
-          "type": "array<string>",
-          "label": "职级",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
+              "span": 3,
+              "list": [
+                {
+                  "key": "k7kLPqLvk",
+                  "widget": "button",
+                  "hidden": false,
+                  "option": {
+                    "text": "重置",
+                    "type": "default",
+                    "icon": "",
+                    "long": true,
+                    "ghost": false,
+                    "shape": "square"
+                  },
+                  "disabled": false
+                }
+              ]
+            },
             {
-              "required": false,
-              "message": "必填",
-              "type": "array",
-              "trigger": "change"
+              "span": 1,
+              "list": []
+            },
+            {
+              "span": 3,
+              "list": [
+                {
+                  "key": "k3sUYKXWL",
+                  "widget": "button",
+                  "hidden": false,
+                  "option": {
+                    "text": "提交",
+                    "type": "primary",
+                    "icon": "",
+                    "long": true,
+                    "ghost": false,
+                    "shape": "square"
+                  },
+                  "disabled": false
+                }
+              ]
             }
           ]
-        },
-        {
-          "key": "kibw91HzP",
-          "widget": "timePicker",
-          "hidden": false,
-          "option": {
-            "range": false,
-            "format": "HH:mm:ss"
-          },
-          "name": "kibw91HzP",
-          "type": "string",
-          "label": "时间",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
-          "key": "kuhruKPYU",
-          "widget": "datePicker",
-          "hidden": false,
-          "option": {
-            "range": false,
-            "format": "yyyy-MM-dd"
-          },
-          "name": "kuhruKPYU",
-          "type": "string",
-          "label": "日期",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请选择"
-        },
-        {
-          "key": "kfFu1Y0SO",
-          "widget": "switch",
-          "hidden": false,
-          "option": {
-            "open": "是",
-            "close": "否"
-          },
-          "name": "kfFu1Y0SO",
-          "type": "boolean",
-          "label": "开关",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "type": "boolean",
-              "message": "必填",
-              "trigger": "change",
-              "required": false
-            }
-          ]
-        },
-        {
-          "key": "kCXEwz8p8",
-          "widget": "rate",
-          "hidden": false,
-          "option": {
-            "count": 5,
-            "allowHalf": false,
-            "showText": false
-          },
-          "name": "kCXEwz8p8",
-          "type": "number",
-          "label": "评分",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "min": 0,
-              "type": "number"
-            }
-          ]
-        },
-        {
-          "key": "kzSp5l71s",
-          "widget": "line",
-          "hidden": false,
-          "option": {
-            "direction": "horizontal",
-            "hposition": "middle",
-            "vposition": "center",
-            "length": 100,
-            "thickness": 1,
-            "type": "dashed",
-            "color": "#aaa"
-          }
-        },
-        {
-          "key": "kjxjnE4JX",
-          "widget": "upload",
-          "hidden": false,
-          "option": {
-            "action": "",
-            "adapter": "return { name: data.filename, url:data.url }",
-            "format": [],
-            "accept": "",
-            "type": "select",
-            "multiple": true,
-            "maxSize": 5000,
-            "showUploadList": true,
-            "headers": [],
-            "name": "file",
-            "withCredentials": false,
-            "data": {}
-          },
-          "name": "kjxjnE4JX",
-          "type": "array",
-          "label": "上传",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "trigger": "change",
-              "type": "array"
-            }
-          ],
-          "placeholder": "请选择文件"
-        },
-        {
-          "key": "kGZLjx5Vx",
-          "widget": "input",
-          "hidden": false,
-          "option": {
-            "password": false,
-            "prefix": "",
-            "suffix": ""
-          },
-          "name": "dept",
-          "type": "string",
-          "label": "输入框",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "type": "string",
-              "trigger": "blur"
-            }
-          ],
-          "placeholder": "请选择..."
-        },
-        {
-          "key": "kawuJtlsD",
-          "widget": "autoComplete",
-          "hidden": false,
-          "option": {
-            "type": "static",
-            "url": "",
-            "adapter": "return data",
-            "data": [
-              "A"
-            ],
-            "dynamicData": [],
-            "clearable": true
-          },
-          "name": "kawuJtlsD",
-          "type": "string",
-          "label": "自动完成",
-          "description": "",
-          "help": "",
-          "disabled": false,
-          "rules": [
-            {
-              "required": false,
-              "message": "必填",
-              "type": "string",
-              "trigger": "change"
-            }
-          ],
-          "placeholder": "请输入"
-        },
-        {
-          "key": "kFTkxHsSk",
-          "widget": "button",
-          "hidden": false,
-          "option": {
-            "text": "提交",
-            "type": "primary",
-            "icon": "",
-            "long": true,
-            "ghost": false,
-            "shape": "square"
-          },
-          "disabled": false
         }
       ]
     }
   ],
-  "title": "",
+  "title": "测试",
   "description": "",
   "size": "default",
-  "logics": []
+  "logics": [],
+  "style": {
+    "maxWidth": 1600
+  }
 }
