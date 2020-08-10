@@ -491,7 +491,8 @@
                     "icon": "",
                     "long": true,
                     "ghost": false,
-                    "shape": "square"
+                    "shape": "square",
+                    "script": "ctx.$render.resetFields();"
                   },
                   "disabled": false
                 }
@@ -515,7 +516,7 @@
                     "long": true,
                     "ghost": false,
                     "shape": "square",
-                    "script": "ctx.setState({loading: true});ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form);setTimeout(function(){ctx.setState({loading: false})}, 1000)})"
+                    "script": "ctx.setState({loading: true});ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form);setTimeout(function(){ctx.setState({loading: false})}, 1000)}, function(){ctx.setState({loading: false})})"
                   },
                   "disabled": false
                 }

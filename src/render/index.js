@@ -61,7 +61,9 @@ export default class Render {
     const { $children } = this.$$origin
 
     if (isArray($children) && $children[0]) {
-      return $children[0].resetFields()
+      setTimeout(() => {
+        $children[0].resetFields()
+      }, 0)
     }
   }
 

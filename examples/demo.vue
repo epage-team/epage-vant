@@ -1,13 +1,14 @@
 <template lang="pug">
 .form-demo
   div.demo-container(ref='form')
+  //- van-button(type='primary' block @click='resetForm') 重置
   //- van-row
-  //-   van-col(span='6' offset='1')
-  //-     van-button(type='primary' block @click='getFormData') 打印Form
-  //-   van-col(span='6' offset='1')
-  //-     van-button(type='default' block @click='validateForm') 校验
-  //-   van-col(span='6' offset='1')
-  //-     van-button(type='primary' block @click='resetForm') 重置
+    //- van-col(span='6' offset='1')
+    //-   van-button(type='primary' block @click='getFormData') 打印Form
+    //- van-col(span='6' offset='1')
+    //-   van-button(type='default' block @click='validateForm') 校验
+    van-col(span='6' offset='1')
+      van-button(type='primary' block @click='resetForm') 重置
   //- p Form Data
   //- pre {{formData}}
 
@@ -26,10 +27,11 @@ export default {
   mounted () {
     this.getRootSchema().then(schema => {
       this.form = this.formRender(schema)
+      window.b = this.form
       setTimeout(() => {
         this.form.store.updateModel({
           name: 'Tom',
-          email: 'tom@gmail.com',
+          email: 'tom@gmailcom',
           school: 'beida',
           city: ['hubei', 'wuhan'],
           borth: '1996-06-02',
@@ -43,7 +45,7 @@ export default {
             url: 'https://img.yzcdn.cn/vant/leaf.jpg'
           }]
         }, true)
-      }, 100)
+      }, 1000)
       // this.getModel().then(model => {
       //   form.store.updateModel(model)
       // })
