@@ -28,9 +28,21 @@ export default {
       this.form = this.formRender(schema)
       setTimeout(() => {
         this.form.store.updateModel({
+          name: 'Tom',
+          email: 'tom@gmail.com',
+          school: 'beida',
+          city: ['hubei', 'wuhan'],
+          borth: '1996-06-02',
+          time: '12:24:30',
+          age: 24,
+          sex: 'nan',
+          public: true,
+          rate: 3,
+          intrest: ['dance', 'cooking', 'film'],
+          avatar: ['https://avatars2.githubusercontent.com/u/16507651?s=460&u=5da995a243ca317c943639ccbf4d962901446482&v=4'],
           ktEDwy07Y: [],
           kFKa99wZM: []
-        })
+        }, true)
       }, 100)
       // this.getModel().then(model => {
       //   form.store.updateModel(model)
@@ -53,7 +65,7 @@ export default {
     formRender (schema) {
       const el = this.$refs.form
       // return new Render({ el, schema, widgets: myWidgets})
-      return new Render({ el, schema, widgets, mode: 'edit' })
+      return new Render({ el, schema, widgets, mode: 'display' })
       // return this.render(el, { mode: 'edit' })
     },
     getSchema (schema) {

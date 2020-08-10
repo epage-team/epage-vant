@@ -66,7 +66,7 @@
                     "prefix": "",
                     "suffix": ""
                   },
-                  "name": "k7Ffr5Xta",
+                  "name": "email",
                   "type": "string",
                   "label": "邮箱",
                   "description": "",
@@ -97,18 +97,18 @@
                     "dynamicData": [],
                     "data": [
                       {
-                        "key": "A",
-                        "value": "A"
+                        "key": "qinghua",
+                        "value": "清华"
                       },
                       {
-                        "key": "B",
-                        "value": "B"
+                        "key": "beida",
+                        "value": "北大"
                       }
                     ],
                     "multiple": false,
                     "clearable": true
                   },
-                  "name": "kzXkU4UhF",
+                  "name": "school",
                   "type": "string",
                   "label": "学校",
                   "description": "",
@@ -139,18 +139,36 @@
                     "filterable": false,
                     "data": [
                       {
-                        "key": "A",
-                        "value": "option A",
+                        "key": "hubei",
+                        "value": "湖北",
                         "children": [
                           {
-                            "key": "B",
-                            "value": "option B"
+                            "key": "wuhan",
+                            "value": "武汉"
+                          },
+                          {
+                            "key": "xiantao",
+                            "value": "仙桃"
+                          }
+                        ]
+                      },
+                      {
+                        "key": "anhui",
+                        "value": "安徽",
+                        "children": [
+                          {
+                            "key": "hefei",
+                            "value": "合肥"
+                          },
+                          {
+                            "key": "wuhu",
+                            "value": "芜湖"
                           }
                         ]
                       }
                     ]
                   },
-                  "name": "kjxOO4wU3",
+                  "name": "city",
                   "type": "array<string>",
                   "label": "城市",
                   "description": "",
@@ -174,7 +192,7 @@
                     "range": false,
                     "format": "yyyy-MM-dd"
                   },
-                  "name": "kvRg8f0Vq",
+                  "name": "borth",
                   "type": "string",
                   "label": "出生日期",
                   "description": "",
@@ -197,7 +215,7 @@
                     "range": false,
                     "format": "HH:mm:ss"
                   },
-                  "name": "khVha4Uyv",
+                  "name": "time",
                   "type": "string",
                   "label": "时间",
                   "description": "",
@@ -227,7 +245,7 @@
                     "step": 1,
                     "precision": 1
                   },
-                  "name": "kSZ8ragN3",
+                  "name": "age",
                   "type": "number",
                   "label": "年龄",
                   "description": "",
@@ -268,7 +286,7 @@
                     ],
                     "dynamicData": []
                   },
-                  "name": "kvHZoohKd",
+                  "name": "sex",
                   "type": "string",
                   "label": "性别",
                   "description": "",
@@ -292,7 +310,7 @@
                     "open": "是",
                     "close": "否"
                   },
-                  "name": "kjrcdNgCC",
+                  "name": "public",
                   "type": "boolean",
                   "label": "公开",
                   "description": "",
@@ -316,7 +334,7 @@
                     "allowHalf": false,
                     "showText": false
                   },
-                  "name": "kTcD9nUhc",
+                  "name": "rate",
                   "type": "number",
                   "label": "评分",
                   "description": "",
@@ -349,40 +367,40 @@
                     "dynamicData": [],
                     "data": [
                       {
-                        "key": "z",
+                        "key": "travel",
                         "value": "旅游"
                       },
                       {
-                        "key": "krv4NQJh",
+                        "key": "read",
                         "value": "看书"
                       },
                       {
-                        "key": "k3LTpzWx",
+                        "key": "film",
                         "value": "电影"
                       },
                       {
-                        "key": "kFlXjPsJ",
+                        "key": "cooking",
                         "value": "烹饪"
                       },
                       {
-                        "key": "kG7f2imy",
+                        "key": "draw",
                         "value": "画画"
                       },
                       {
-                        "key": "kjKR8rqI",
+                        "key": "friend",
                         "value": "交友"
                       },
                       {
-                        "key": "kyYQ43ch",
+                        "key": "dance",
                         "value": "唱歌跳舞"
                       },
                       {
-                        "key": "kT8CEkuG",
+                        "key": "stocks",
                         "value": "炒股"
                       }
                     ]
                   },
-                  "name": "kxCZ7SrhD",
+                  "name": "intrest",
                   "type": "array<string>",
                   "label": "兴趣爱好",
                   "description": "",
@@ -415,7 +433,7 @@
                     "withCredentials": false,
                     "data": {}
                   },
-                  "name": "kgDHkTYe8",
+                  "name": "avatar",
                   "type": "array",
                   "label": "头像",
                   "description": "请上传.jpg .png .gif格式图片",
