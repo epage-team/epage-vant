@@ -1,5 +1,10 @@
 # Change Log
 
+### 0.3.1（2020/08/10）
+
+- [feat] : 升级显示模式(`mode: "display"`)样式，支持label等
+- [feat] : `Button`支持自定义脚本执行
+
 ### 0.3.0（2020/07/09）
 
 - [feat] : 修改核心依赖，由原`epage`替换为`epage-core`

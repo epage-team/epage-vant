@@ -36,7 +36,7 @@ export default class Render {
 
   render (option = {}) {
     const { el, store, mode } = this
-    const extension = { store, mode: option.mode || mode }
+    const extension = { store, $render: this, mode: option.mode || mode }
     const root = document.createElement('div')
 
     root.setAttribute('style', 'display:block;height: 100%;')

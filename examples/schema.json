@@ -515,7 +515,7 @@
                     "long": true,
                     "ghost": false,
                     "shape": "square",
-                    "script": "ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form)})"
+                    "script": "ctx.setState({loading: true});ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form);setTimeout(function(){ctx.setState({loading: false})}, 1000)})"
                   },
                   "disabled": false
                 }
