@@ -422,8 +422,7 @@
                   "option": {
                     "action": "",
                     "adapter": "return { name: data.filename, url:data.url }",
-                    "format": [],
-                    "accept": "",
+                    "format": ["jpeg", "jpg", "png"],
                     "type": "select",
                     "multiple": true,
                     "maxSize": 5000,
@@ -515,7 +514,8 @@
                     "icon": "",
                     "long": true,
                     "ghost": false,
-                    "shape": "square"
+                    "shape": "square",
+                    "script": "ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form)})"
                   },
                   "disabled": false
                 }

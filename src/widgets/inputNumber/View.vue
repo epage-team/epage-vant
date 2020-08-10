@@ -3,18 +3,15 @@
   //- display mode
   van-field(
     v-if='isDisplay'
-    type='text'
+    type='number'
     v-model='model[schema.key]'
     :name='schema.name'
     :placeholder='schema.placeholder'
     :disabled='schema.disabled'
     :size='rootSchema.size'
     :label='schema.label'
-    :formatter='formatter'
     readonly
     @change="event('on-change', ...arguments)"
-    @focus="event('on-focus', ...arguments)"
-    @blur="event('on-blur', ...arguments)"
     @click="event('on-click', ...arguments)"
     :left-icon='schema.help ? "info-o" : undefined'
     @click-left-icon='onHelpClick'
@@ -31,7 +28,6 @@
     :rules='numberRules()'
     :label='schema.label'
     :required='required'
-    :readonly='isDisplay'
     @change="event('on-change', ...arguments)"
     @focus="event('on-focus', ...arguments)"
     @blur="event('on-blur', ...arguments)"

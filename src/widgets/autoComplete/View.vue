@@ -1,6 +1,22 @@
 <template lang="pug">
 .ep-widget
-  template(v-if='isDisplay')
+  van-field.epvan-autoComplete-field(
+    v-if='isDisplay'
+    type='text'
+    v-model='model[schema.key]'
+    :name='schema.name'
+    :label='schema.label'
+    :required='required'
+    :size='rootSchema.size'
+    :left-icon='schema.help ? "info-o" : undefined'
+    @click-left-icon='onHelpClick'
+  )
+    template(#input)
+      input.van-field__control(
+        readonly
+        :placeholder='schema.placeholder'
+        v-model='model[schema.key]'
+      )
     span {{model[schema.key]}}
   template(v-else)
     van-field.epvan-autoComplete-field(

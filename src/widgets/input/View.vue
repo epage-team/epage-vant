@@ -1,9 +1,18 @@
 <template lang="pug">
 .ep-widget.ep-widget-input
   template(v-if='isDisplay')
-    span(v-if='schema.option.prefix') {{schema.option.prefix}}
-    span {{model[schema.key]}}
-    span(v-if='schema.option.suffix') {{schema.option.suffix}}
+    van-field(
+      v-model.trim='model[schema.key]'
+      :type='schema.option.password ? "password" : "text"'
+      :readonly='true'
+      :name='schema.name'
+      :label='schema.label'
+      :required='required'
+      :size='rootSchema.size'
+      :left-icon='schema.help ? "info-o" : undefined'
+      @click="event('on-click', ...arguments)"
+      @click-left-icon='onHelpClick'
+    )
 
   template(v-else)
     van-field(

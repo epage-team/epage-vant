@@ -15,7 +15,6 @@
       date-time-display(
         :schema='schema'
         :value='model[schema.key]'
-        @on-show='onShowPicker'
       )
   //- edit mode
   van-field(

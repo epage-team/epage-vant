@@ -1,7 +1,20 @@
 <template lang="pug">
 .ep-widget
-  template(v-if="isDisplay")
-    span {{displayValue}}
+  van-field(
+    v-if="isDisplay"
+    readonly
+    :rules='cascaderRules'
+    :value='displayValue'
+    :name='schema.name'
+    :label='schema.label'
+    :required='required'
+    :size='rootSchema.size'
+    :left-icon='schema.help ? "info-o" : undefined'
+    @click-left-icon='onHelpClick'
+  )
+    template(#input)
+      span(v-if='displayValue') {{displayValue}}
+      span.epvan-placeholder(v-else) {{schema.placeholder}}
   template(v-else)
     van-field(
       readonly

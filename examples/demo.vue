@@ -39,9 +39,9 @@ export default {
           public: true,
           rate: 3,
           intrest: ['dance', 'cooking', 'film'],
-          avatar: ['https://avatars2.githubusercontent.com/u/16507651?s=460&u=5da995a243ca317c943639ccbf4d962901446482&v=4'],
-          ktEDwy07Y: [],
-          kFKa99wZM: []
+          avatar: [{
+            url: 'https://img.yzcdn.cn/vant/leaf.jpg'
+          }]
         }, true)
       }, 100)
       // this.getModel().then(model => {
@@ -65,7 +65,7 @@ export default {
     formRender (schema) {
       const el = this.$refs.form
       // return new Render({ el, schema, widgets: myWidgets})
-      return new Render({ el, schema, widgets, mode: 'display' })
+      return new Render({ el, schema, widgets, mode: 'edit' })
       // return this.render(el, { mode: 'edit' })
     },
     getSchema (schema) {
