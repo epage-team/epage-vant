@@ -112,7 +112,7 @@
                   "type": "string",
                   "label": "学校",
                   "description": "",
-                  "help": "",
+                  "help": "ddddd",
                   "disabled": false,
                   "rules": [
                     {
