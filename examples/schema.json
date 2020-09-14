@@ -8,8 +8,8 @@
     "justify": "start"
   },
   "label": {
-    "width": 80,
-    "position": "right",
+    "width": 90,
+    "position": "left",
     "colon": false
   },
   "container": true,

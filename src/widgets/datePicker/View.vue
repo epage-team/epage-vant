@@ -1,38 +1,32 @@
 <template lang="pug">
-.ep-widget.epvan-datePicker
-  //- display mode
-  van-field(
-    v-if='isDisplay'
-    :disable='schema.disabled'
-    :name='schema.name'
-    :label='schema.label'
-    :required='required'
-    :size='rootSchema.size'
-    :left-icon='schema.help ? "info-o" : undefined'
-    @click-left-icon='onHelpClick'
-  )
-    template(#input)
-      date-time-display(
-        :schema='schema'
-        :value='model[schema.key]'
-        @on-show='onShowPicker'
-      )
-  //- edit mode
-  van-field(
-    v-else
-    :name='schema.name'
-    :label='schema.label'
-    :required='required'
-    :disable='schema.disabled'
-    :value='model[schema.key].toString()'
-    :rules='widgetRules'
-  )
-    template(#input)
-      date-time-display(
-        :schema='schema'
-        :value='model[schema.key]'
-        @on-show='onShowPicker'
-      )
+.epvan-widget.epvan-datePicker
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+    van-field(
+      :disable='schema.disabled'
+      :name='schema.name'
+      :required='required'
+      :size='rootSchema.size'
+    )
+      template(#input)
+        date-time-display(
+          :schema='schema'
+          :value='model[schema.key]'
+          @on-show='onShowPicker'
+        )
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+    van-field(
+      :name='schema.name'
+      :required='required'
+      :disable='schema.disabled'
+      :value='model[schema.key].toString()'
+      :rules='widgetRules'
+    )
+      template(#input)
+        date-time-display(
+          :schema='schema'
+          :value='model[schema.key]'
+          @on-show='onShowPicker'
+        )
   van-popup(
     v-model='showPicker'
     round

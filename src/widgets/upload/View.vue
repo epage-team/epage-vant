@@ -1,29 +1,24 @@
 <template lang="pug">
-.ep-widget.epvan-upload
-  van-field.epvan-upload-display(
-    v-if='isDisplay'
-    :name='schema.name'
-    :label='schema.label'
-    :required='required'
-    :size='rootSchema.size'
-    :left-icon='schema.help ? "info-o" : undefined'
-    @click-left-icon='onHelpClick'
-  )
-    template(#input)
-      van-uploader(
-        :disabled='true'
-        :deletable='false'
-        :file-list='model[schema.key]'
-      )
-  template(v-else)
+.epvan-widget.epvan-upload
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+    van-field.epvan-upload-display(
+      :name='schema.name'
+      :required='required'
+      :size='rootSchema.size'
+    )
+      template(#input)
+        van-uploader(
+          :disabled='true'
+          :deletable='false'
+          :file-list='model[schema.key]'
+        )
+
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-field(
       :rules='rules[schema.key]'
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
-      @click-left-icon='onHelpClick'
     )
       template(#input)
         van-uploader(

@@ -1,38 +1,34 @@
 <template lang="pug">
-.ep-widget
+.epvan-widget
   //- display mode
-  van-field(
-    v-if='isDisplay'
-    type='number'
-    v-model='model[schema.key]'
-    :name='schema.name'
-    :placeholder='schema.placeholder'
-    :disabled='schema.disabled'
-    :size='rootSchema.size'
-    :label='schema.label'
-    readonly
-    @change="event('on-change', ...arguments)"
-    @click="event('on-click', ...arguments)"
-    :left-icon='schema.help ? "info-o" : undefined'
-    @click-left-icon='onHelpClick'
-  )
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+    van-field(
+      type='number'
+      v-model='model[schema.key]'
+      :name='schema.name'
+      :placeholder='schema.placeholder'
+      :disabled='schema.disabled'
+      :size='rootSchema.size'
+      readonly
+      @change="event('on-change', ...arguments)"
+      @click="event('on-click', ...arguments)"
+    )
   //- edit mode
-  van-field(
-    v-else
-    type='number'
-    v-model='model[schema.key]'
-    :name='schema.name'
-    :placeholder='schema.placeholder'
-    :disabled='schema.disabled'
-    :size='rootSchema.size'
-    :rules='numberRules()'
-    :label='schema.label'
-    :required='required'
-    @change="event('on-change', ...arguments)"
-    @focus="event('on-focus', ...arguments)"
-    @blur="event('on-blur', ...arguments)"
-    @click="event('on-click', ...arguments)"
-  )
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+    van-field(
+      type='number'
+      v-model='model[schema.key]'
+      :name='schema.name'
+      :placeholder='schema.placeholder'
+      :disabled='schema.disabled'
+      :size='rootSchema.size'
+      :rules='numberRules()'
+      :required='required'
+      @change="event('on-change', ...arguments)"
+      @focus="event('on-focus', ...arguments)"
+      @blur="event('on-blur', ...arguments)"
+      @click="event('on-click', ...arguments)"
+    )
 </template>
 <script>
 import viewExtend from '../../extends/view'

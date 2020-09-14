@@ -1,6 +1,6 @@
 <template lang="pug">
-.ep-widget
-  template(v-if='isDisplay')
+.epvan-widget
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
     van-slider(
       :min='schema.option.min'
       :max='schema.option.max'
@@ -9,14 +9,11 @@
       v-model='model[schema.key]'
       @change="event('on-change', ...arguments)"
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
-      @click-left-icon='onHelpClick'
     )
 
-  template(v-else)
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-slider(
       :name='schema.name'
       :min='schema.option.min'

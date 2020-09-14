@@ -1,34 +1,28 @@
 <template lang="pug">
 .ep-widget
-  van-field.epvan-autoComplete-field(
-    v-if='isDisplay'
-    type='text'
-    v-model='model[schema.key]'
-    :name='schema.name'
-    :label='schema.label'
-    :required='required'
-    :size='rootSchema.size'
-    :left-icon='schema.help ? "info-o" : undefined'
-    @click-left-icon='onHelpClick'
-  )
-    template(#input)
-      input.van-field__control(
-        readonly
-        :placeholder='schema.placeholder'
-        v-model='model[schema.key]'
-      )
-    span {{model[schema.key]}}
-  template(v-else)
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+    van-field.epvan-autoComplete-field(
+      type='text'
+      v-model='model[schema.key]'
+      :name='schema.name'
+      :required='required'
+      :size='rootSchema.size'
+    )
+      template(#input)
+        input.van-field__control(
+          readonly
+          :placeholder='schema.placeholder'
+          v-model='model[schema.key]'
+        )
+      span {{model[schema.key]}}
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-field.epvan-autoComplete-field(
       type='text'
       v-model='model[schema.key]'
       :rules='widgetRules'
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
-      @click-left-icon='onHelpClick'
     )
       template(#input)
         input.van-field__control(

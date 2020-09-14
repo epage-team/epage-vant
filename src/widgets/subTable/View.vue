@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget
+.epvan-widget
   template(v-if='isDisplay')
     span {{model[schema.key]}}
 

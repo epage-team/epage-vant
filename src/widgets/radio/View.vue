@@ -1,27 +1,21 @@
 <template lang="pug">
-.ep-widget.epvan-radio
-  van-field(
-    v-if='isDisplay'
-    :name='schema.name'
-    :label='schema.label'
-    :required='required'
-    :size='rootSchema.size'
-    :left-icon='schema.help ? "info-o" : undefined'
-    @click-left-icon='onHelpClick'
-  )
-    template(#input)
-      span(v-if='displayValue') {{displayValue}}
-      span.epvan-placeholder(v-else) {{schema.placeholder}}
+.epvan-widget.epvan-radio
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+    van-field(
+      :name='schema.name'
+      :required='required'
+      :size='rootSchema.size'
+    )
+      template(#input)
+        span(v-if='displayValue') {{displayValue}}
+        span.epvan-placeholder(v-else) {{schema.placeholder}}
 
-  template(v-else)
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-field(
       :rules='rules[schema.key]'
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
-      @click-left-icon='onHelpClick'
     )
       template(#input)
         van-radio-group(

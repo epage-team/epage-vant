@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget
+.epvan-widget
   van-button(
     :loading='loading'
     :icon='schema.option.icon'

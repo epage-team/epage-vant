@@ -1,21 +1,18 @@
 <template lang="pug">
-.ep-widget
-  van-field(
-    v-if="isDisplay"
-    readonly
-    :value='formModel'
-    :name='schema.name'
-    :label='schema.label'
-    :required='required'
-    :size='rootSchema.size'
-    :left-icon='schema.help ? "info-o" : undefined'
-    @click-left-icon='onHelpClick'
-  )
-    template(#input)
-      div
-        span(v-if='formModel') {{displayValue}}
-        .epvan-placeholder(v-else) {{schema.placeholder}}
-  template(v-else)
+.epvan-widget
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+    van-field(
+      readonly
+      :value='formModel'
+      :name='schema.name'
+      :required='required'
+      :size='rootSchema.size'
+    )
+      template(#input)
+        div
+          span(v-if='formModel') {{displayValue}}
+          .epvan-placeholder(v-else) {{schema.placeholder}}
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-field(
       readonly
       clickable
@@ -23,28 +20,25 @@
       :value='formModel'
       :rules='rules[schema.key]'
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
-      @click-left-icon='onHelpClick'
     )
       template(#input)
         div(@click='showPicker = true')
           span(v-if='formModel') {{displayValue}}
           .epvan-placeholder(v-else) {{schema.placeholder}}
-    van-popup(
-      v-model='showPicker'
-      round
-      position='bottom'
+  van-popup(
+    v-model='showPicker'
+    round
+    position='bottom'
+  )
+    van-picker(
+      show-toolbar
+      :columns='options'
+      value-key='value'
+      @cancel='showPicker = false'
+      @confirm='onConfirm'
     )
-      van-picker(
-        show-toolbar
-        :columns='options'
-        value-key='value'
-        @cancel='showPicker = false'
-        @confirm='onConfirm'
-      )
 
 </template>
 <script>

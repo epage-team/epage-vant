@@ -1,21 +1,18 @@
 <template lang="pug">
-.ep-widget
-  van-field(
-    v-if="isDisplay"
-    readonly
-    :rules='cascaderRules'
-    :value='displayValue'
-    :name='schema.name'
-    :label='schema.label'
-    :required='required'
-    :size='rootSchema.size'
-    :left-icon='schema.help ? "info-o" : undefined'
-    @click-left-icon='onHelpClick'
-  )
-    template(#input)
-      span(v-if='displayValue') {{displayValue}}
-      span.epvan-placeholder(v-else) {{schema.placeholder}}
-  template(v-else)
+.epvan-widget
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+    van-field(
+      readonly
+      :rules='cascaderRules'
+      :value='displayValue'
+      :name='schema.name'
+      :required='required'
+      :size='rootSchema.size'
+    )
+      template(#input)
+        span(v-if='displayValue') {{displayValue}}
+        span.epvan-placeholder(v-else) {{schema.placeholder}}
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-field(
       readonly
       clickable
@@ -24,27 +21,24 @@
       :value='displayValue'
       @click='showPicker = true'
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
-      @click-left-icon='onHelpClick'
     )
       template(#input)
         span(v-if='displayValue') {{displayValue}}
         span.epvan-placeholder(v-else) {{schema.placeholder}}
-    van-popup(
-      v-model='showPicker'
-      round
-      position='bottom'
+  van-popup(
+    v-model='showPicker'
+    round
+    position='bottom'
+  )
+    van-picker(
+      show-toolbar
+      :columns='options'
+      value-key='value'
+      @cancel='showPicker = false'
+      @confirm='onConfirm'
     )
-      van-picker(
-        show-toolbar
-        :columns='options'
-        value-key='value'
-        @cancel='showPicker = false'
-        @confirm='onConfirm'
-      )
 </template>
 <script>
 import viewExtend from '../../extends/view'

@@ -1,10 +1,14 @@
 import { constant } from 'epage-core'
 import { Dialog } from 'vant'
 import convertRule from '../util/rule'
+import EpvanField from '../components/epvan-field'
 
 const { defaultSchema } = constant
 
 export default {
+  components: {
+    EpvanField
+  },
   props: {
     schema: {
       type: Object,

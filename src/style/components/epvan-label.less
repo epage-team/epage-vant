@@ -1,0 +1,56 @@
+.epvan-field{
+  &.epvan-field-top{
+    .epvan-label{
+      width: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    .epvan-value{
+      padding-left: 0;
+    }
+  }
+  &.epvan-field-left{
+    .epvan-label{
+      text-align: left;
+    }
+  }
+  &.epvan-field-right{
+    .epvan-label{
+      text-align: right;
+    }
+  }
+  &::after{
+    content: ' ';
+    display: block;
+    height: 0;
+    clear: both;
+  }
+  .epvan-label{
+    background-color:#fff;
+    font-weight: normal;
+    float: left;
+    width: 80px;
+    height: 22px;
+    line-height: 22px;
+    &-required{
+      color:#ee0a24;
+      position: relative;
+      left: -4px;
+      top: 3px;
+      font-size: 14px;
+    }
+    &-icon{
+      position: relative;
+      margin-right: 4px;
+      top: 3px;
+      color: #323233;
+    }
+    &-text{
+      color: #646566;
+      font-size: 14px;
+    }
+  }
+  .epvan-value{
+    padding-left: 12px;
+  }
+}

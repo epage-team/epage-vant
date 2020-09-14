@@ -1,20 +1,17 @@
 <template lang="pug">
-.ep-widget.ep-widget-input
-  template(v-if='isDisplay')
+.epvan-widget
+  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
     van-field(
       v-model.trim='model[schema.key]'
       :type='schema.option.password ? "password" : "text"'
       :readonly='true'
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
       @click="event('on-click', ...arguments)"
-      @click-left-icon='onHelpClick'
     )
 
-  template(v-else)
+  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-field(
       v-model.trim='model[schema.key]'
       :type='schema.option.password ? "password" : "text"'
@@ -26,11 +23,8 @@
       @blur="event('on-blur', ...arguments)"
       @click="event('on-click', ...arguments)"
       :name='schema.name'
-      :label='schema.label'
       :required='required'
       :size='rootSchema.size'
-      :left-icon='schema.help ? "info-o" : undefined'
-      @click-left-icon='onHelpClick'
     )
     .epvan-desc {{schema.description}}
 
