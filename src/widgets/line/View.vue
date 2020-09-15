@@ -1,6 +1,6 @@
 <template lang="pug">
-.ep-widget(style='position: relative;height: 100%;min-height: 16px;')
-  .ep-widget-line(:style='style')
+.epvan-widget(style='position: relative;height: 100%;min-height: 16px;')
+  .epvan-widget-line(:style='style')
 
 </template>
 <script>

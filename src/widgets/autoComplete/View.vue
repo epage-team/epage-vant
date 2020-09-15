@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget
+.epvan-widget
   epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
     van-field.epvan-autoComplete-field(
       type='text'

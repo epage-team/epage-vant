@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget
+.epvan-widget
 </template>
 <script>
 import viewExtend from '../../extends/view'

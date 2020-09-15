@@ -1,5 +1,5 @@
 <template lang="pug">
-.ep-widget-item(
+.epvan-widget-item(
   :class='cls'
   :style='getStyle()'
 )
@@ -18,7 +18,7 @@
         :offset='item.offset'
       )
         template(v-if='Array.isArray(item.list)')
-          ep-widget-item(
+          epvan-widget-item(
             v-for='(child, j) in item.list'
             :key='child.key'
             :schema='child'
@@ -43,7 +43,7 @@
 <script>
 
 export default {
-  name: 'EpWidgetItem',
+  name: 'EpvanWidgetItem',
   props: {
     schema: {
       type: Object,
@@ -71,7 +71,7 @@ export default {
     },
     cls () {
       return {
-        'ep-widget-container': this.schema.container
+        'epvan-widget-container': this.schema.container
       }
     },
     logics () {

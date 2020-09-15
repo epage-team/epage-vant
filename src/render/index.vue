@@ -1,11 +1,12 @@
 <template lang="pug">
-van-form.ep-widget-form(
-  ref='epForm'
+van-form.epvan-widget-form(
+  ref='epvan'
   :label-width='rootSchema.label.width'
   :label-position='rootSchema.label.position'
-  :class='`ep-mode-${mode}`'
+  :class='`epvan-mode-${mode}`'
+  :colon='true'
 )
-  ep-widget-item(
+  epvan-widget-item(
     v-for='(item, k) in childrenSchema'
     v-show='!item.hidden'
     :key='item.key'
@@ -19,7 +20,7 @@ van-form.ep-widget-form(
   )
 </template>
 <script>
-import EpWidgetItem from './item'
+import EpvanWidgetItem from './item'
 import { Event as EpageEvent, helper } from 'epage-core'
 
 const evt = new EpageEvent()
@@ -28,7 +29,7 @@ export default {
   on: evt.on.bind(evt),
   off: evt.off.bind(evt),
   components: {
-    EpWidgetItem
+    EpvanWidgetItem
   },
 
   data () {
@@ -96,7 +97,7 @@ export default {
   methods: {
     validateFields () {
       return new Promise((resolve, reject) => {
-        this.$refs.epForm.validate().then(res => {
+        this.$refs.epvan.validate().then(res => {
           resolve(res)
         }).catch(err => {
           reject(new Error('Check Error: ' + JSON.stringify(err)))
@@ -105,7 +106,7 @@ export default {
     },
 
     resetFields () {
-      this.$refs.epForm.resetValidation()
+      this.$refs.epvan.resetValidation()
     },
 
     shouldChangeModel (newDiffs, oldDiffs) {
