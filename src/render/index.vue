@@ -1,5 +1,5 @@
 <template lang="pug">
-van-form.epvan-widget-form(
+van-form.epvan-wrapper.epvan-widget-form(
   ref='epvan'
   :label-width='rootSchema.label.width'
   :label-position='rootSchema.label.position'

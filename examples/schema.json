@@ -125,6 +125,44 @@
                   "placeholder": "请选择学校"
                 },
                 {
+                  "key": "kzXkU4Uh7",
+                  "widget": "select",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "data": [
+                      {
+                        "key": "qinghua",
+                        "value": "清华"
+                      },
+                      {
+                        "key": "beida",
+                        "value": "北大"
+                      }
+                    ],
+                    "multiple": true,
+                    "clearable": true
+                  },
+                  "name": "school2",
+                  "type": "string",
+                  "label": "学校22",
+                  "description": "",
+                  "help": "ddddd",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "string"
+                    }
+                  ],
+                  "placeholder": "请选择学校"
+                },
+                {
                   "key": "kjxOO4wU3",
                   "widget": "cascader",
                   "hidden": false,
@@ -408,7 +446,7 @@
                   "disabled": false,
                   "rules": [
                     {
-                      "required": false,
+                      "required": true,
                       "message": "必填",
                       "type": "array",
                       "trigger": "change"

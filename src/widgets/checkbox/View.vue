@@ -1,5 +1,5 @@
 <template lang="pug">
-.epvan-widget
+.epvan-widget.epvan-checkbox
   epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
     van-field(
       :name='schema.name'

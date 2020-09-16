@@ -33,6 +33,7 @@ export default {
           name: 'Tom',
           email: 'tom@gmailcom',
           school: 'beida',
+          school2: ['beida'],
           city: ['hubei', 'wuhan'],
           borth: '1996-06-02',
           time: '12:24:30',
