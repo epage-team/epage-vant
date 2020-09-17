@@ -10,7 +10,7 @@
   "label": {
     "width": 90,
     "position": "left",
-    "colon": false
+    "colon": true
   },
   "container": true,
   "children": [
@@ -209,7 +209,7 @@
                   "name": "city",
                   "type": "array<string>",
                   "label": "城市",
-                  "description": "",
+                  "description": "city desc",
                   "help": "",
                   "disabled": false,
                   "rules": [
@@ -535,10 +535,6 @@
                   "disabled": false
                 }
               ]
-            },
-            {
-              "span": 1,
-              "list": []
             },
             {
               "span": 3,

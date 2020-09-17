@@ -1,6 +1,6 @@
 <template lang="pug">
 .epvan-widget
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-field(
       :name='schema.name'
       :required='required'
@@ -14,7 +14,7 @@
           @change="event('on-change', ...arguments)"
         )
 
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field(
       :rules='rules[schema.key]'
       :name='schema.name'

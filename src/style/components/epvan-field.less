@@ -1,4 +1,16 @@
 .epvan-field{
+  position: relative;
+  &::after{
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    border-bottom: 1px solid #ebedf0;
+    transform: scaleY(0.5);
+  }
   &.epvan-field-top{
     .epvan-label{
       width: 100%;

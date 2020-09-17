@@ -6,6 +6,11 @@
   }
   .van-field{
     padding: 0;
+    &::after{
+      left:0;
+      right:0;
+      border-color:transparent;
+    }
   }
   .van-field__left-icon,
   .van-field__label{
@@ -13,9 +18,8 @@
   }
 }
 .epvan-desc{
-  padding: 2px 10px;
-  background-color: #fff;
-  color: #666;
+  padding: 2px 0;
+  color: #888;
   font-size: 14px;
 }
 .epvan-placeholder{

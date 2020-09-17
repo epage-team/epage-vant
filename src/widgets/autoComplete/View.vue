@@ -1,6 +1,6 @@
 <template lang="pug">
 .epvan-widget
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-field.epvan-autoComplete-field(
       type='text'
       v-model='model[schema.key]'
@@ -15,7 +15,7 @@
           v-model='model[schema.key]'
         )
       span {{model[schema.key]}}
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field.epvan-autoComplete-field(
       type='text'
       v-model='model[schema.key]'

@@ -1,6 +1,6 @@
 <template lang="pug">
 .epvan-widget
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-field(
       v-model.trim='model[schema.key]'
       :type='schema.option.password ? "password" : "text"'
@@ -11,7 +11,7 @@
       @click="event('on-click', ...arguments)"
     )
 
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field(
       v-model.trim='model[schema.key]'
       :type='schema.option.password ? "password" : "text"'
@@ -26,7 +26,6 @@
       :required='required'
       :size='rootSchema.size'
     )
-    .epvan-desc {{schema.description}}
 
 </template>
 <script>

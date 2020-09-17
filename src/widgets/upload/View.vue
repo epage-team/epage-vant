@@ -1,6 +1,6 @@
 <template lang="pug">
 .epvan-widget.epvan-upload
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-field.epvan-upload-display(
       :name='schema.name'
       :required='required'
@@ -13,7 +13,7 @@
           :file-list='model[schema.key]'
         )
 
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field(
       :rules='rules[schema.key]'
       :name='schema.name'

@@ -1,7 +1,7 @@
 <template lang="pug">
 .epvan-widget
   //- display mode
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-field(
       readonly
       v-model.trim='model[schema.key]'
@@ -22,7 +22,7 @@
         div {{displayValue}}
 
   //- edit mode
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field(
       v-model.trim='model[schema.key]'
       type='textarea'
@@ -38,7 +38,6 @@
       :required='required'
       :size='rootSchema.size'
     )
-    .epvan-desc {{schema.description}}
 
 </template>
 <script>

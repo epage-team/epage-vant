@@ -1,6 +1,6 @@
 <template lang="pug">
-.epvan-widget
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+.epvan-widget.epvan-select
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     div(v-if='schema.option.multiple')
       van-tag(
         v-for='(item, key) in checkedOptions'
@@ -13,7 +13,7 @@
       ) {{item.value}}
     div(v-else style='font-size: 14px;') {{displayValue}}
 
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field(
       v-if='schema.option.multiple'
       readonly
@@ -58,7 +58,7 @@
           span(v-if='displayValue') {{displayValue}}
           .epvan-placeholder(v-else) {{schema.placeholder}}
 
-    div(v-if='schema.option.multiple')
+    div(v-if='schema.option.multiple' style='padding-top: 8px;')
       van-tag(
         v-for='(item, key) in checkedOptions'
         :key='key'
@@ -95,21 +95,6 @@
           :name='item.key'
           style='margin-bottom: 8px;'
         ) {{item.value}}
-    //- .epvan-popup
-    //-   .epvan-popup-header
-    //-     .epvan-popup-title 多选
-    //-     .epvan-popup-btns
-    //-       .epvan-popup-btn(size='small') 确定
-    //-   .epvan-popup-body
-    //-     van-checkbox-group(v-model='popup.model')
-    //-       van-checkbox(v-for='(item, key) in options' :key='key' :name='item.key') {{item.value}}
-    //- van-picker(
-    //-   show-toolbar
-    //-   :columns='options'
-    //-   value-key='value'
-    //-   @cancel='popup.visible = false'
-    //-   @confirm='onConfirm'
-    //- )
 
 </template>
 <script>

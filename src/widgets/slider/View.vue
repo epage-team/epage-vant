@@ -1,6 +1,6 @@
 <template lang="pug">
 .epvan-widget
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-slider(
       :min='schema.option.min'
       :max='schema.option.max'
@@ -13,7 +13,7 @@
       :size='rootSchema.size'
     )
 
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-slider(
       :name='schema.name'
       :min='schema.option.min'

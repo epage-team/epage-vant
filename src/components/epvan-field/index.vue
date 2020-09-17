@@ -3,10 +3,11 @@
   .epvan-label(:style='labelStyle()')
     span.epvan-label-required(v-if='required') *
     van-icon.epvan-label-icon(v-if='help' name='info-o' @click='showHelp')
-    span.epvan-label-text {{label}}
+    span.epvan-label-text {{schema.label}}
     span(v-if='rootLabel.colon') :
   .epvan-value(:style='valueStyle()')
     slot
+    .epvan-desc(v-if='schema.description') {{schema.description}}
 </template>
 <script>
 import { Dialog } from 'vant'
@@ -24,6 +25,14 @@ export default {
     help: {
       type: String,
       default: ''
+    },
+    schema: {
+      type: Object,
+      default: () => ({
+        label: '',
+        help: '',
+        description: ''
+      })
     }
   },
   computed: {

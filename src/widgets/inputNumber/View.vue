@@ -1,7 +1,7 @@
 <template lang="pug">
 .epvan-widget
   //- display mode
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-field(
       type='number'
       v-model='model[schema.key]'
@@ -14,7 +14,7 @@
       @click="event('on-click', ...arguments)"
     )
   //- edit mode
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field(
       type='number'
       v-model='model[schema.key]'

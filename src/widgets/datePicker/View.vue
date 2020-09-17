@@ -1,6 +1,6 @@
 <template lang="pug">
 .epvan-widget.epvan-datePicker
-  epvan-field(v-if='isDisplay' :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-if='isDisplay' :required='required' :schema='schema')
     van-field(
       :disable='schema.disabled'
       :name='schema.name'
@@ -13,7 +13,7 @@
           :value='model[schema.key]'
           @on-show='onShowPicker'
         )
-  epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
+  epvan-field(v-else :required='required' :schema='schema')
     van-field(
       :name='schema.name'
       :required='required'
