@@ -15,20 +15,49 @@
 
   epvan-field(v-else :required='required' :help='schema.help' :label='schema.label')
     van-field(
+      v-if='schema.option.multiple'
       readonly
       clickable
       :placeholder='schema.placeholder'
-      :rules='rules[schema.key]'
+      :rules='selectRules()'
       :name='schema.name'
       :required='required'
       :size='rootSchema.size'
     )
       template(#input)
+        van-checkbox-group(v-if='Array.isArray(model[schema.key])' v-model='model[schema.key]' style='display:none;')
+          van-checkbox(
+            v-for='(item, key) in options'
+            :key='key'
+            :name='item.key'
+            style='margin-bottom: 8px;'
+            shape='square'
+          ) {{item.value}}
         div(style='flex:1;min-height: 24px;' @click='onPopupOpen')
-          template(v-if='!schema.option.multiple')
-            span(v-if='displayValue') {{displayValue}}
-            .epvan-placeholder(v-else) {{schema.placeholder}}
+          .epvan-placeholder {{schema.placeholder}}
+    van-field(
+      v-else
+      readonly
+      clickable
+      :placeholder='schema.placeholder'
+      :rules='selectRules()'
+      :name='schema.name'
+      :required='required'
+      :size='rootSchema.size'
+    )
+      template(#input)
+        van-radio-group(v-model='model[schema.key]' style='display:none;')
+          van-radio(
+            v-for='(item, key) in options'
+            :key='key'
+            :name='item.key'
+            style='margin-bottom: 8px;'
+          ) {{item.value}}
+
+        div(style='flex:1;min-height: 24px;' @click='onPopupOpen')
+          span(v-if='displayValue') {{displayValue}}
           .epvan-placeholder(v-else) {{schema.placeholder}}
+
     div(v-if='schema.option.multiple')
       van-tag(
         v-for='(item, key) in checkedOptions'
@@ -157,8 +186,29 @@ export default {
     }
   },
   methods: {
+    selectRules () {
+      const { key, option, rules } = this.schema
+      const { multiple } = option
+      const rule = { ...rules[0] }
+      return [{
+        message: rule.message,
+        required: this.required,
+        validator: (value, rule) => {
+          const model = this.store.getModel(key)
+          if (!this.required) return true
+
+          if (multiple) {
+            return !!(Array.isArray(model) && model.length)
+          } else {
+            return !!model
+          }
+        }
+      }]
+    },
     onRemoveOption (option) {
-      this.formModel = this.formModel.filter(key => key !== option.key)
+      const model = this.formModel.filter(key => key !== option.key)
+      this.store.updateModel({ [this.schema.key]: model })
+      this.validate()
     },
     onOK () {
       const { multiple } = this.schema.option
@@ -168,6 +218,7 @@ export default {
       this.store.updateModel({ [this.schema.key]: model })
       this.event('on-change', model)
       this.popup.visible = false
+      this.validate()
     },
     onPopupClosed () {
       this.popup.checkboxModel = []
@@ -187,6 +238,10 @@ export default {
         this.popup.radioModel = result
       }
       this.popup.visible = true
+    },
+    validate () {
+      const { $render } = this.$root.$options.extension
+      $render.validateFields(this.schema.name)
     }
   }
 }

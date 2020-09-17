@@ -49,11 +49,11 @@ export default class Render {
     })
   }
 
-  validateFields () {
+  validateFields (field) {
     const { $children } = this.$$origin
 
     if (isArray($children) && $children[0]) {
-      return $children[0].validateFields()
+      return $children[0].validateFields(field)
     }
   }
 

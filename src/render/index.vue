@@ -95,9 +95,10 @@ export default {
   },
 
   methods: {
-    validateFields () {
+    validateFields (field) {
       return new Promise((resolve, reject) => {
-        this.$refs.epvan.validate().then(res => {
+        const prom = field ? this.$refs.epvan.validate(field) : this.$refs.epvan.validate()
+        prom.then(res => {
           resolve(res)
         }).catch(err => {
           reject(new Error('Check Error: ' + JSON.stringify(err)))
