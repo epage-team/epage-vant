@@ -1,5 +1,11 @@
 # Change Log
 
+### 0.4.0（2020/09/17）
+
+- [feat] : 增加所有widget `description`展示
+- [feat] : 增加 `select` 单选、多选能力
+- [feat] : 增加label对齐方式，`right`、`left`、`top`三种方式
+
 ### 0.3.1（2020/08/10）
 
 - [feat] : 升级显示模式(`mode: "display"`)样式，支持label等
