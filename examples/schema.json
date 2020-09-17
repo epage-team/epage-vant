@@ -97,11 +97,11 @@
                     "dynamicData": [],
                     "data": [
                       {
-                        "key": "qinghua",
+                        "key": 1,
                         "value": "清华"
                       },
                       {
-                        "key": "beida",
+                        "key": 2,
                         "value": "北大"
                       }
                     ],
@@ -109,7 +109,7 @@
                     "clearable": true
                   },
                   "name": "school",
-                  "type": "string",
+                  "type": "number",
                   "label": "学校",
                   "description": "",
                   "help": "ddddd",
@@ -119,7 +119,7 @@
                       "required": true,
                       "message": "必填",
                       "trigger": "change",
-                      "type": "string"
+                      "type": "number"
                     }
                   ],
                   "placeholder": "请选择学校"

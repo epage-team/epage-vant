@@ -32,7 +32,7 @@ export default {
         this.form.store.updateModel({
           name: 'Tom',
           email: 'tom@gmailcom',
-          school: '',
+          school: 1,
           school2: ['beida'],
           city: ['hubei', 'wuhan'],
           borth: '1996-06-02',
