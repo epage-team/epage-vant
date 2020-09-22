@@ -3,7 +3,8 @@
   .epvan-popup-header
     .epvan-popup-title {{title}}
     .epvan-popup-btns
-      .epvan-popup-btn(size='small' @click='onOk') 确定
+      .epvan-popup-btn.cancel(size='small' @click='onCancel') 取消
+      .epvan-popup-btn.ok(size='small' @click='onOk') 确定
   .epvan-popup-body
     slot
 </template>
@@ -19,6 +20,9 @@ export default {
   methods: {
     onOk () {
       this.$emit('on-ok')
+    },
+    onCancel () {
+      this.$emit('on-cancel')
     }
   }
 }

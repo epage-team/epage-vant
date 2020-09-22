@@ -40,7 +40,7 @@ export default {
           age: 24,
           sex: 'nan',
           public: true,
-          rate: 3,
+          rate: 0,
           intrest: ['dance', 'cooking', 'film'],
           avatar: [{
             url: 'https://img.yzcdn.cn/vant/leaf.jpg'

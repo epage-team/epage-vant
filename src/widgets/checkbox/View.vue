@@ -16,12 +16,13 @@
       :name='schema.name'
       :required='required'
       :size='rootSchema.size'
+      :error-message='error.message'
     )
       template(#input)
         van-checkbox-group(
           v-model='model[schema.key]'
           :direction='schema.option.direction'
-          @change="event('on-change', ...arguments)"
+          @change="onChange"
         )
           van-checkbox(
             v-for='(item, k) in options || []'
@@ -38,6 +39,13 @@ import dynamicMixins from '../../mixins/dynamicMixins'
 export default {
   extends: viewExtend,
   mixins: [dynamicMixins],
+  data () {
+    return {
+      error: {
+        message: ''
+      }
+    }
+  },
   computed: {
     displayValue () {
       const value = this.model[this.schema.key]
@@ -50,6 +58,22 @@ export default {
       }) : []
 
       return result + ''
+    }
+  },
+  methods: {
+    onChange () {
+      const rule = this.schema.rules[0] || {}
+      this.validate()
+        .then(() => {
+          this.error.message = ''
+        }, () => {
+          this.error.message = rule.message
+        })
+      this.event('on-change', ...arguments)
+    },
+    validate () {
+      const { $render } = this.$root.$options.extension
+      return $render.validateFields(this.schema.name)
     }
   }
 }

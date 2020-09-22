@@ -279,9 +279,9 @@
                   "hidden": false,
                   "option": {
                     "min": 0,
-                    "max": 100,
+                    "max": 1000000,
                     "step": 1,
-                    "precision": 1
+                    "precision": 0
                   },
                   "name": "age",
                   "type": "number",
@@ -380,7 +380,7 @@
                   "disabled": false,
                   "rules": [
                     {
-                      "required": false,
+                      "required": true,
                       "message": "必填",
                       "min": 0,
                       "type": "number",
@@ -478,7 +478,7 @@
                   "disabled": false,
                   "rules": [
                     {
-                      "required": false,
+                      "required": true,
                       "message": "必填",
                       "trigger": "change",
                       "type": "array"
@@ -550,7 +550,7 @@
                     "long": true,
                     "ghost": false,
                     "shape": "square",
-                    "script": "ctx.setState({loading: true});ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form);setTimeout(function(){ctx.setState({loading: false})}, 1000)}, function(err){console.log('err:', err);ctx.setState({loading: false})})"
+                    "script": "ctx.setState({loading: true});ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form);setTimeout(function(){ctx.setState({loading: false})}, 1000)}, function(err){var form = ctx.store.getFormData();console.log('form: ', form);console.log('err:', err);ctx.setState({loading: false})})"
                   },
                   "disabled": false
                 }

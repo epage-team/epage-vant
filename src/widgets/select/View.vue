@@ -78,7 +78,7 @@
     style='height: 50%;'
     @closed='onPopupClosed'
   )
-    epvan-popup(@on-ok='onOK' :title='schema.label')
+    epvan-popup(@on-ok='onOK' :title='schema.label' @on-cancel='popup.visible = false')
       van-checkbox-group(v-if='schema.option.multiple' v-model='popup.checkboxModel')
         van-checkbox(
           v-for='(item, key) in options'

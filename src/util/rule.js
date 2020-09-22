@@ -61,7 +61,6 @@ export default (formRules, schema = {}) => {
           break
       }
       Object.assign(newRule, others)
-
       return newRule
     })
   }

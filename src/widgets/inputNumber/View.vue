@@ -17,7 +17,7 @@
   epvan-field(v-else :required='required' :schema='schema')
     van-field(
       type='number'
-      v-model='model[schema.key]'
+      :value.number='model[schema.key]'
       :name='schema.name'
       :placeholder='schema.placeholder'
       :disabled='schema.disabled'
@@ -29,6 +29,16 @@
       @blur="event('on-blur', ...arguments)"
       @click="event('on-click', ...arguments)"
     )
+      template(#input)
+        van-stepper(
+          v-model.number='model[schema.key]'
+          :input-width='100'
+          :decimal-length='schema.option.precision'
+          :disabled='schema.disabled'
+          :step='schema.option.step'
+          :min='schema.option.min'
+          :max='schema.option.max'
+        )
 </template>
 <script>
 import viewExtend from '../../extends/view'
