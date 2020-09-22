@@ -1,5 +1,11 @@
 # Change Log
 
+
+### 0.4.1（2020/09/22）
+
+- [feat] : 增加 `checkbox`、`inputNumber`校验能力
+- [fix] : 增加`select`弹层校验取消关闭交互
+
 ### 0.4.0（2020/09/17）
 
 - [feat] : 增加所有widget `description`展示
