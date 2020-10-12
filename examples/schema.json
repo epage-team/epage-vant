@@ -55,7 +55,8 @@
                       "trigger": "blur"
                     }
                   ],
-                  "placeholder": "请输入姓名"
+                  "placeholder": "请输入姓名",
+                  "default": ""
                 },
                 {
                   "key": "k7Ffr5Xta",
@@ -84,7 +85,8 @@
                       "type": "email"
                     }
                   ],
-                  "placeholder": "请输入邮箱"
+                  "placeholder": "请输入邮箱",
+                  "default": ""
                 },
                 {
                   "key": "kzXkU4UhF",
@@ -97,11 +99,11 @@
                     "dynamicData": [],
                     "data": [
                       {
-                        "key": 1,
+                        "key": "1",
                         "value": "清华"
                       },
                       {
-                        "key": 2,
+                        "key": "2",
                         "value": "北大"
                       }
                     ],
@@ -109,7 +111,7 @@
                     "clearable": true
                   },
                   "name": "school",
-                  "type": "number",
+                  "type": "string",
                   "label": "学校",
                   "description": "",
                   "help": "ddddd",
@@ -119,7 +121,7 @@
                       "required": true,
                       "message": "必填",
                       "trigger": "change",
-                      "type": "number"
+                      "type": "string"
                     }
                   ],
                   "placeholder": "请选择学校"
@@ -147,7 +149,7 @@
                     "clearable": true
                   },
                   "name": "school2",
-                  "type": "string",
+                  "type": "array<string>",
                   "label": "学校22",
                   "description": "",
                   "help": "ddddd",
@@ -157,10 +159,11 @@
                       "required": true,
                       "message": "必填",
                       "trigger": "change",
-                      "type": "string"
+                      "type": "array"
                     }
                   ],
-                  "placeholder": "请选择学校"
+                  "placeholder": "请选择学校",
+                  "default": []
                 },
                 {
                   "key": "kjxOO4wU3",
@@ -220,7 +223,8 @@
                       "trigger": "change"
                     }
                   ],
-                  "placeholder": "请选择城市"
+                  "placeholder": "请选择城市",
+                  "default": []
                 },
                 {
                   "key": "kvRg8f0Vq",
@@ -243,7 +247,8 @@
                       "trigger": "change"
                     }
                   ],
-                  "placeholder": "请选择出生日期"
+                  "placeholder": "请选择出生日期",
+                  "default": ""
                 },
                 {
                   "key": "khVha4Uyv",
@@ -266,7 +271,8 @@
                       "trigger": "change"
                     }
                   ],
-                  "placeholder": "请选择"
+                  "placeholder": "请选择",
+                  "default": ""
                 }
               ]
             },
@@ -297,7 +303,8 @@
                       "type": "number"
                     }
                   ],
-                  "placeholder": "请输入"
+                  "placeholder": "请输入",
+                  "default": 0
                 },
                 {
                   "key": "kvHZoohKd",
@@ -338,7 +345,8 @@
                       "trigger": "change"
                     }
                   ],
-                  "placeholder": "请选择"
+                  "placeholder": "请选择",
+                  "default": ""
                 },
                 {
                   "key": "kjrcdNgCC",
@@ -361,7 +369,8 @@
                       "trigger": "change",
                       "required": false
                     }
-                  ]
+                  ],
+                  "default": false
                 },
                 {
                   "key": "kTcD9nUhc",
@@ -386,7 +395,8 @@
                       "type": "number",
                       "trigger": "change"
                     }
-                  ]
+                  ],
+                  "default": 0
                 }
               ]
             },
@@ -451,7 +461,8 @@
                       "type": "array",
                       "trigger": "change"
                     }
-                  ]
+                  ],
+                  "default": []
                 },
                 {
                   "key": "kgDHkTYe8",
@@ -460,7 +471,12 @@
                   "option": {
                     "action": "",
                     "adapter": "return { name: data.filename, url:data.url }",
-                    "format": ["jpeg", "jpg", "png"],
+                    "format": [
+                      "jpeg",
+                      "jpg",
+                      "png"
+                    ],
+                    "accept": "",
                     "type": "select",
                     "multiple": true,
                     "maxSize": 5000,
@@ -484,7 +500,8 @@
                       "type": "array"
                     }
                   ],
-                  "placeholder": "请选择文件"
+                  "placeholder": "请选择文件",
+                  "default": []
                 },
                 {
                   "key": "kHuuHGRJS",
@@ -564,8 +581,69 @@
   "title": "测试",
   "description": "",
   "size": "default",
-  "logics": [],
+  "logics": [
+    {
+      "type": "event",
+      "key": "k3sUYKXWL",
+      "action": "click",
+      "trigger": "script",
+      "script": "console.log('clicked!', ctx)",
+      "effects": [
+        {
+          "key": "",
+          "properties": [
+            {
+              "key": "hidden",
+              "value": false
+            },
+            {
+              "key": "disabled",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "value",
+      "key": "kzXkU4UhF",
+      "action": "=",
+      "value": "1",
+      "trigger": "prop",
+      "script": "console.log(333)",
+      "effects": [
+        {
+          "key": "kvRg8f0Vq",
+          "properties": [
+            {
+              "key": "hidden",
+              "value": true
+            },
+            {
+              "key": "disabled",
+              "value": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "style": {
+    "margin-top": "0%",
+    "margin-right": "auto",
+    "margin-bottom": "0%",
+    "margin-left": "auto",
+    "padding-top": "0%",
+    "padding-right": "0%",
+    "padding-bottom": "0%",
+    "padding-left": "0%",
+    "background-color": "",
+    "background-image": "",
+    "background-size": "",
+    "background-repeat": "",
+    "background-position": "",
+    "max-width": "1600px",
+    "min-width": "",
     "maxWidth": 1600
   }
 }
