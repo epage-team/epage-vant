@@ -77,7 +77,7 @@ export default {
   computed: {
     widgetRules () {
       const { key, option } = this.schema
-      const rules = this.rules[key]
+      const rules = this.rules[key] || []
       const { range } = option
       const value = this.model[key]
 

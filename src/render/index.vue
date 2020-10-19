@@ -21,7 +21,7 @@ van-form.epvan-wrapper.epvan-widget-form(
 </template>
 <script>
 import EpvanWidgetItem from './item'
-import { Event as EpageEvent, helper } from 'epage-core'
+import { Event as EpageEvent, helper, Context, Script } from 'epage-core'
 
 const evt = new EpageEvent()
 
@@ -136,15 +136,31 @@ export default {
 
     changeWithModel (modelDiffs) {
       const valueLogics = this.rootSchema.logics.filter(logic => logic.key && logic.type === 'value')
+      const { store, $el } = this
+      const ctx = new Context({
+        $el,
+        $render: this.$root.$options.extension.$render,
+        store,
+        instance: this,
+        state: {}
+      })
+      function callback (scripts) {
+        scripts.forEach(script => {
+          const sc = new Script(ctx)
+          sc.exec(script)
+        })
+      }
 
-      if (valueLogics.length) {
-        this.store.updateWidgetByModel(modelDiffs)
+      const diffs = {}
+      valueLogics.forEach(logic => {
+        if (logic.key in modelDiffs && !(logic.key in diffs)) {
+          diffs[logic.key] = modelDiffs[logic.key]
+        }
+      })
+      if (Object.keys(diffs).length) {
+        this.store.updateWidgetByModel(modelDiffs, callback)
       }
     },
-
-    // checkEffect (effect, key) {
-    //   return effect.key && key !== effect.key && Array.isArray(effect.properties)
-    // },
 
     onEvent (key, onType, ...args) {
       this.$emit('on-event', ...arguments)

@@ -583,28 +583,6 @@
   "size": "default",
   "logics": [
     {
-      "type": "event",
-      "key": "k3sUYKXWL",
-      "action": "click",
-      "trigger": "script",
-      "script": "console.log('clicked!', ctx)",
-      "effects": [
-        {
-          "key": "",
-          "properties": [
-            {
-              "key": "hidden",
-              "value": false
-            },
-            {
-              "key": "disabled",
-              "value": false
-            }
-          ]
-        }
-      ]
-    },
-    {
       "type": "value",
       "key": "kzXkU4UhF",
       "action": "=",
