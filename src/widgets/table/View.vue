@@ -12,7 +12,7 @@
       :no-data-text='schema.placeholder'
       :columns='schema.option.columns'
     )
-    .epvan-widget-subTable-page
+    .epvan-widget-table-page
       Page(
         v-if='schema.option.page'
         :class='pageClass'
@@ -45,7 +45,7 @@ export default {
       if (positions.indexOf(position) > -1) {
         pos = position
       }
-      return `epvan-widget-subTable-page-${pos}`
+      return `epvan-widget-table-page-${pos}`
     }
   },
   mounted () {

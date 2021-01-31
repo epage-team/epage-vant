@@ -1,3 +1,3 @@
 import { schema } from 'epage-core'
 
-export default schema.base.subTable
+export default schema.base.table

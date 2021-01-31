@@ -1,27 +1,29 @@
 <template lang="pug">
-van-form.epvan-wrapper.epvan-widget-form(
-  ref='epvan'
-  :label-width='rootSchema.label.width'
-  :label-position='rootSchema.label.position'
-  :class='`epvan-mode-${mode}`'
-  :colon='true'
-)
-  epvan-widget-item(
-    v-for='(item, k) in childrenSchema'
-    v-show='!item.hidden'
-    :key='item.key'
-    :schema='item'
-    :flat-widgets='flatWidgets'
-    :flat-schemas='flatSchemas'
-    :root-schema='rootSchema'
-    @on-event='onEvent'
-    @on-dynamic-add='onDynamicAdd'
-    @on-dynamic-remove='onDynamicRemove'
+.ep-render-container(:style='containerStyle')
+  van-form.epvan-wrapper.epvan-widget-form(
+    ref='epvan'
+    :label-width='rootSchema.label.width'
+    :label-position='rootSchema.label.position'
+    :class='`epvan-mode-${mode}`'
+    :colon='true'
+    :style='contentStyle'
   )
+    epvan-widget-item(
+      v-for='(item, k) in childrenSchema'
+      v-show='!item.hidden'
+      :key='item.key'
+      :schema='item'
+      :flat-widgets='flatWidgets'
+      :flat-schemas='flatSchemas'
+      :root-schema='rootSchema'
+      @on-event='onEvent'
+      @on-dynamic-add='onDynamicAdd'
+      @on-dynamic-remove='onDynamicRemove'
+    )
 </template>
 <script>
 import EpvanWidgetItem from './item'
-import { Event as EpageEvent, helper, Context, Script } from 'epage-core'
+import { Event as EpageEvent, helper, Context, Script, style } from 'epage-core'
 
 const evt = new EpageEvent()
 
@@ -66,6 +68,35 @@ export default {
     },
     model () {
       return this.store.getModel()
+    },
+    containerStyle () {
+      const rootStyle = this.store.getRootSchema().style || {}
+      // background
+      const container = rootStyle.container || {}
+      const bgcolor = container['background-color']
+      let bgstyle = ''
+
+      if (Array.isArray(container.background)) {
+        bgstyle = container.background.map(bg => new style.Background(bg)).join(',')
+        if (bgcolor) {
+          bgstyle = bgstyle ? (bgstyle + ',' + bgcolor) : bgcolor
+        }
+        bgstyle = 'background:' + bgstyle + ';'
+      }
+      return bgstyle
+    },
+    contentStyle () {
+      const rootStyle = this.store.getRootSchema().style || {}
+      const COMPLEX_STYLE = ['container', 'background']
+      // other style
+      const style = Object.keys(rootStyle)
+        .map(attr => {
+          if (COMPLEX_STYLE.indexOf(attr) > -1) return ''
+          return `${attr}:${rootStyle[attr]};`
+        })
+        .join('')
+
+      return style
     }
   },
 

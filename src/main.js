@@ -1,4 +1,7 @@
 export { default as viewExtend } from './extends/view'
+export { default as entry } from './render/index.vue'
+
+//! 下个版本将删除
 export { default as Render } from './render'
 
 export const inputWidget = require('./widgets/input')
@@ -14,14 +17,15 @@ export const timePickerWidget = require('./widgets/timePicker')
 export const switchWidget = require('./widgets/switch')
 export const rateWidget = require('./widgets/rate')
 export const uploadWidget = require('./widgets/upload')
+export const textWidget = require('./widgets/text')
 export const lineWidget = require('./widgets/line')
-// export const subTableWidget = require('./widgets/subTable')
+// export const tableWidget = require('./widgets/table')
 export const gridWidget = require('./widgets/grid')
 export const buttonWidget = require('./widgets/button')
 
 export default [{
-  title: 'Base',
-  key: 'base',
+  title: '表单',
+  key: 'form',
   widgets: [
     inputWidget,
     textareaWidget,
@@ -36,9 +40,20 @@ export default [{
     switchWidget,
     rateWidget,
     uploadWidget,
-    lineWidget,
-    // // subTableWidget,
-    gridWidget,
     buttonWidget
+  ]
+}, {
+  title: '展示',
+  key: 'display',
+  widgets: [
+    // tableWidget,
+    textWidget,
+    lineWidget
+  ]
+}, {
+  title: '布局',
+  key: 'layout',
+  widgets: [
+    gridWidget
   ]
 }]
