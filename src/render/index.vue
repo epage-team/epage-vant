@@ -8,22 +8,48 @@
     :colon='true'
     :style='contentStyle'
   )
-    epvan-widget-item(
-      v-for='(item, k) in childrenSchema'
-      v-show='!item.hidden'
-      :key='item.key'
-      :schema='item'
-      :flat-widgets='flatWidgets'
-      :flat-schemas='flatSchemas'
-      :root-schema='rootSchema'
-      @on-event='onEvent'
-      @on-dynamic-add='onDynamicAdd'
-      @on-dynamic-remove='onDynamicRemove'
-    )
+    template(v-if='state.tab === "design"')
+      vue-drag(
+        handle='.ep-widget-item-handle'
+        draggable='.ep-widget-item'
+        ghost-class='ep-widget-ghost'
+        v-bind='{ group: { name: "g1"}}'
+        :list='childrenSchema'
+        :disabled='state.tab !== "design"'
+        :animation='200'
+      )
+        transition-group
+          epvan-widget-item(
+            v-for='(item, k) in childrenSchema'
+            :key='item.key'
+            :schema='item'
+            :flat-widgets='flatWidgets'
+            :flat-schemas='flatSchemas'
+            :selected-schema='selectedSchema'
+            :root-schema='rootSchema'
+            @on-select='onWidgetSelect'
+            @on-delete='onWidgetDelete'
+            @on-copy='onWidgetCopy'
+            @on-add='onWidgetAdd'
+            @on-event='onEvent'
+          )
+    template(v-else)
+      epvan-widget-item(
+        v-for='(item, k) in childrenSchema'
+        v-show='!item.hidden'
+        :key='item.key'
+        :schema='item'
+        :flat-widgets='flatWidgets'
+        :flat-schemas='flatSchemas'
+        :root-schema='rootSchema'
+        @on-event='onEvent'
+        @on-dynamic-add='onDynamicAdd'
+        @on-dynamic-remove='onDynamicRemove'
+      )
 </template>
 <script>
 import EpvanWidgetItem from './item'
-import { Event as EpageEvent, helper, Context, Script, style } from 'epage-core'
+import { Event as EpageEvent, helper, Context, Script, style, drag } from 'epage-core'
 
 const evt = new EpageEvent()
 
@@ -31,7 +57,8 @@ export default {
   on: evt.on.bind(evt),
   off: evt.off.bind(evt),
   components: {
-    EpvanWidgetItem
+    EpvanWidgetItem,
+    VueDrag: drag.VueDrag
   },
 
   data () {
@@ -65,6 +92,9 @@ export default {
     },
     rootSchema () {
       return this.store.getRootSchema()
+    },
+    selectedSchema () {
+      return this.store.getSelectedSchema()
     },
     model () {
       return this.store.getModel()
@@ -216,6 +246,29 @@ export default {
 
     changeMode (mode) {
       this.store.updateMode(mode)
+    },
+    onWidgetSelect (currentSchema) {
+      const { tab, selectedSchema } = this.store.getState()
+
+      if (tab === 'design' && selectedSchema && selectedSchema.key !== currentSchema.key) {
+        this.store.selectWidget(currentSchema.key)
+        this.$emit('on-select', currentSchema)
+      }
+    },
+
+    onWidgetDelete (selectedSchema) {
+      this.store.removeWidget(selectedSchema.key)
+      this.$emit('on-delete', selectedSchema)
+    },
+
+    onWidgetCopy (selectedSchema) {
+      this.store.copyWidget(selectedSchema.key)
+      this.$emit('on-copy', selectedSchema)
+    },
+
+    onWidgetAdd (schema) {
+      this.store.addWidgetChild(schema.key, schema.children.length, schema.children[0])
+      this.$emit('on-add', schema)
     }
   }
 }

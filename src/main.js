@@ -1,7 +1,7 @@
 export { default as viewExtend } from './extends/view'
 export { default as entry } from './render/index.vue'
 
-//! 下个版本将删除
+//! 后面版本将删除
 export { default as Render } from './render'
 
 export const inputWidget = require('./widgets/input')
