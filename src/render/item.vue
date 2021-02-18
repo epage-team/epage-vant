@@ -6,14 +6,12 @@
 )
   .ep-widget-item-name {{schema.name}}
   div(v-if='tab === "design"')
-    .ep-widget-btn.ep-widget-btn-delete(
+    .ep-widget-btn.ep-widget-btn-delete.ep-icon.ep-icon-trash(
       title='删除'
-      :type='icons.remove'
       @click='onOriginViewDelete($event, schema)'
     )
-    .ep-widget-btn.ep-widget-btn-clone(
+    .ep-widget-btn.ep-widget-btn-clone.ep-icon.ep-icon-copy(
       title='复制'
-      :type='icons.copy'
       @click='onOriginViewCopy($event, schema)'
     )
   template(v-if='schema.container')
@@ -161,13 +159,7 @@ export default {
     }
   },
   data () {
-    return {
-      icons: {
-        move: 'arrow-move',
-        remove: 'trash-a',
-        copy: 'ios-copy-outline'
-      }
-    }
+    return {}
   },
   computed: {
     store () {
