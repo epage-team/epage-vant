@@ -14,7 +14,6 @@ const widgets = h5Widgets.map((g, index) => {
   return g
 })
 
-console.log(widgets)
 class EpagePlugin{
   constructor(option) {
   }
