@@ -1,5 +1,52 @@
 # Change Log
 
+### 0.6.0（2021/2/20）
+
+
+- [feat] : 移动`Render`渲染器到`epage-core`包中
+
+```js
+// 旧用法
+import { Render } from 'epage-vant'
+// 新用法
+import { render } from 'epage-core'
+const { VueRender } = render
+```
+
+- [feat] : 重命名 `src/render/`为`src/entry/`
+
+```js
+// 旧用法
+import { Epage } from 'epage-vant'
+// 新用法
+import Epage from 'epage'
+```
+- [feat] : 增加`entry`模块导出
+```js
+import { render } from 'epage-core'
+import Epage from 'epage'
+import widgets, { entry } from 'epage-vant'
+
+new Epage({
+  el,
+  // 增加双端同时设计能力
+  view: 'h5',
+  h5: {
+    widgets,
+    component: entry,
+    Render: render.VueRender
+  }
+})
+// 旧用法继续使用
+new Epage({
+  el,
+  widgets,  // 暂时保留，未来会删除
+  Render // 暂时保留，未来会删除
+})
+```
+
+详情可参考[epage #CHANGELOG v0.7.0](https://github.com/didi/epage/blob/dev/CHANGELOG.md#0702021219)
+
 ### 0.5.1~0.5.2（2020/10/20）
 
 - [feat] : 逻辑关系中，被控组件存在多值时，增加值的 `或`、`且` 关系

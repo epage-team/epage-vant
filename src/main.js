@@ -1,8 +1,5 @@
 export { default as viewExtend } from './extends/view'
-export { default as entry } from './render/index.vue'
-
-//! 后面版本将删除
-export { default as Render } from './render'
+export { default as entry } from './entry/index.vue'
 
 export const inputWidget = require('./widgets/input')
 export const textareaWidget = require('./widgets/textarea')

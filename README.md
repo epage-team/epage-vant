@@ -30,13 +30,29 @@ npm install epage-vant -S
 -  `npm` 方式引入（推荐）
 
 ```js
-import widgets, { Render } from 'epage-vant'
-import schema from './schema.json'
+import { render } from 'epage-core'
+// 非设计可不引入
+import Epage from 'epage'
+import widgets, { entry } from 'epage-vant'
+// 非设计可不引入
+import 'epage/src/style/main.less'
 import 'epage-vant/src/style/main.less'
+import schema from './schema.json'
 
 const el = document.getElementById('root')
+// 设计器
+new Epage({
+  el,
+  schema,
+  view: 'h5',
+  h5: {
+    widgets,
+    Render: render.VueRender,
+    component: entry
+  }
+})
 // 创建渲染器
-new Render({ el, widgets, schema })
+new render.VueRender({ el, widgets, schema, component: entry })
 ```
 
 -  `script` 方式引入
@@ -44,6 +60,8 @@ new Render({ el, widgets, schema })
 ```html
 <!-- 样式 -->
 <link href='https://cdn.jsdelivr.net/npm/vant@2.8/lib/index.css' rel='stylesheet'></link>
+<!--非设计可不引入-->
+<link href='./epage.css' rel='stylesheet'></link>
 <link href='./epage-vant.css' rel='stylesheet'></link>
 
 <!-- 第三方脚本 -->
@@ -52,14 +70,28 @@ new Render({ el, widgets, schema })
 <script src='https://cdn.jsdelivr.net/npm/vant@2.8/lib/vant.min.js' ></script>
 
 <script src="./epage-core.min.js"></script>
+<!--非设计可不引入-->
+<script src="./epage.min.js"></script>
 <script src="./epage-vant.min.js"></script>
 
 <script>
 const el = document.getElementById('root')
-const { default: widgets, Render } = EpageVant
+const { default: widgets, entry } = EpageVant
+const { render } = EpageCore
 
+// 设计器
+new Epage({
+  el,
+  schema,
+  view: 'h5',
+  h5: {
+    widgets,
+    Render: render.VueRender,
+    component: entry
+  }
+})
 //创建渲染器
-new Render({ el, widgets, schema })
+new render.VueRender({ el, widgets, schema, component: entry })
 </script>
 
 ```

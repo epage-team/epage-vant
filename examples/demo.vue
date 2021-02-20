@@ -1,117 +1,84 @@
 <template lang="pug">
-.form-demo
-  div.demo-container(ref='form')
-  //- van-button(type='primary' block @click='resetForm') 重置
-  //- van-row
-    //- van-col(span='6' offset='1')
-    //-   van-button(type='primary' block @click='getFormData') 打印Form
-    //- van-col(span='6' offset='1')
-    //-   van-button(type='default' block @click='validateForm') 校验
-    van-col(span='6' offset='1')
-      van-button(type='primary' block @click='resetForm') 重置
-  //- p Form Data
-  //- pre {{formData}}
+.demo-container
+  //- .demo-header
+  //-   span.demo-title Epage演示示例
+  //-   span.demo-btns
+  //-     Button.demo-btn(type='primary' size='small' @click='validateForm') 校验表单
+  //-     Button.demo-btn(type='warning' size='small' @click='resetForm') 重置表单
+  //-     Button.demo-btn(type='info' size='small' @click='getFormData') 获取表单值
+
+  .demo-epage
+    div(ref='form')
 
 </template>
 <script>
-import widgets, { Render } from 'epage-vant'
-import rootSchema from './schema.json'
+import Epage from 'epage'
+import config from './epage.config.js'
 
 export default {
   data () {
     return {
-      formData: '{}',
-      form: null
+      epage: {},
+      model: {
+        kASJAJwRB: 'ss'
+      }
     }
   },
   mounted () {
-    this.getRootSchema().then(schema => {
-      this.form = this.formRender(schema)
-      window.b = this.form
-      setTimeout(() => {
-        this.form.store.updateModel({
-          name: 'Tom',
-          email: 'tom@gmailcom',
-          school: 1,
-          school2: ['beida'],
-          city: ['hubei', 'wuhan'],
-          borth: '1996-06-02',
-          time: '12:24:30',
-          age: 24,
-          sex: 'nan',
-          public: true,
-          rate: 0,
-          intrest: ['dance', 'cooking', 'film'],
-          avatar: [{
-            url: 'https://img.yzcdn.cn/vant/leaf.jpg'
-          }]
-        }, true)
-      }, 1000)
-      // this.getModel().then(model => {
-      //   form.store.updateModel(model)
-      // })
-      // this.listenerForm(form)
-    })
+    const el = this.$refs.form
+    const option = { ...config, el }
+    // 设计器
+    this.epage = new Epage(option)
+    this.epage.$render.store.updateModel(this.model)
+    // render
+    // this.epage = new render.VueRender(option)
+    // this.epage.store.updateModel(this.model)
   },
   methods: {
+    checkPreview (action) {
+      const text = {
+        reset: '请在预览视图重置表单',
+        validate: '请在预览视图校验表单',
+        formdata: '请在预览视查看表单值'
+      }
+      const tab = this.epage.store.getTab()
+      if (tab !== 'preview') {
+        this.$Message.warning(text[action])
+        return false
+      }
+      return true
+    },
     validateForm (args) {
-      this.form.validateFields().then(args => {
+      if (!this.checkPreview('validate')) return
+      this.epage.$render.validateFields().then(args => {
         console.log('validate: ', args)
       })
     },
     resetForm (args) {
-      this.form.resetFields()
-    },
-    getRootSchema () {
-      return Promise.resolve(rootSchema)
-    },
-    formRender (schema) {
-      const el = this.$refs.form
-      // return new Render({ el, schema, widgets: myWidgets})
-      return new Render({ el, schema, widgets, mode: 'edit' })
-      // return this.render(el, { mode: 'edit' })
-    },
-    getSchema (schema) {
-      console.log(1, schema)
+      if (!this.checkPreview('reset')) return
+      this.epage.$render.resetFields()
     },
     getFormData () {
-      this.formData = this.form.store.getFormData()
-      console.log(this.formData)
-    },
-    getModel () {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          const model = {
-            k2xzhr4ry: 'Karen Davis',
-            kGZLAx3Vx: '讷讷呢',
-            kZwV49N9y: 2,
-            kdNpYtQt5: ['A'],
-            kFTWtRmbd: 'A',
-            k4Yvnwqbl: '12',
-            kb82OHIBH: ''
-          }
-          resolve(model)
-        }, 1000)
+      if (!this.checkPreview('formdata')) return
+      const formData = this.epage.$render.store.getFormData()
+      this.$Notice.open({
+        title: '提醒',
+        desc: '请打开开发者工具查看form data值',
+        duration: 2
       })
+      console.log('form data: ', formData)
     },
     listenerForm (form) {
+      // 添加监听
       form
-        .on('k17U0aTQ4', 'change', e => {
+        .on('kAenMN1DX', 'change', e => {
           console.log(e.target.value, 9999)
         })
-        .on('k17U0aTQ4', 'enter', e => {
-          console.log(e.target.value, 'enter')
-        })
-        .on('w1552011657389', 'change', e => {
-          console.log('chagne: ', e.target.value)
-        })
-        .off('w1552011619728', 'change')
+        // .off('k17U0aTQ4', 'change')
     }
   }
 }
 </script>
-<style lang='less'>
-.form-demo{
-  background-color:#eee;
-}
+<style lang="less">
+@import url('./demo.less');
 </style>

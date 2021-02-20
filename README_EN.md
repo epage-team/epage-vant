@@ -30,12 +30,27 @@ npm install epage-vant -S
 -  `npm` (recommend)
 
 ```js
-import widgets, { Render } from 'epage-vant'
-import schema from './schema.json'
+import { render } from 'epage-core'
+import Epage from 'epage'
+import widgets, { entry } from 'epage-vant'
+import 'epage/src/style/main.less'
 import 'epage-vant/src/style/main.less'
+import schema from './schema.json'
+
+// create Designer
+new Epage({
+  el,
+  schema,
+  view: 'h5',
+  h5: {
+    widgets,
+    Render: render.VueRender,
+    component: entry
+  }
+})
 
 // create Render
-new Render({ el, widgets, schema })
+new Render({ el, widgets, schema, component: entry })
 ```
 
 -  `script`
@@ -43,6 +58,7 @@ new Render({ el, widgets, schema })
 ```html
 <!-- third-party style -->
 <link href='https://cdn.jsdelivr.net/npm/vant@2.8/lib/index.css' rel='stylesheet'></link>
+<link href='./epage.css' rel='stylesheet'></link>
 <link href='./epage-vant.css' rel='stylesheet'></link>
 
 <!-- third lib -->
@@ -51,15 +67,28 @@ new Render({ el, widgets, schema })
 <script src='https://cdn.jsdelivr.net/npm/vant@2.8/lib/vant.min.js' ></script>
 
 <script src="./epage-core.min.js"></script>
+<script src="./epage.min.js"></script>
 <script src="./epage-vant.min.js"></script>
 
 <script>
 
 const el = document.getElementById('root')
-const { default: widgets, Render } = EpageVant
+const { default: widgets, entry } = EpageVant
+const { render } = EpageCore
 
+
+new Epage({
+  el,
+  schema,
+  view: 'h5',
+  h5: {
+    widgets,
+    Render: render.VueRender,
+    component: entry
+  }
+})
 // create Render
-new Render({ el, widgets, schema })
+new render.VueRender({ el, widgets, schema, component: entry })
 </script>
 
 ```

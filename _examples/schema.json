@@ -1,0 +1,627 @@
+{
+  "key": "kuLlthRrI",
+  "widget": "grid",
+  "hidden": false,
+  "option": {
+    "gutter": 0,
+    "align": "top",
+    "justify": "start"
+  },
+  "label": {
+    "width": 90,
+    "position": "left",
+    "colon": true
+  },
+  "container": true,
+  "children": [
+    {
+      "span": 24,
+      "list": [
+        {
+          "key": "kXBW0FZRw",
+          "widget": "grid",
+          "hidden": false,
+          "option": {
+            "gutter": 0,
+            "align": "top",
+            "justify": "start"
+          },
+          "label": "布局",
+          "container": true,
+          "children": [
+            {
+              "span": 12,
+              "list": [
+                {
+                  "key": "kAenMN1DX",
+                  "widget": "input",
+                  "hidden": false,
+                  "option": {
+                    "password": false,
+                    "prefix": "",
+                    "suffix": ""
+                  },
+                  "name": "name",
+                  "type": "string",
+                  "label": "姓名",
+                  "description": "",
+                  "help": "注意不能重名奥",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "type": "string",
+                      "trigger": "blur"
+                    }
+                  ],
+                  "placeholder": "请输入姓名",
+                  "default": ""
+                },
+                {
+                  "key": "k7Ffr5Xta",
+                  "widget": "input",
+                  "hidden": false,
+                  "option": {
+                    "password": false,
+                    "prefix": "",
+                    "suffix": ""
+                  },
+                  "name": "email",
+                  "type": "string",
+                  "label": "邮箱",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "type": "string",
+                      "trigger": "blur"
+                    },
+                    {
+                      "message": "邮箱格式不正确",
+                      "type": "email"
+                    }
+                  ],
+                  "placeholder": "请输入邮箱",
+                  "default": ""
+                },
+                {
+                  "key": "kzXkU4UhF",
+                  "widget": "select",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "data": [
+                      {
+                        "key": "1",
+                        "value": "清华"
+                      },
+                      {
+                        "key": "2",
+                        "value": "北大"
+                      }
+                    ],
+                    "multiple": false,
+                    "clearable": true
+                  },
+                  "name": "school",
+                  "type": "string",
+                  "label": "学校",
+                  "description": "",
+                  "help": "ddddd",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "string"
+                    }
+                  ],
+                  "placeholder": "请选择学校"
+                },
+                {
+                  "key": "kzXkU4Uh7",
+                  "widget": "select",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "data": [
+                      {
+                        "key": "qinghua",
+                        "value": "清华"
+                      },
+                      {
+                        "key": "beida",
+                        "value": "北大"
+                      }
+                    ],
+                    "multiple": true,
+                    "clearable": true
+                  },
+                  "name": "school2",
+                  "type": "array<string>",
+                  "label": "学校22",
+                  "description": "",
+                  "help": "ddddd",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "array"
+                    }
+                  ],
+                  "placeholder": "请选择学校",
+                  "default": []
+                },
+                {
+                  "key": "kjxOO4wU3",
+                  "widget": "cascader",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "delimiter": "/",
+                    "clearable": true,
+                    "notFoundText": "无匹配数据",
+                    "filterable": false,
+                    "data": [
+                      {
+                        "key": "hubei",
+                        "value": "湖北",
+                        "children": [
+                          {
+                            "key": "wuhan",
+                            "value": "武汉"
+                          },
+                          {
+                            "key": "xiantao",
+                            "value": "仙桃"
+                          }
+                        ]
+                      },
+                      {
+                        "key": "anhui",
+                        "value": "安徽",
+                        "children": [
+                          {
+                            "key": "hefei",
+                            "value": "合肥"
+                          },
+                          {
+                            "key": "wuhu",
+                            "value": "芜湖"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "name": "city",
+                  "type": "array<string>",
+                  "label": "城市",
+                  "description": "city desc",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "type": "array",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请选择城市",
+                  "default": []
+                },
+                {
+                  "key": "kvRg8f0Vq",
+                  "widget": "datePicker",
+                  "hidden": false,
+                  "option": {
+                    "range": false,
+                    "format": "yyyy-MM-dd"
+                  },
+                  "name": "borth",
+                  "type": "string",
+                  "label": "出生日期",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请选择出生日期",
+                  "default": ""
+                },
+                {
+                  "key": "khVha4Uyv",
+                  "widget": "timePicker",
+                  "hidden": false,
+                  "option": {
+                    "range": false,
+                    "format": "HH:mm:ss"
+                  },
+                  "name": "time",
+                  "type": "string",
+                  "label": "时间",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请选择",
+                  "default": ""
+                }
+              ]
+            },
+            {
+              "span": 12,
+              "list": [
+                {
+                  "key": "kSZ8ragN3",
+                  "widget": "inputNumber",
+                  "hidden": false,
+                  "option": {
+                    "min": 0,
+                    "max": 1000000,
+                    "step": 1,
+                    "precision": 0
+                  },
+                  "name": "age",
+                  "type": "number",
+                  "label": "年龄",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "number"
+                    }
+                  ],
+                  "placeholder": "请输入",
+                  "default": 0
+                },
+                {
+                  "key": "kvHZoohKd",
+                  "widget": "radio",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "direction": "horizontal",
+                    "url": "",
+                    "adapter": "return data",
+                    "data": [
+                      {
+                        "key": "nan",
+                        "value": "男"
+                      },
+                      {
+                        "key": "nv",
+                        "value": "女"
+                      },
+                      {
+                        "key": "un",
+                        "value": "未知"
+                      }
+                    ],
+                    "dynamicData": []
+                  },
+                  "name": "sex",
+                  "type": "string",
+                  "label": "性别",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": false,
+                      "message": "必填",
+                      "type": "string",
+                      "trigger": "change"
+                    }
+                  ],
+                  "placeholder": "请选择",
+                  "default": ""
+                },
+                {
+                  "key": "kjrcdNgCC",
+                  "widget": "switch",
+                  "hidden": false,
+                  "option": {
+                    "open": "是",
+                    "close": "否"
+                  },
+                  "name": "public",
+                  "type": "boolean",
+                  "label": "公开",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "type": "boolean",
+                      "message": "必填",
+                      "trigger": "change",
+                      "required": false
+                    }
+                  ],
+                  "default": false
+                },
+                {
+                  "key": "kTcD9nUhc",
+                  "widget": "rate",
+                  "hidden": false,
+                  "option": {
+                    "count": 5,
+                    "allowHalf": false,
+                    "showText": false
+                  },
+                  "name": "rate",
+                  "type": "number",
+                  "label": "评分",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "min": 0,
+                      "type": "number",
+                      "trigger": "change"
+                    }
+                  ],
+                  "default": 0
+                }
+              ]
+            },
+            {
+              "span": 24,
+              "list": [
+                {
+                  "key": "kxCZ7SrhD",
+                  "widget": "checkbox",
+                  "hidden": false,
+                  "option": {
+                    "type": "static",
+                    "direction": "horizontal",
+                    "url": "",
+                    "adapter": "return data",
+                    "dynamicData": [],
+                    "data": [
+                      {
+                        "key": "travel",
+                        "value": "旅游"
+                      },
+                      {
+                        "key": "read",
+                        "value": "看书"
+                      },
+                      {
+                        "key": "film",
+                        "value": "电影"
+                      },
+                      {
+                        "key": "cooking",
+                        "value": "烹饪"
+                      },
+                      {
+                        "key": "draw",
+                        "value": "画画"
+                      },
+                      {
+                        "key": "friend",
+                        "value": "交友"
+                      },
+                      {
+                        "key": "dance",
+                        "value": "唱歌跳舞"
+                      },
+                      {
+                        "key": "stocks",
+                        "value": "炒股"
+                      }
+                    ]
+                  },
+                  "name": "intrest",
+                  "type": "array<string>",
+                  "label": "兴趣爱好",
+                  "description": "",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "type": "array",
+                      "trigger": "change"
+                    }
+                  ],
+                  "default": []
+                },
+                {
+                  "key": "kgDHkTYe8",
+                  "widget": "upload",
+                  "hidden": false,
+                  "option": {
+                    "action": "",
+                    "adapter": "return { name: data.filename, url:data.url }",
+                    "format": [
+                      "jpeg",
+                      "jpg",
+                      "png"
+                    ],
+                    "accept": "",
+                    "type": "select",
+                    "multiple": true,
+                    "maxSize": 5000,
+                    "showUploadList": true,
+                    "headers": [],
+                    "name": "file",
+                    "withCredentials": false,
+                    "data": {}
+                  },
+                  "name": "avatar",
+                  "type": "array",
+                  "label": "头像",
+                  "description": "请上传.jpg .png .gif格式图片",
+                  "help": "",
+                  "disabled": false,
+                  "rules": [
+                    {
+                      "required": true,
+                      "message": "必填",
+                      "trigger": "change",
+                      "type": "array"
+                    }
+                  ],
+                  "placeholder": "请选择文件",
+                  "default": []
+                },
+                {
+                  "key": "kHuuHGRJS",
+                  "widget": "line",
+                  "hidden": false,
+                  "option": {
+                    "direction": "horizontal",
+                    "hposition": "middle",
+                    "vposition": "center",
+                    "length": 100,
+                    "thickness": 1,
+                    "type": "dashed",
+                    "color": "rgba(207,207,207,1)"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "kCjjazqG8",
+          "widget": "grid",
+          "hidden": false,
+          "option": {
+            "gutter": 0,
+            "align": "top",
+            "justify": "center"
+          },
+          "label": "布局",
+          "container": true,
+          "children": [
+            {
+              "span": 3,
+              "list": [
+                {
+                  "key": "k7kLPqLvk",
+                  "widget": "button",
+                  "hidden": false,
+                  "option": {
+                    "text": "重置",
+                    "type": "default",
+                    "icon": "",
+                    "long": true,
+                    "ghost": false,
+                    "shape": "square",
+                    "script": "ctx.$render.resetFields();"
+                  },
+                  "disabled": false
+                }
+              ]
+            },
+            {
+              "span": 3,
+              "list": [
+                {
+                  "key": "k3sUYKXWL",
+                  "widget": "button",
+                  "hidden": false,
+                  "option": {
+                    "text": "提交",
+                    "type": "primary",
+                    "icon": "",
+                    "long": true,
+                    "ghost": false,
+                    "shape": "square",
+                    "script": "ctx.setState({loading: true});ctx.$render.validateFields().then(function(){var form = ctx.store.getFormData();console.log('form: ', form);setTimeout(function(){ctx.setState({loading: false})}, 1000)}, function(err){var form = ctx.store.getFormData();console.log('form: ', form);console.log('err:', err);ctx.setState({loading: false})})"
+                  },
+                  "disabled": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "title": "测试",
+  "description": "",
+  "size": "default",
+  "logics": [
+    {
+      "type": "value",
+      "key": "kzXkU4UhF",
+      "action": "=",
+      "value": "1",
+      "trigger": "prop",
+      "script": "console.log(333)",
+      "effects": [
+        {
+          "key": "kvRg8f0Vq",
+          "properties": [
+            {
+              "key": "hidden",
+              "value": true
+            },
+            {
+              "key": "disabled",
+              "value": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "style": {
+    "margin-top": "0%",
+    "margin-right": "auto",
+    "margin-bottom": "0%",
+    "margin-left": "auto",
+    "padding-top": "0%",
+    "padding-right": "0%",
+    "padding-bottom": "0%",
+    "padding-left": "0%",
+    "background-color": "",
+    "background-image": "",
+    "background-size": "",
+    "background-repeat": "",
+    "background-position": "",
+    "max-width": "1600px",
+    "min-width": "",
+    "maxWidth": 1600
+  }
+}
