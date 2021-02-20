@@ -6,12 +6,12 @@ import schema from './schema.json'
 // import Vue from 'vue'
 
 // 复用iview pc端Setting配置表单
-const widgets = h5Widgets.map((g, index) => {
-  g.widgets = g.widgets.map((widget, key) => {
+const widgets = h5Widgets.map((group, index) => {
+  group.widgets = group.widgets.map((widget, key) => {
     widget.Setting = pcWidgets[index].widgets[key].Setting
     return widget
   })
-  return g
+  return group
 })
 
 class EpagePlugin{

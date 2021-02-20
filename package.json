@@ -1,6 +1,6 @@
 {
   "name": "epage-vant",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "epage render package based on vant component library",
   "author": "Chengzi <ttghost@126.com>",
   "main": "./dist/epage-vant.min.js",
@@ -47,15 +47,15 @@
     "not ie <= 8"
   ],
   "dependencies": {
-    "epage-core": "^0.5.0",
+    "epage-core": "^0.5.1",
     "vant": "^2.8.4",
     "vue": "^2.5.16",
     "vuex": "^3.1.2"
   },
   "peerDependencies": {},
   "devDependencies": {
-    "epage": "^0.7.0",
-    "epage-iview": "^0.7.0",
+    "epage": "^0.7.1",
+    "epage-iview": "^0.7.1",
     "vuedraggable": "^2.24.3",
     "vue-router": "^3.4.3",
     "@babel/core": "^7.8.4",
